@@ -1,3 +1,14 @@
 DOCUMENT STATISTIQUES 
 
- Nombre de personnes : 10
+Nombre de personnes : 
+10
+Nombre de personnes portant leur masque correctement : 
+7
+Nombre de personnes ne portant pas de masque : 
+1
+Nombre de personnes portant leur masque incorrectement : 
+2
+Nombre de personnes avec une température corporelle normale : 
+8
+Nombre de personnes avec une température corporelle elevée : 
+2
