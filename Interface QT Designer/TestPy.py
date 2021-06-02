@@ -34,12 +34,24 @@ class Ui_MainWindow(object):
         self.pushButton = QtWidgets.QPushButton(self.centralwidget) # bouton 1
         self.pushButton.setGeometry(QtCore.QRect(600, 150, 200, 100))
         self.pushButton.setObjectName("pushButton")
+
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget) #bouton 2 
         self.pushButton_2.setGeometry(QtCore.QRect(600, 280, 200, 100))
         self.pushButton_2.setObjectName("pushButton_2")
+
         self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget) # bouton 3
         self.pushButton_3.setGeometry(QtCore.QRect(600, 410, 200, 100))
         self.pushButton_3.setObjectName("pushButton_3")
+
+        self.arrow = QtWidgets.QPushButton(self.centralwidget)  # bouton fleche
+        self.arrow.setGeometry(QtCore.QRect(310, 550, 56, 30))
+        self.arrow.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("LeftArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.arrow.setIcon(icon)
+        self.arrow.setObjectName("pushButton")
+        self.arrow.setVisible(False) # par defaut la fleche est desactivee
+        self.arrow.setEnabled(False)
 
         MainWindow.setCentralWidget(self.centralwidget) # menu
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -98,7 +110,39 @@ class Ui_MainWindow(object):
         self.actionSave.setText(_translate("MainWindow", "Save"))
         self.actionSave.setStatusTip(_translate("MainWindow", "Save your file"))
         self.actionSave.setShortcut(_translate("MainWindow", "Ctrl+S"))
+        
+        # -- connexions --
+
+        self.pushButton_3.clicked.connect(self.hide)
+        self.pushButton_3.clicked.connect(self.reveal_arrow)
+        self.arrow.clicked.connect(self.reveal)
+        self.arrow.clicked.connect(self.hide_arrow)
+
+        # -- fonctions --
+    def hide(self): # fonction permettant de cacher et desactiver les boutons
+        self.pushButton.setVisible(False)
+        self.pushButton_2.setVisible(False)
+        self.pushButton_3.setVisible(False)
+        self.pushButton.setEnabled(False)
+        self.pushButton_2.setEnabled(False)
+        self.pushButton_3.setEnabled(False)
     
+    def reveal_arrow(self): # permet de reveler la fleche de retour
+        self.arrow.setVisible(True)
+        self.arrow.setEnabled(True)
+
+    def hide_arrow(self): # cache la fleche
+        self.arrow.setVisible(False)
+        self.arrow.setEnabled(False)
+    
+    def reveal(self): # permet d'affiher et reactiver les boutons d'accueil
+        self.pushButton.setVisible(True)
+        self.pushButton_2.setVisible(True)
+        self.pushButton_3.setVisible(True)
+        self.pushButton.setEnabled(True)
+        self.pushButton_2.setEnabled(True)
+        self.pushButton_3.setEnabled(True)
+
 
 
 if __name__ == "__main__":
@@ -109,3 +153,7 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
+
+
+    str = open('Description', 'r').read()
+    print(str)
