@@ -126,6 +126,9 @@ class Ui_MainWindow(object):
         self.actionSave.setShortcut(_translate("MainWindow", "Ctrl+S"))
         
         # -- connexions --
+        self.pushButton.clicked.connect(self.hide_fond)
+        self.pushButton.clicked.connect(self.reveal_arrow)
+
         self.pushButton_2.clicked.connect(self.hide)
         self.pushButton_2.clicked.connect(self.reveal_arrow)
 
@@ -146,6 +149,15 @@ class Ui_MainWindow(object):
         self.pushButton.setEnabled(False)
         self.pushButton_2.setEnabled(False)
         self.pushButton_3.setEnabled(False)
+
+    def hide_fond(self): # cache les boutons et affiche le fond bleu uni
+        self.pushButton.setVisible(False)
+        self.pushButton_2.setVisible(False)
+        self.pushButton_3.setVisible(False)
+        self.pushButton.setEnabled(False)
+        self.pushButton_2.setEnabled(False)
+        self.pushButton_3.setEnabled(False)
+        self.label_2.setPixmap(QtGui.QPixmap("Wallpaper_fond.jpg"))
     
     def reveal_arrow(self): # permet de reveler la fleche de retour
         self.arrow.setVisible(True)
@@ -162,6 +174,7 @@ class Ui_MainWindow(object):
         self.pushButton.setEnabled(True)
         self.pushButton_2.setEnabled(True)
         self.pushButton_3.setEnabled(True)
+        self.label_2.setPixmap(QtGui.QPixmap("Wallpaper.jpg"))
     
     def reveal_info(self):
         self.description.setVisible(True)
