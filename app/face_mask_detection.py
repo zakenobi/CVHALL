@@ -178,9 +178,9 @@ class MainMenu(QMainWindow):
         self.ui = Ui_MainMenu()
         self.ui.setupUi(self)
         self.setWindowIcon(QtGui.QIcon('resources/medical-mask.ico'))
-        header = self.ui.camera_table.horizontalHeader()
-        header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
-        header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
+        #header = self.ui.camera_table.horizontalHeader()
+        #header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
+        #header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
         self.net = create_detection_net(configPath, weightsPath)
         self.camera_list = []
         self.current_camera = None
@@ -191,18 +191,18 @@ class MainMenu(QMainWindow):
     def get_camera_list(self):
         self.camera_list = []
         self.ui.camera_select.clear()
-        self.ui.camera_table.clearContents()
-        self.ui.camera_table.setRowCount(0)
+        #self.ui.camera_table.clearContents()
+        #self.ui.camera_table.setRowCount(0)
         self.ui.image_label.setStyleSheet("color: rgb(255, 255, 255);")
         self.ui.image_label.setText("Select a Camera")
         for camera in startMenu.camera_dict:
             self.camera_list.append(Camera(camera, startMenu.camera_dict[camera]))
         for camera in self.camera_list:
             self.ui.camera_select.addItem(camera.camName)
-            self.ui.camera_table.insertRow(self.ui.camera_table.rowCount())
-            current_row = self.ui.camera_table.rowCount() - 1
-            self.ui.camera_table.setItem(current_row, 0, camera.camera_name_item)
-            self.ui.camera_table.setItem(current_row, 1, camera.camera_status_item)
+            #self.ui.camera_table.insertRow(self.ui.camera_table.rowCount())
+            #current_row = self.ui.camera_table.rowCount() - 1
+            #self.ui.camera_table.setItem(current_row, 0, camera.camera_name_item)
+            #self.ui.camera_table.setItem(current_row, 1, camera.camera_status_item)
 
     def start_cameras(self):
         for camera in self.camera_list:
