@@ -9,42 +9,43 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import sys
 
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(900, 660)
+        MainWindow.resize(1280, 720)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget) # titre
-        self.label.setGeometry(QtCore.QRect(250, 30, 81, 31))
+        self.label.setGeometry(QtCore.QRect(500, 0, 81, 31))
         font = QtGui.QFont()
         font.setPointSize(36)
         self.label.setFont(font) 
         self.label.setObjectName("label")
 
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(0, 100, 900, 500)) # image
+        self.label_2.setGeometry(QtCore.QRect(0, 100, 1280, 720)) # image
         self.label_2.setText("")
         self.label_2.setPixmap(QtGui.QPixmap("Wallpaper.jpg"))
         self.label_2.setScaledContents(True)
         self.label_2.setObjectName("label_2")
 
         self.pushButton = QtWidgets.QPushButton(self.centralwidget) # bouton 1
-        self.pushButton.setGeometry(QtCore.QRect(600, 150, 200, 100))
+        self.pushButton.setGeometry(QtCore.QRect(900, 120, 250, 130))
         self.pushButton.setObjectName("pushButton")
 
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget) #bouton 2 
-        self.pushButton_2.setGeometry(QtCore.QRect(600, 280, 200, 100))
+        self.pushButton_2.setGeometry(QtCore.QRect(900, 300, 250, 130))
         self.pushButton_2.setObjectName("pushButton_2")
 
         self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget) # bouton 3
-        self.pushButton_3.setGeometry(QtCore.QRect(600, 410, 200, 100))
+        self.pushButton_3.setGeometry(QtCore.QRect(900, 480, 250, 130))
         self.pushButton_3.setObjectName("pushButton_3")
 
         self.arrow = QtWidgets.QPushButton(self.centralwidget)  # bouton fleche
-        self.arrow.setGeometry(QtCore.QRect(310, 550, 56, 30))
+        self.arrow.setGeometry(QtCore.QRect(500, 600, 80, 40))
         self.arrow.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("LeftArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -52,6 +53,16 @@ class Ui_MainWindow(object):
         self.arrow.setObjectName("pushButton")
         self.arrow.setVisible(False) # par defaut la fleche est desactivee
         self.arrow.setEnabled(False)
+
+        self.description = QtWidgets.QLabel(self.centralwidget)
+        self.description.setGeometry(QtCore.QRect(550, 230, 100, 100)) # texte de description
+        str = open('Description.txt', 'r').read()
+        self.description.setText(str)
+        self.description.setFont(QtGui.QFont('Arial', 15))
+        self.description.setStyleSheet("color: white")
+        self.description.adjustSize()
+        self.description.setVisible(False)
+        self.description.setEnabled(True)
 
         MainWindow.setCentralWidget(self.centralwidget) # menu
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -89,6 +100,9 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "CV Hall")) # label titre
 
         self.pushButton.setText(_translate("MainWindow", "Go to face detection")) # texte boutons
+        self.pushButton.setFont(QtGui.QFont('Arial', 12))
+        self.pushButton_2.setFont(QtGui.QFont('Arial', 12))
+        self.pushButton_3.setFont(QtGui.QFont('Arial', 12))
         self.pushButton_2.setText(_translate("MainWindow", "User manual"))
         self.pushButton_3.setText(_translate("MainWindow", "Project description"))
         #self.pushButton.adjustSize()
@@ -97,7 +111,7 @@ class Ui_MainWindow(object):
 
         self.label.setText(_translate("MainWindow", "CV Hall"))
         self.label.adjustSize() # ajuste la taille du label
-        self.label.move(330,0)
+        
         self.menuFile.setTitle(_translate("MainWindow", "File"))    # menu et raccourcis
         self.menuEdit.setTitle(_translate("MainWindow", "Edit"))
         self.actionNew.setText(_translate("MainWindow", "New"))
@@ -112,13 +126,19 @@ class Ui_MainWindow(object):
         self.actionSave.setShortcut(_translate("MainWindow", "Ctrl+S"))
         
         # -- connexions --
+        self.pushButton_2.clicked.connect(self.hide)
+        self.pushButton_2.clicked.connect(self.reveal_arrow)
 
         self.pushButton_3.clicked.connect(self.hide)
         self.pushButton_3.clicked.connect(self.reveal_arrow)
+        self.pushButton_3.clicked.connect(self.reveal_info)
+
         self.arrow.clicked.connect(self.reveal)
-        self.arrow.clicked.connect(self.hide_arrow)
+        self.arrow.clicked.connect(self.hide_arrow) 
+        self.arrow.clicked.connect(self.hide_info)       
 
         # -- fonctions --
+
     def hide(self): # fonction permettant de cacher et desactiver les boutons
         self.pushButton.setVisible(False)
         self.pushButton_2.setVisible(False)
@@ -142,6 +162,11 @@ class Ui_MainWindow(object):
         self.pushButton.setEnabled(True)
         self.pushButton_2.setEnabled(True)
         self.pushButton_3.setEnabled(True)
+    
+    def reveal_info(self):
+        self.description.setVisible(True)
+    def hide_info(self):
+        self.description.setVisible(False)
 
 
 
@@ -153,7 +178,3 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
-
-
-    str = open('Description', 'r').read()
-    print(str)
