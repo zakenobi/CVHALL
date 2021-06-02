@@ -30,7 +30,7 @@ connect_log_filename.touch(exist_ok=True)
 
 def create_detection_net(config_path, weights_path):
     net = cv2.dnn_DetectionModel(config_path, weights_path)
-    net.setInputSize(500, 500)
+    net.setInputSize(416, 416)
     net.setInputScale(1.0 / 255)
     net.setInputSwapRB(True)
     net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
@@ -45,9 +45,9 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
     for cl, score, (left, top, width, height) in zip(classes, confidences, boxes):
         mask_count += (1 - cl[0])
         nomask_count += cl[0]
-        start_point = (int(left), int(top))
+        start_point = (int(left), int(top)) #definie la taille est position du petit carre autour de la tete
         end_point = (int(left + width), int(top + height))
-        color = COLORS[cl[0]]
+        color = COLORS[cl[0]] #definie la couleur du carre
         img = cv2.rectangle(img, start_point, end_point, color, 2)  # draw class box
         text = f'{LABELS[cl[0]]}: {score[0]:0.2f}'
         (test_width, text_height), baseline = cv2.getTextSize(text, cv2.FONT_ITALIC, 0.6, 1)
@@ -55,6 +55,7 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
         img = cv2.rectangle(img, start_point, end_point, color, -1)
         cv2.putText(img, text, start_point, cv2.FONT_ITALIC, 0.6, COLORS[1 - cl[0]], 1)  # print class type with score
     ratio = nomask_count / (mask_count + nomask_count + 0.000001)
+    
     if ratio >= 0.1 and nomask_count >= 3:
         status = "Danger"
     elif ratio != 0 and np.isnan(ratio) is not True:
