@@ -11,7 +11,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
 import cv2
-import cv2
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -132,8 +131,6 @@ class Ui_MainWindow(object):
         # -- connexions --
         self.pushButton.clicked.connect(self.hide_fond)
         self.pushButton.clicked.connect(self.reveal_arrow)
-        self.pushButton.clicked.connect(self.cam)
-        self.pushButton.clicked.connect(self.get_frame)
 
         self.pushButton_2.clicked.connect(self.hide)
         self.pushButton_2.clicked.connect(self.reveal_arrow)
@@ -186,27 +183,6 @@ class Ui_MainWindow(object):
         self.description.setVisible(True)
     def hide_info(self):
         self.description.setVisible(False)
-
-    def cam(self, camera_index=0, fps=30):
-        self.capture = cv2.VideoCapture(camera_index)
-
-        self.image = QLabel(self)
-        text = QLabel('MegaWebcam 5.5', self)
-
-        layout = QVBoxLayout(self)
-        layout.addWidget(self.image)
-        layout.addWidget(text)
-
-        timer = QTimer(self)
-        timer.setInterval(int(1000/fps))
-        timer.timeout.connect(self.get_frame)
-        timer.start()
-
-    def get_frame(self):
-        _, frame = self.capture.read()
-        image = QImage(frame, *frame.shape[1::-1], QImage.Format_RGB888).rgbSwapped()
-        pixmap = QPixmap.fromImage(image)
-        self.image.setPixmap(pixmap)
 
 
 
