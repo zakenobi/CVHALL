@@ -10,12 +10,16 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
-
+import cv2
+import cv2
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1280, 720)
+        MainWindow.resize(1280, 720) # resolution de la fenetre principale
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget) # titre
@@ -25,10 +29,10 @@ class Ui_MainWindow(object):
         self.label.setFont(font) 
         self.label.setObjectName("label")
 
-        self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(0, 100, 1280, 720)) # image
+        self.label_2 = QtWidgets.QLabel(self.centralwidget) # image
+        self.label_2.setGeometry(QtCore.QRect(0, 100, 1280, 720)) 
         self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("Wallpaper.jpg"))
+        self.label_2.setPixmap(QtGui.QPixmap("Interface QT Designer\Wallpaper.jpg"))
         self.label_2.setScaledContents(True)
         self.label_2.setObjectName("label_2")
 
@@ -48,7 +52,7 @@ class Ui_MainWindow(object):
         self.arrow.setGeometry(QtCore.QRect(500, 600, 80, 40))
         self.arrow.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("LeftArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("Interface QT Designer\LeftArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.arrow.setIcon(icon)
         self.arrow.setObjectName("pushButton")
         self.arrow.setVisible(False) # par defaut la fleche est desactivee
@@ -56,7 +60,7 @@ class Ui_MainWindow(object):
 
         self.description = QtWidgets.QLabel(self.centralwidget)
         self.description.setGeometry(QtCore.QRect(550, 230, 100, 100)) # texte de description
-        str = open('Description.txt', 'r').read()
+        str = open('Interface QT Designer\Description.txt', 'r').read()
         self.description.setText(str)
         self.description.setFont(QtGui.QFont('Arial', 15))
         self.description.setStyleSheet("color: white")
@@ -99,12 +103,12 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "CV Hall")) # label titre
 
-        self.pushButton.setText(_translate("MainWindow", "Go to face detection")) # texte boutons
+        self.pushButton.setText(_translate("MainWindow", "Lancer la détéction")) # texte boutons
         self.pushButton.setFont(QtGui.QFont('Arial', 12))
         self.pushButton_2.setFont(QtGui.QFont('Arial', 12))
         self.pushButton_3.setFont(QtGui.QFont('Arial', 12))
-        self.pushButton_2.setText(_translate("MainWindow", "User manual"))
-        self.pushButton_3.setText(_translate("MainWindow", "Project description"))
+        self.pushButton_2.setText(_translate("MainWindow", "Manuel Utilisateur"))
+        self.pushButton_3.setText(_translate("MainWindow", "Description du projet"))
         #self.pushButton.adjustSize()
         #self.pushButton_2.adjustSize()
         #self.pushButton_3.adjustSize()
@@ -128,6 +132,8 @@ class Ui_MainWindow(object):
         # -- connexions --
         self.pushButton.clicked.connect(self.hide_fond)
         self.pushButton.clicked.connect(self.reveal_arrow)
+        self.pushButton.clicked.connect(self.cam)
+        self.pushButton.clicked.connect(self.get_frame)
 
         self.pushButton_2.clicked.connect(self.hide)
         self.pushButton_2.clicked.connect(self.reveal_arrow)
@@ -157,7 +163,7 @@ class Ui_MainWindow(object):
         self.pushButton.setEnabled(False)
         self.pushButton_2.setEnabled(False)
         self.pushButton_3.setEnabled(False)
-        self.label_2.setPixmap(QtGui.QPixmap("Wallpaper_fond.jpg"))
+        self.label_2.setPixmap(QtGui.QPixmap("Interface QT Designer\Wallpaper_fond.jpg"))
     
     def reveal_arrow(self): # permet de reveler la fleche de retour
         self.arrow.setVisible(True)
@@ -174,12 +180,33 @@ class Ui_MainWindow(object):
         self.pushButton.setEnabled(True)
         self.pushButton_2.setEnabled(True)
         self.pushButton_3.setEnabled(True)
-        self.label_2.setPixmap(QtGui.QPixmap("Wallpaper.jpg"))
+        self.label_2.setPixmap(QtGui.QPixmap("Interface QT Designer\Wallpaper.jpg"))
     
-    def reveal_info(self):
+    def reveal_info(self): # affiche la description
         self.description.setVisible(True)
     def hide_info(self):
         self.description.setVisible(False)
+
+    def cam(self, camera_index=0, fps=30):
+        self.capture = cv2.VideoCapture(camera_index)
+
+        self.image = QLabel(self)
+        text = QLabel('MegaWebcam 5.5', self)
+
+        layout = QVBoxLayout(self)
+        layout.addWidget(self.image)
+        layout.addWidget(text)
+
+        timer = QTimer(self)
+        timer.setInterval(int(1000/fps))
+        timer.timeout.connect(self.get_frame)
+        timer.start()
+
+    def get_frame(self):
+        _, frame = self.capture.read()
+        image = QImage(frame, *frame.shape[1::-1], QImage.Format_RGB888).rgbSwapped()
+        pixmap = QPixmap.fromImage(image)
+        self.image.setPixmap(pixmap)
 
 
 
