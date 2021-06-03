@@ -27,7 +27,7 @@ cam_list_filename.touch(exist_ok=True)
 connect_log_filename = Path(connect_log_path)
 connect_log_filename.touch(exist_ok=True)
 
-
+# Tres imoprtant pour le reseau de neuronne
 def create_detection_net(config_path, weights_path):
     net = cv2.dnn_DetectionModel(config_path, weights_path)
     net.setInputSize(416, 416)
@@ -37,31 +37,31 @@ def create_detection_net(config_path, weights_path):
     net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
     return net
 
-
+# Tres important pour obtenir la detection de masque
 def get_processed_image(img, net, confThreshold, nmsThreshold):
     mask_count = 0
     nomask_count = 0
-    classes, confidences, boxes = net.detect(img, confThreshold, nmsThreshold)
+    classes, confidences, boxes = net.detect(img, confThreshold, nmsThreshold)#fonction de detection
     for cl, score, (left, top, width, height) in zip(classes, confidences, boxes):
         mask_count += (1 - cl[0])
         nomask_count += cl[0]
-        start_point = (int(left), int(top)) #definie la taille est position du petit carre autour de la tete
+        start_point = (int(left), int(top)) #definie la taille et position du petit carre autour de la tete
         end_point = (int(left + width), int(top + height))
         color = COLORS[cl[0]] #definie la couleur du carre
-        img = cv2.rectangle(img, start_point, end_point, color, 2)  # draw class box
+        img = cv2.rectangle(img, start_point, end_point, color, 2)  #dessine le carre sur l'image 
         text = f'{LABELS[cl[0]]}: {score[0]:0.2f}'
         (test_width, text_height), baseline = cv2.getTextSize(text, cv2.FONT_ITALIC, 0.6, 1)
         end_point = (int(left + test_width + 2), int(top - text_height - 2))
         img = cv2.rectangle(img, start_point, end_point, color, -1)
-        cv2.putText(img, text, start_point, cv2.FONT_ITALIC, 0.6, COLORS[1 - cl[0]], 1)  # print class type with score
+        cv2.putText(img, text, start_point, cv2.FONT_ITALIC, 0.6, COLORS[1 - cl[0]], 1)  #ecrit les information de port du masque sur l'image
     ratio = nomask_count / (mask_count + nomask_count + 0.000001)
     
-    if ratio >= 0.1 and nomask_count >= 3:
+    if ratio >= 0.1 and nomask_count >= 3: #
         status = "Danger"
     elif ratio != 0 and np.isnan(ratio) is not True:
-        status = "Warning"
+        status = "Attention"
     else:
-        status = "Safe"
+        status = "Pas de danger"
     return img, status, mask_count, nomask_count
 
 
@@ -73,8 +73,8 @@ class Camera(QTimer):
         self.confThreshold = confThreshold
         self.nmsThreshold = nmsThreshold
         self.viewable = False
-        self.status = "Not Connected"
-        self.prev_status = "Not Connected"
+        self.status = "pas de connection"
+        self.prev_status = "pas de connection"
         self.last_image = None
         self.camera_name_item = QTableWidgetItem(self.camName)
         self.camera_name_item.setTextAlignment(Qt.AlignCenter)
@@ -85,7 +85,7 @@ class Camera(QTimer):
 
     def start_camera(self):
         self.cam = cv2.VideoCapture(self.camID)
-        self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+        self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)#attribu optionnel
         self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
 
     def take_photo(self):
@@ -97,10 +97,10 @@ class Camera(QTimer):
 
     def view_disconnected_cam(self):
         mainMenu.ui.image_label.setStyleSheet("color: rgb(210, 105, 30);")
-        mainMenu.ui.image_label.setText(self.camName + " is not connected")
+        mainMenu.ui.image_label.setText(self.camName + " pas de connection")
         status_stylesheet = "border: transparent; background-color: transparent; font: 63 24pt \"URW Gothic L\"; color: rgb(210, 105, 30);"
         mainMenu.ui.image_label.setStyleSheet("color: rgb(210, 105, 30);")
-        mainMenu.ui.image_label.setText(self.camName + " is not connected")
+        mainMenu.ui.image_label.setText(self.camName + " pas de connection")
         mainMenu.ui.mask_count_label.setText("")
         mainMenu.ui.no_mask_count_label.setText("")
         mainMenu.ui.status_label.setText('Status:')
@@ -108,17 +108,17 @@ class Camera(QTimer):
         mainMenu.ui.status_type_label.setStyleSheet(status_stylesheet)
 
     def camera_run(self):
-        if self.status != "Not Connected":
+        if self.status != "pas de connection":
             try:
-                ret, image = self.cam.read()
+                ret, image = self.cam.read() #lecture de la camera
                 self.last_image = image.copy()
-                image, status, mask_count, nomask_count = get_processed_image(image, mainMenu.net, self.confThreshold, self.nmsThreshold)
+                image, status, mask_count, nomask_count = get_processed_image(image, mainMenu.net, self.confThreshold, self.nmsThreshold) #recuperation de l'image avec la detection
                 self.status = status
-                if status == "Safe":
+                if status == "Pas de danger": #changement de l'etat du text en fonction de l'etat de danger
                     self.camera_name_item.setForeground(QColor(21, 200, 8))
                     self.camera_status_item.setForeground(QColor(21, 200, 8))
                     status_stylesheet = "border: transparent; background-color: transparent; font: 63 24pt \"URW Gothic L\"; color: rgb(21, 200, 8);"
-                elif status == "Warning":
+                elif status == "Attention":
                     self.camera_name_item.setForeground(QColor("yellow"))
                     self.camera_status_item.setForeground(QColor("yellow"))
                     status_stylesheet = "border: transparent; background-color: transparent; font: 63 24pt \"URW Gothic L\"; color: yellow;"
@@ -129,9 +129,9 @@ class Camera(QTimer):
                 self.camera_status_item.setText(self.status)
                 if self.viewable is True:
                     mainMenu.ui.image_label.setStyleSheet("color: rgb(255, 255, 255);")
-                    mainMenu.ui.image_label.setText("Select a Camera")
-                    mainMenu.ui.mask_count_label.setText(f'Mask Count:  {mask_count}')
-                    mainMenu.ui.no_mask_count_label.setText(f'No Mask Count:  {nomask_count}')
+                    mainMenu.ui.image_label.setText("Selectionnez une camera")
+                    mainMenu.ui.mask_count_label.setText(f'Avec masque:  {mask_count}')
+                    mainMenu.ui.no_mask_count_label.setText(f'Sans Masque:  {nomask_count}')
                     mainMenu.ui.status_label.setText('Status:')
                     mainMenu.ui.status_type_label.setText(status)
                     mainMenu.ui.status_type_label.setStyleSheet(status_stylesheet)
@@ -181,7 +181,7 @@ class MainMenu(QMainWindow):
         #header = self.ui.camera_table.horizontalHeader()
         #header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
         #header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
-        self.net = create_detection_net(configPath, weightsPath)
+        self.net = create_detection_net(configPath, weightsPath) #creation de la fonction de detection
         self.camera_list = []
         self.current_camera = None
         self.ui.camera_select.activated.connect(self.change_cam)
@@ -194,7 +194,7 @@ class MainMenu(QMainWindow):
         #self.ui.camera_table.clearContents()
         #self.ui.camera_table.setRowCount(0)
         self.ui.image_label.setStyleSheet("color: rgb(255, 255, 255);")
-        self.ui.image_label.setText("Select a Camera")
+        self.ui.image_label.setText("Selectionnez une camera")
         for camera in startMenu.camera_dict:
             self.camera_list.append(Camera(camera, startMenu.camera_dict[camera]))
         for camera in self.camera_list:
@@ -221,12 +221,12 @@ class MainMenu(QMainWindow):
         self.current_camera.viewable = True
 
     def take_photo(self):
-        if self.current_camera is not None and self.current_camera.status != "Not Connected":
+        if self.current_camera is not None and self.current_camera.status != "pas de connection":
             image_name = self.current_camera.camName + "_" + datetime.now().strftime("%d.%m.%Y_%H.%M.%S") + ".jpg"
             cv2.imwrite(os.path.join(photo_path, image_name), self.current_camera.last_image)
-            QTimer.singleShot(0, lambda: self.ui.photo_taken_notification.setText("Photo Taken!"))
+            QTimer.singleShot(0, lambda: self.ui.photo_taken_notification.setText("Photo prise!"))
         else:
-            QTimer.singleShot(0, lambda: self.ui.photo_taken_notification.setText("Camera not available!"))
+            QTimer.singleShot(0, lambda: self.ui.photo_taken_notification.setText("Camera non disponible!"))
         QTimer.singleShot(2000, lambda: self.ui.photo_taken_notification.setText(""))
 
     # def open_start_menu(self):
