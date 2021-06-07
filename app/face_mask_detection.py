@@ -16,8 +16,8 @@ COLORS = [[0, 255, 0], [0, 0, 255]]
 weightsPath = "yolo_utils/yolov4-tiny-mask.weights"
 configPath = "yolo_utils/yolov4-tiny-mask.cfg"
 photo_path = "photos"
-camera_list_path = "app/resources/camera_list.txt"
-connect_log_path = "app/resources/connect_history.log"
+camera_list_path = "resources/camera_list.txt"
+connect_log_path = "resources/connect_history.log"
 
 photo_dir = Path(photo_path)
 photo_dir.mkdir(parents=True, exist_ok=True)
