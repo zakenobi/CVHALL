@@ -549,12 +549,9 @@ class Ui_MainMenu(object):
         self.epf.setText("AAAAAA")
         #self.epf.setIcon(QtGui.QIcon("ressources/epf_logo.png"))
         self.epf.setObjectName("epf")
-        
-        self.epf.setStyleSheet("border: transparent;\n"
-"background-image : url(ressources/epf_logo.png)\n"
+        self.epf.setStyleSheet(
+"background-image : url(ressources/epf_logo_bmp.bmp)\n"
 )
-
-
 
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
@@ -582,4 +579,3 @@ class Ui_MainMenu(object):
         self.camera_select_label.setText(_translate("MainMenu", "Select Camera:    "))
         self.camera_select.setProperty("placeholderText", _translate("MainMenu", "Select Camera"))
         self.epf.setText(_translate("MainMenu","AAAAAA"))
-
