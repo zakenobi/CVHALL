@@ -568,5 +568,5 @@ class Ui_MainMenu(object):
         #item.setText(_translate("MainMenu", "Status"))
         self.camera_select_label.setText(_translate("MainMenu", "Select Camera:    "))
         self.camera_select.setProperty("placeholderText", _translate("MainMenu", "Select Camera"))
-        self.epf.setText(_translate("MainMenu"," "))
+        self.epf.setText(_translate("MainMenu","AAAAAA"))
 
