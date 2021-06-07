@@ -553,7 +553,7 @@ class Ui_MainMenu(object):
 
         self.button1 = QtWidgets.QPushButton(self.centralwidget)
         self.button1.setGeometry(QtCore.QRect(100, 100, 331, 61))
-        self.epf.setStyleSheet("ressources/Logo_EPF.jpeg")
+        self.epf.setStyleSheet("ressources/logo_epf.jpeg")
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(28)
