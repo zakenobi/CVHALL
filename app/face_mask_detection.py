@@ -9,7 +9,6 @@ from PyQt5.QtGui import QImage, QPixmap, QColor, QRegExpValidator
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QWidget, QMessageBox
 
 from start_menu import *
-from new_cam_menu import *
 from main_menu import *
 
 LABELS = ["Mask", "Without Mask"]
@@ -326,55 +325,11 @@ class StartMenu(QMainWindow):
         mainMenu.close()
 
 
-class NewCamMenu(QWidget):
-    def __init__(self):
-        super().__init__()
-        self.ui = Ui_new_cam_menu()
-        self.ui.setupUi(self)
-        self.setFixedSize(self.size())
-        name_validator = QRegExpValidator(QRegExp("[^\s]{3,16}"))
-        id_validator = QRegExpValidator(QRegExp("[^\s]+"))
-        self.ui.cam_name_input.setValidator(name_validator)
-        self.ui.cam_id_input.setValidator(id_validator)
-        self.setWindowIcon(QtGui.QIcon('resources/medical-mask.ico'))
-        self.ui.create_cam_button.clicked.connect(self.create_camera)
-
-    def create_camera(self):
-        if self.ui.cam_name_input.hasAcceptableInput() and self.ui.cam_id_input.hasAcceptableInput():
-            cam_name = self.ui.cam_name_input.text()
-            if self.ui.cam_id_input.text().isdigit():
-                cam_id = int(self.ui.cam_id_input.text())
-            else:
-                cam_id = self.ui.cam_id_input.text()
-            if cam_id in startMenu.camera_dict.values():
-                wrong_id_msg = QMessageBox(QMessageBox.Critical, "ID already existent", "A camera with ID " + str(cam_id) + " already exists!")
-                wrong_id_msg.setWindowIcon(QtGui.QIcon('resources/medical-mask.ico'))
-                wrong_id_msg.setStyleSheet("background-color: rgb(15, 50, 80); color: #32CD32; font: 75 13pt \"Gill Sans MT\";")
-                wrong_id_msg.exec_()
-            else:
-                if cam_name in startMenu.camera_dict.keys():
-                    cam_update_msg = QMessageBox(QMessageBox.Warning, cam_name + " ID Update", cam_name + " updated its ID from " + str(startMenu.camera_dict[cam_name]) + " to " + str(cam_id) + ".")
-                    cam_update_msg.setWindowIcon(QtGui.QIcon('resources/medical-mask.ico'))
-                    cam_update_msg.setStyleSheet("background-color: rgb(15, 50, 80); color: #32CD32; font: 75 13pt \"Gill Sans MT\";")
-                    cam_update_msg.exec_()
-                startMenu.camera_dict[cam_name] = cam_id
-                startMenu.update_camera_list(cam_list_filename)
-                self.close()
-        else:
-            wrong_name_msg = QMessageBox(QMessageBox.Critical, "Wrong input for camera name or ID", "The camera name must contain between 3 and 16 non-space characters and the ID field must not be empty.")
-            wrong_name_msg.setWindowIcon(QtGui.QIcon('resources/medical-mask.ico'))
-            wrong_name_msg.setStyleSheet("background-color: rgb(15, 50, 80); color: #32CD32; font: 75 13pt \"Gill Sans MT\";")
-            wrong_name_msg.exec_()
-
-    def refresh_menu(self):
-        self.ui.cam_name_input.setText("")
-        self.ui.cam_id_input.setText("")
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     startMenu = StartMenu()
-    newCameraMenu = NewCamMenu()
     mainMenu = MainMenu()
     #startMenu.show()
     mainMenu.get_camera_list()
