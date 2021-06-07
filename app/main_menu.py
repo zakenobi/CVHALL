@@ -548,7 +548,6 @@ class Ui_MainMenu(object):
         self.epf.setGeometry(QtCore.QRect(200, 200, 331, 61)) 
         self.epf.setText("AAAAAA")
         #self.epf.setIcon(QtGui.QIcon("ressources/epf_logo.png"))
-        self.epf.setScaledContents(True)
         self.epf.setObjectName("epf")
 
         self.button1 = QtWidgets.QPushButton(self.centralwidget)
