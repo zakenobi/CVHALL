@@ -31,7 +31,7 @@ class Ui_MainWindow(object):
         self.label_2 = QtWidgets.QLabel(self.centralwidget) # image
         self.label_2.setGeometry(QtCore.QRect(0, 100, 1280, 720)) 
         self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("Interface QT Designer\Wallpaper.jpg"))
+        self.label_2.setPixmap(QtGui.QPixmap("Interface QT Designer\epf_logo.png"))
         self.label_2.setScaledContents(True)
         self.label_2.setObjectName("label_2")
 
