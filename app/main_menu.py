@@ -550,7 +550,7 @@ class Ui_MainMenu(object):
         #self.epf.setIcon(QtGui.QIcon("ressources/epf_logo.png"))
         self.epf.setObjectName("epf")
         self.epf.setStyleSheet(
-"background-image : url(ressources/epf_logo_bmp.bmp)\n"
+" border-image: url(ressources/epf_logo_bmp.bmp) 3 10 3 10"
 )
 
         font = QtGui.QFont()
