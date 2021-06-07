@@ -560,6 +560,7 @@ class Ui_MainMenu(object):
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(7)
+        
 
         self.retranslateUi(MainMenu)
         QtCore.QMetaObject.connectSlotsByName(MainMenu)
@@ -570,6 +571,7 @@ class Ui_MainMenu(object):
         self.image_label.setText(_translate("MainMenu", "Select a Camera"))
         self.take_photo_button.setText(_translate("MainMenu", "Take Photo"))
         self.start_menu_button.setText(_translate("MainMenu", "Exit"))
+        self.button1.setText(_translate("MainMenu", "Test"))
         #self.camera_list_label.setText(_translate("MainMenu", "Camera Control Panel"))
         #item = self.camera_table.horizontalHeaderItem(0)
         #item.setText(_translate("MainMenu", "Camera"))
