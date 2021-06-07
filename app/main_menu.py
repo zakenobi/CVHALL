@@ -551,7 +551,7 @@ class Ui_MainMenu(object):
         self.epf.setObjectName("epf")
         self.epf.setPixmap(QtGui.QPixmap("Interface QT Designer\epf_logo.png"))
         self.epf.setScaledContents(True)
-        
+
 
 
         font = QtGui.QFont()
@@ -571,7 +571,6 @@ class Ui_MainMenu(object):
         self.image_label.setText(_translate("MainMenu", "Select a Camera"))
         self.take_photo_button.setText(_translate("MainMenu", "Take Photo"))
         self.start_menu_button.setText(_translate("MainMenu", "Exit"))
-        self.button1.setText(_translate("MainMenu", "Test"))
         self.epf.setText(_translate("MainMenu", "Test"))
         #self.camera_list_label.setText(_translate("MainMenu", "Camera Control Panel"))
         #item = self.camera_table.horizontalHeaderItem(0)
