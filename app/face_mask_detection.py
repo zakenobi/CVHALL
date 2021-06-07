@@ -186,7 +186,7 @@ class MainMenu(QMainWindow):
         self.ui.camera_select.activated.connect(self.change_cam)
         self.ui.take_photo_button.clicked.connect(self.take_photo)
         self.ui.start_menu_button.clicked.connect(self.close_app)
-        self.ui.epf.setIcon(QtGui.QIcon("ressources/epf_logo.png"))
+        
 
      
 
