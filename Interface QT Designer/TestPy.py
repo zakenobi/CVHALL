@@ -57,6 +57,13 @@ class Ui_MainWindow(object):
         self.arrow.setVisible(False) # par defaut la fleche est desactivee
         self.arrow.setEnabled(False)
 
+        self.epf = QtWidgets.QLabel(self.centralwidget) # image
+        self.epf.setGeometry(QtCore.QRect(200, 200, 331, 61)) 
+        self.epf.setText("AAAAAA")
+        self.epf.setPixmap(QtGui.QPixmap("ressources/epf_logo.jpg"))
+        self.epf.setScaledContents(True)
+        self.epf.setObjectName("epf")
+
         self.description = QtWidgets.QLabel(self.centralwidget)
         self.description.setGeometry(QtCore.QRect(550, 230, 100, 100)) # texte de description
         str = open('Interface QT Designer\Description.txt', 'r').read()
