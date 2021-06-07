@@ -549,8 +549,10 @@ class Ui_MainMenu(object):
         self.epf.setText("AAAAAA")
         #self.epf.setIcon(QtGui.QIcon("ressources/epf_logo.png"))
         self.epf.setObjectName("epf")
-        self.epf.setPixmap(QtGui.QPixmap("Interface QT Designer\epf_logo.png"))
-        self.epf.setScaledContents(True)
+        
+        self.epf.setStyleSheet("border: transparent;\n"
+"background-image : url(ressources/epf_logo.png)\n"
+)
 
 
 
