@@ -16,8 +16,8 @@ COLORS = [[0, 255, 0], [0, 0, 255]]
 weightsPath = "yolo_utils/yolov4-tiny-mask.weights"
 configPath = "yolo_utils/yolov4-tiny-mask.cfg"
 photo_path = "photos"
-camera_list_path = "resources/camera_list.txt"
-connect_log_path = "resources/connect_history.log"
+camera_list_path = "app/resources/camera_list.txt"
+connect_log_path = "app/resources/connect_history.log"
 
 photo_dir = Path(photo_path)
 photo_dir.mkdir(parents=True, exist_ok=True)
@@ -186,6 +186,13 @@ class MainMenu(QMainWindow):
         self.ui.camera_select.activated.connect(self.change_cam)
         self.ui.take_photo_button.clicked.connect(self.take_photo)
         self.ui.start_menu_button.clicked.connect(self.close_app)
+
+        self.button1 = QtWidgets.QLabel(self.centralwidget) # image
+        self.button1.setGeometry(QtCore.QRect(0, 100, 1280, 720)) 
+        self.button1.setText("")
+        self.button1.setPixmap(QtGui.QPixmap("ressources/Logo_EPF.png"))
+        self.button1.setScaledContents(True)
+        self.button1.setObjectName("button1")
 
     def get_camera_list(self):
         self.camera_list = []
