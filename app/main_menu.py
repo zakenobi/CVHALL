@@ -268,7 +268,7 @@ class Ui_MainMenu(object):
 #         self.camera_table.verticalHeader().setStretchLastSection(False)
         self.mask_count_label = QtWidgets.QLabel(self.centralwidget)
         self.mask_count_label.setEnabled(True)
-        self.mask_count_label.setGeometry(QtCore.QRect(130, 70, 401, 51))
+        self.mask_count_label.setGeometry(QtCore.QRect(130, 80, 401, 51))
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
@@ -279,7 +279,7 @@ class Ui_MainMenu(object):
         self.mask_count_label.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.mask_count_label.setStyleSheet("border: transparent;\n"
 "background-color: transparent;\n"
-"color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);\n"
 "font: 63 24pt \"URW Gothic L\";")
         self.mask_count_label.setText("")
         self.mask_count_label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
@@ -287,7 +287,7 @@ class Ui_MainMenu(object):
         self.mask_count_label.setObjectName("mask_count_label")
         self.no_mask_count_label = QtWidgets.QLabel(self.centralwidget)
         self.no_mask_count_label.setEnabled(True)
-        self.no_mask_count_label.setGeometry(QtCore.QRect(530, 70, 431, 51))
+        self.no_mask_count_label.setGeometry(QtCore.QRect(530, 80, 431, 51))
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
@@ -298,7 +298,7 @@ class Ui_MainMenu(object):
         self.no_mask_count_label.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.no_mask_count_label.setStyleSheet("border: transparent;\n"
 "background-color: transparent;\n"
-"color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);\n"
 "font: 63 24pt \"URW Gothic L\";")
         self.no_mask_count_label.setText("")
         self.no_mask_count_label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
@@ -545,7 +545,7 @@ class Ui_MainMenu(object):
         MainMenu.setStatusBar(self.statusbar)
 
         self.epf = QtWidgets.QLabel(self.centralwidget) # image
-        self.epf.setGeometry(QtCore.QRect(200, 200, 331, 61)) 
+        self.epf.setGeometry(QtCore.QRect(0, 0, 195, 90)) 
         self.epf.setPixmap(QtGui.QPixmap("resources/epf_logo.png"))
         self.epf.setScaledContents(True)
         #self.epf.setIcon(QtGui.QIcon("resources/epf_logo.png"))
@@ -571,7 +571,7 @@ class Ui_MainMenu(object):
         #item.setText(_translate("MainMenu", "Camera"))
         #item = self.camera_table.horizontalHeaderItem(1)
         #item.setText(_translate("MainMenu", "Status"))
-        self.camera_select_label.setText(_translate("MainMenu", "Select Camera:    "))
+        self.camera_select_label.setText(_translate("MainMenu", "List cameras:    "))
         self.camera_select.setProperty("placeholderText", _translate("MainMenu", "Select Camera"))
         #self.epf.setText(_translate("MainMenu","AAAAAA"))
 
