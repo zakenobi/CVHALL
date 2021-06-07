@@ -546,12 +546,28 @@ class Ui_MainMenu(object):
 
         self.epf = QtWidgets.QPushButton(self.centralwidget) # image
         self.epf.setGeometry(QtCore.QRect(200, 200, 331, 61)) 
+<<<<<<< HEAD
         self.epf.setIcon(QtGui.QIcon("resources/epf_logo.png"))
         self.epf.setIconSize(QtCore.QSize(100,100))
         
         self.epf.setObjectName("epf")
      
        
+=======
+        self.epf.setText("AAAAAA")
+        #self.epf.setIcon(QtGui.QIcon("ressources/epf_logo.png"))
+        self.epf.setObjectName("epf")
+        self.epf.setStyleSheet(
+" border-image: url(ressources/epf_logo_bmp.bmp) 3 10 3 10"
+)
+
+        font = QtGui.QFont()
+        font.setFamily("URW Gothic L")
+        font.setPointSize(28)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(7)
+>>>>>>> 559edf866a756585c24a64bd3cf8c0d9bebdb604
         
 
         self.retranslateUi(MainMenu)
@@ -571,5 +587,9 @@ class Ui_MainMenu(object):
         #item.setText(_translate("MainMenu", "Status"))
         self.camera_select_label.setText(_translate("MainMenu", "Select Camera:    "))
         self.camera_select.setProperty("placeholderText", _translate("MainMenu", "Select Camera"))
+<<<<<<< HEAD
         #self.epf.setText(_translate("MainMenu","AAAAAA"))
 
+=======
+        self.epf.setText(_translate("MainMenu","AAAAAA"))
+>>>>>>> 559edf866a756585c24a64bd3cf8c0d9bebdb604
