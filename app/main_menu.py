@@ -555,9 +555,6 @@ class Ui_MainMenu(object):
         self.button1.setGeometry(QtCore.QRect(100, 100, 331, 61))
         #self.button1.setStyleSheet("ressources/epf_logo.png")
 
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("ressources/epf_logo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.button1.setIcon(icon)
 
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
