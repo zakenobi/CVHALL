@@ -551,6 +551,14 @@ class Ui_MainMenu(object):
         self.epf.setScaledContents(True)
         self.epf.setObjectName("epf")
 
+        self.button1 = QtWidgets.QPushButton(self.centralwidget)
+        self.button1.setGeometry(QtCore.QRect(100, 100, 331, 61))
+        font = QtGui.QFont()
+        font.setFamily("URW Gothic L")
+        font.setPointSize(28)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(7)
 
         self.retranslateUi(MainMenu)
         QtCore.QMetaObject.connectSlotsByName(MainMenu)
