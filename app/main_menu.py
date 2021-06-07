@@ -551,9 +551,9 @@ class Ui_MainMenu(object):
         self.epf.setScaledContents(True)
         self.epf.setObjectName("epf")
 
-        self.button1 = QtWidgets.QLabel(self.centralwidget)
+        self.button1 = QtWidgets.QPushButton(self.centralwidget)
         self.button1.setGeometry(QtCore.QRect(100, 100, 331, 61))
-        self.epf.setPixmap(QtGui.QPixmap("ressources/Logo_EPF.jpeg"))
+        self.epf.setStyleSheet(QtGui.QPixmap("ressources/Logo_EPF.jpeg"))
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(28)
