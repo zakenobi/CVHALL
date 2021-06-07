@@ -544,24 +544,14 @@ class Ui_MainMenu(object):
         self.statusbar.setObjectName("statusbar")
         MainMenu.setStatusBar(self.statusbar)
 
-        self.epf = QtWidgets.QLabel(self.centralwidget) # image
+        self.epf = QtWidgets.QPushButton(self.centralwidget) # image
         self.epf.setGeometry(QtCore.QRect(200, 200, 331, 61)) 
-        self.epf.setText("AAAAAA")
-        #self.epf.setIcon(QtGui.QIcon("ressources/epf_logo.png"))
-        self.epf.setObjectName("epf")
+        self.epf.setIcon(QtGui.QIcon("resources/epf_logo.png"))
+        self.epf.setIconSize(QtCore.QSize(100,100))
         
-        self.epf.setStyleSheet("border: transparent;\n"
-"background-image : url(ressources/epf_logo.png)\n"
-)
-
-
-
-        font = QtGui.QFont()
-        font.setFamily("URW Gothic L")
-        font.setPointSize(28)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setWeight(7)
+        self.epf.setObjectName("epf")
+     
+       
         
 
         self.retranslateUi(MainMenu)
@@ -573,7 +563,7 @@ class Ui_MainMenu(object):
         self.image_label.setText(_translate("MainMenu", "Select a Camera"))
         self.take_photo_button.setText(_translate("MainMenu", "Take Photo"))
         self.start_menu_button.setText(_translate("MainMenu", "Exit"))
-        self.epf.setText(_translate("MainMenu", "Test"))
+        #self.epf.setText(_translate("MainMenu", "Test"))
         #self.camera_list_label.setText(_translate("MainMenu", "Camera Control Panel"))
         #item = self.camera_table.horizontalHeaderItem(0)
         #item.setText(_translate("MainMenu", "Camera"))
@@ -581,5 +571,5 @@ class Ui_MainMenu(object):
         #item.setText(_translate("MainMenu", "Status"))
         self.camera_select_label.setText(_translate("MainMenu", "Select Camera:    "))
         self.camera_select.setProperty("placeholderText", _translate("MainMenu", "Select Camera"))
-        self.epf.setText(_translate("MainMenu","AAAAAA"))
+        #self.epf.setText(_translate("MainMenu","AAAAAA"))
 
