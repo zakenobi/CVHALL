@@ -187,12 +187,7 @@ class MainMenu(QMainWindow):
         self.ui.take_photo_button.clicked.connect(self.take_photo)
         self.ui.start_menu_button.clicked.connect(self.close_app)
 
-        self.button1 = QtWidgets.QLabel(self.centralwidget) # image
-        self.button1.setGeometry(QtCore.QRect(0, 100, 1280, 720)) 
-        self.button1.setText("")
-        self.button1.setPixmap(QtGui.QPixmap("ressources/Logo_EPF.png"))
-        self.button1.setScaledContents(True)
-        self.button1.setObjectName("button1")
+     
 
     def get_camera_list(self):
         self.camera_list = []
