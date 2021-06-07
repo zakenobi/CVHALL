@@ -572,6 +572,7 @@ class Ui_MainMenu(object):
         self.take_photo_button.setText(_translate("MainMenu", "Take Photo"))
         self.start_menu_button.setText(_translate("MainMenu", "Exit"))
         self.button1.setText(_translate("MainMenu", "Test"))
+        self.epf.setText(_translate("MainMenu", "Test"))
         #self.camera_list_label.setText(_translate("MainMenu", "Camera Control Panel"))
         #item = self.camera_table.horizontalHeaderItem(0)
         #item.setText(_translate("MainMenu", "Camera"))
