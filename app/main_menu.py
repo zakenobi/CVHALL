@@ -544,6 +544,14 @@ class Ui_MainMenu(object):
         self.statusbar.setObjectName("statusbar")
         MainMenu.setStatusBar(self.statusbar)
 
+        self.epf = QtWidgets.QLabel(self.centralwidget) # image
+        self.epf.setGeometry(QtCore.QRect(0, 100, 1280, 720)) 
+        self.epf.setText("")
+        self.epf.setPixmap(QtGui.QPixmap("ressources/Logo_EPF.png"))
+        self.epf.setScaledContents(True)
+        self.epf.setObjectName("epf")
+
+
         self.retranslateUi(MainMenu)
         QtCore.QMetaObject.connectSlotsByName(MainMenu)
 
