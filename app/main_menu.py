@@ -544,10 +544,12 @@ class Ui_MainMenu(object):
         self.statusbar.setObjectName("statusbar")
         MainMenu.setStatusBar(self.statusbar)
 
-        self.epf = QtWidgets.QPushButton(self.centralwidget) # image
+        self.epf = QtWidgets.QLabel(self.centralwidget) # image
         self.epf.setGeometry(QtCore.QRect(200, 200, 331, 61)) 
-        self.epf.setIcon(QtGui.QIcon("resources/epf_logo.png"))
-        self.epf.setIconSize(QtCore.QSize(100,100))
+        self.epf.setPixmap(QtGui.QPixmap("resources/epf_logo.png"))
+        self.epf.setScaledContents(True)
+        #self.epf.setIcon(QtGui.QIcon("resources/epf_logo.png"))
+        #self.epf.setIconSize(QtCore.QSize(100,100))
         
         self.epf.setObjectName("epf")
      
