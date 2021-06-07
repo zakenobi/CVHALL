@@ -547,13 +547,13 @@ class Ui_MainMenu(object):
         self.epf = QtWidgets.QLabel(self.centralwidget) # image
         self.epf.setGeometry(QtCore.QRect(200, 200, 331, 61)) 
         self.epf.setText("AAAAAA")
-        self.epf.setPixmap(QtGui.QPixmap("ressources/logo_epf.jpg"))
+        self.epf.setPixmap(QtGui.QPixmap("ressources/epf_logo.jpg"))
         self.epf.setScaledContents(True)
         self.epf.setObjectName("epf")
 
         self.button1 = QtWidgets.QPushButton(self.centralwidget)
         self.button1.setGeometry(QtCore.QRect(100, 100, 331, 61))
-        self.epf.setStyleSheet("ressources/logo_epf.jpg")
+        self.epf.setStyleSheet("ressources/epf_logo.jpg")
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(28)
