@@ -547,7 +547,7 @@ class Ui_MainMenu(object):
         self.epf = QtWidgets.QLabel(self.centralwidget) # image
         self.epf.setGeometry(QtCore.QRect(200, 200, 331, 61)) 
         self.epf.setText("AAAAAA")
-        #self.epf.setPixmap(QtGui.QPixmap("ressources/Logo_EPF.jpg"))
+        self.epf.setPixmap(QtGui.QPixmap("ressources/logo_epf.jpg"))
         self.epf.setScaledContents(True)
         self.epf.setObjectName("epf")
 
