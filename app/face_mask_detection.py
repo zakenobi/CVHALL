@@ -185,6 +185,7 @@ class MainMenu(QMainWindow):
         self.ui.pushButton1.clicked.connect(self.hide)
         self.ui.pushButton1.clicked.connect(self.reveal)
         self.ui.arrow.clicked.connect(self.arrow)
+        self.ui.arrow.clicked.connect(self.arrow2)
         self.camera_dict = {}
         self.get_camera_list_2(cam_list_filename)
 
@@ -280,6 +281,17 @@ class MainMenu(QMainWindow):
 
         self.ui.pushButton3.setVisible(True)
         self.ui.pushButton3.setEnabled(True)
+    
+    def arrow2(self):
+        self.ui.timer1.setVisible(False)
+        self.ui.timer1.setEnabled(False)
+
+        self.ui.timer2.setVisible(False)
+        self.ui.timer2.setEnabled(False)
+
+        self.ui.timer3.setVisible(False)
+        self.ui.timer3.setEnabled(False)
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
