@@ -551,7 +551,6 @@ class Ui_MainMenu(object):
         self.epf.setScaledContents(True)
         #self.epf.setIcon(QtGui.QIcon("resources/epf_logo.png"))
         #self.epf.setIconSize(QtCore.QSize(100,100))
-        
         self.epf.setObjectName("epf")
      
         self.pushButton1 = QtWidgets.QPushButton(self.centralwidget) # bouton 1
@@ -566,6 +565,47 @@ class Ui_MainMenu(object):
         self.pushButton3.setGeometry(QtCore.QRect(1550, 680, 200, 100))
         self.pushButton3.setObjectName("pushButton3")
 
+        self.timer1 = QtWidgets.QPushButton(self.centralwidget) # bouton 1
+        self.timer1.setGeometry(QtCore.QRect(1550, 180, 200, 100))
+        self.timer1.setObjectName("timer1")
+        self.timer1.setVisible(False) 
+        self.timer1.setEnabled(False)
+
+        self.timer2 = QtWidgets.QPushButton(self.centralwidget) # bouton 1
+        self.timer2.setGeometry(QtCore.QRect(1550, 430, 200, 100))
+        self.timer2.setObjectName("timer2")
+        self.timer2.setVisible(False) 
+        self.timer2.setEnabled(False)
+
+        self.timer3 = QtWidgets.QPushButton(self.centralwidget) # bouton 1
+        self.timer3.setGeometry(QtCore.QRect(1550, 680, 200, 100))
+        self.timer3.setObjectName("timer3")
+        self.timer3.setVisible(False) 
+        self.timer3.setEnabled(False)
+
+        def reveal(self):
+                self.timer1.setVisible(True)
+                self.timer1.setEnabled(True)
+
+                self.timer2.setVisible(True)
+                self.timer2.setEnabled(True)
+
+                self.timer3.setVisible(True)
+                self.timer3.setEnabled(True)
+        
+        def hide(self):
+                self.pushButton1.setVisible(False)
+                self.pushButton1.setEnabled(False)
+
+                self.pushButton2.setVisible(False)
+                self.pushButton2.setEnabled(False)
+
+                self.pushButton3.setVisible(False)
+                self.pushButton3.setEnabled(False)
+
+
+        self.pushButton1.clicked.connect(self.hide)
+        self.pushButton1.clicked.connect(self.reveal)
 
         self.retranslateUi(MainMenu)
         QtCore.QMetaObject.connectSlotsByName(MainMenu)
