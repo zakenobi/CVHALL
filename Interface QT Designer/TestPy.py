@@ -31,7 +31,7 @@ class Ui_MainWindow(object):
         self.label_2 = QtWidgets.QLabel(self.centralwidget) # image
         self.label_2.setGeometry(QtCore.QRect(0, 100, 1280, 720)) 
         self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("Interface QT Designer\epf_logo.png"))
+        self.label_2.setPixmap(QtGui.QPixmap("Interface QT Designer\Wallpaper.jpg"))
         self.label_2.setScaledContents(True)
         self.label_2.setObjectName("label_2")
 
@@ -60,7 +60,7 @@ class Ui_MainWindow(object):
         self.epf = QtWidgets.QLabel(self.centralwidget) # image
         self.epf.setGeometry(QtCore.QRect(200, 200, 331, 61)) 
         self.epf.setText("AAAAAA")
-        self.epf.setPixmap(QtGui.QPixmap("resources/epf_logo.jpg"))
+        self.epf.setPixmap(QtGui.QPixmap("resources/Wallpaper.jpg"))
         self.epf.setScaledContents(True)
         self.epf.setObjectName("epf")
 

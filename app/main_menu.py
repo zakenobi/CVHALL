@@ -559,11 +559,11 @@ class Ui_MainMenu(object):
         self.pushButton1.setObjectName("pushButton1")
 
         self.pushButton2 = QtWidgets.QPushButton(self.centralwidget) # bouton 1
-        self.pushButton2.setGeometry(QtCore.QRect(1500, 400, 200, 100))
+        self.pushButton2.setGeometry(QtCore.QRect(1550, 400, 200, 100))
         self.pushButton2.setObjectName("pushButton2")
 
         self.pushButton3 = QtWidgets.QPushButton(self.centralwidget) # bouton 1
-        self.pushButton3.setGeometry(QtCore.QRect(1400, 650, 200, 100))
+        self.pushButton3.setGeometry(QtCore.QRect(1550, 650, 200, 100))
         self.pushButton3.setObjectName("pushButton3")
 
 
@@ -585,4 +585,7 @@ class Ui_MainMenu(object):
         self.camera_select_label.setText(_translate("MainMenu", "List cameras:    "))
         self.camera_select.setProperty("placeholderText", _translate("MainMenu", "Select Camera"))
         #self.epf.setText(_translate("MainMenu","AAAAAA"))
+        self.pushButton1.setText(_translate("MainMenu", "Timer"))
+        self.pushButton2.setText(_translate("MainMenu", "Statistiques"))
+        self.pushButton3.setText(_translate("MainMenu", "Description du projet"))
 
