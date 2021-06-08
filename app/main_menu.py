@@ -554,8 +554,9 @@ class Ui_MainMenu(object):
         
         self.epf.setObjectName("epf")
      
-       
-        
+        self.pushButton1 = QtWidgets.QPushButton(self.centralwidget) # bouton 1
+        self.pushButton1.setGeometry(QtCore.QRect(200, 120, 250, 130))
+        self.pushButton1.setObjectName("pushButton")
 
         self.retranslateUi(MainMenu)
         QtCore.QMetaObject.connectSlotsByName(MainMenu)
