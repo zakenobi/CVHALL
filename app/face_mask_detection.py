@@ -73,6 +73,8 @@ class Camera(QTimer):
         self.viewable = False
         self.status = "pas de connexion"
         self.prev_status = "pas de connexion"
+        self.status.adjustSize()
+        self.prev_status.adjustSize()
         self.last_image = None
         self.camera_name_item = QTableWidgetItem(self.camName)
         self.camera_name_item.setTextAlignment(Qt.AlignCenter)
