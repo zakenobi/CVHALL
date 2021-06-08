@@ -586,15 +586,20 @@ class Ui_MainMenu(object):
         self.arrow = QtWidgets.QPushButton(self.centralwidget)
         self.arrow.setGeometry(QtCore.QRect(1550, 900, 80, 40))
         self.arrow.setText("")
-        #icon = QtGui.QIcon()
-        #icon.addPixmap(QtGui.QPixmap("resources\LeftArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.arrow.setIcon(QtGui.QIcon("resources\LeftArrow.png"))
-        
-        self.arrow.setIconSize(QtCore.QSize(10,10))
-        #self.arrow.setStyleSheet("qproperty-icon: url(:resources\LeftArrow.png);")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("resources\LeftArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 
+        self.description = QtWidgets.QLabel(self.centralwidget)
+        self.description.setGeometry(QtCore.QRect(550, 230, 100, 100)) # texte de description
+        str = open('resources\Description.txt', 'r').read()
+        self.description.setText(str)
+        self.description.setFont(QtGui.QFont('Arial', 15))
+        self.description.setStyleSheet("color: black")
+        self.description.adjustSize()
+        #self.description.setVisible(False)
+        self.description.setEnabled(True)
 
-        #self.arrow.setIcon(icon)
+        self.arrow.setIcon(icon)
         self.arrow.setObjectName("pushButton")
         #self.arrow.setVisible(False) # par defaut la fleche est desactivee
         #self.arrow.setEnabled(False)
