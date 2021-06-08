@@ -293,15 +293,12 @@ class MainMenu(QMainWindow):
         self.ui.timer3.setEnabled(False)
     
     def cam(self):
-        mainMenu.start_cameras()
         mainMenu.change_cam(0)
     
     def camCancel(self):
-        self.current_camera = self.camera_list[0]
-        for camera in self.camera_list:
-            camera.viewable = False
-        mainMenu.stop_cameras()
-        self.last_image = None
+        mainMenu.change_cam(1)
+
+       
         
 
 
@@ -310,7 +307,7 @@ if __name__ == '__main__':
     mainMenu = MainMenu()
     mainMenu.get_camera_list()
     mainMenu.showMaximized()
-    #mainMenu.start_cameras()
-    #mainMenu.change_cam(0)
+    mainMenu.start_cameras()
+
 
     sys.exit(app.exec_())
