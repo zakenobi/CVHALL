@@ -586,13 +586,15 @@ class Ui_MainMenu(object):
         self.arrow = QtWidgets.QPushButton(self.centralwidget)
         self.arrow.setGeometry(QtCore.QRect(1550, 900, 80, 40))
         self.arrow.setText("")
-        icon = QtGui.QIcon()
+        #icon = QtGui.QIcon()
         #icon.addPixmap(QtGui.QPixmap("resources\LeftArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.arrow.setIcon(QtGui.QIcon("resources\LeftArrow.png"))
+        
+        self.arrow.setIconSize(QtCore.QSize(10,10))
+        #self.arrow.setStyleSheet("qproperty-icon: url(:resources\LeftArrow.png);")
 
-        self.arrow.setStyleSheet("qproperty-icon: url(:resources\LeftArrow.png);")
 
-
-        self.arrow.setIcon(icon)
+        #self.arrow.setIcon(icon)
         self.arrow.setObjectName("pushButton")
         #self.arrow.setVisible(False) # par defaut la fleche est desactivee
         #self.arrow.setEnabled(False)
