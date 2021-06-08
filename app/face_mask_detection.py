@@ -298,7 +298,8 @@ class MainMenu(QMainWindow):
     
     def camCancel(self):
         self.current_camera = self.camera_list[0]
-        self.current_camera.viewable = False
+        for camera in self.camera_list:
+            camera.viewable = False
         mainMenu.stop_cameras()
         
 
