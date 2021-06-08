@@ -604,6 +604,7 @@ class Ui_MainMenu(object):
         self.pushButton1.setText(_translate("MainMenu", "Timer"))
         self.pushButton2.setText(_translate("MainMenu", "Statistiques"))
         self.pushButton3.setText(_translate("MainMenu", "Description du projet"))
+        
 
 
 
