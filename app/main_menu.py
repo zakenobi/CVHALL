@@ -605,8 +605,5 @@ class Ui_MainMenu(object):
         self.pushButton2.setText(_translate("MainMenu", "Statistiques"))
         self.pushButton3.setText(_translate("MainMenu", "Description du projet"))
 
-        self.pushButton1.clicked.connect(self.hide)
-        self.pushButton1.clicked.connect(self.reveal)
-
 
 
