@@ -159,15 +159,15 @@ class Camera(QTimer):
                 self.status = "Safe"
             elif self.viewable is True:
                 self.view_disconnected_cam()
-        # automatically take a photo when the status of the camera switches to "Warning" or "Danger"
-        # if self.prev_status == "Safe" or self.prev_status == "Not Connected":
-        #     if self.status == "Warning" or self.status == "Danger":
-        #         self.take_photo()
-        # elif self.prev_status == "Warning" and self.status == "Danger":
-        #     self.take_photo()
-        # elif self.prev_status == "Danger" and self.status == "Warning":
-        #     self.take_photo()
-        # self.prev_status = self.status
+        #automatically take a photo when the status of the camera switches to "Warning" or "Danger"
+        if self.prev_status == "Safe" or self.prev_status == "Not Connected":
+            if self.status == "Warning" or self.status == "Danger":
+                self.take_photo()
+        elif self.prev_status == "Warning" and self.status == "Danger":
+            self.take_photo()
+        elif self.prev_status == "Danger" and self.status == "Warning":
+            self.take_photo()
+        self.prev_status = self.status
 
 
 class MainMenu(QMainWindow):
@@ -254,13 +254,9 @@ class MainMenu(QMainWindow):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     mainMenu = MainMenu()
-
     mainMenu.get_camera_list()
     mainMenu.showMaximized()
     mainMenu.start_cameras()
-
-    mainMenu.show()
-
     mainMenu.change_cam(0)
 
     sys.exit(app.exec_())
