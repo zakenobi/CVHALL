@@ -563,8 +563,8 @@ class Ui_MainMenu(object):
         _translate = QtCore.QCoreApplication.translate
         MainMenu.setWindowTitle(_translate("MainMenu", "Face Mask Detector"))
         self.image_label.setText(_translate("MainMenu", "Select a Camera"))
-        self.take_photo_button.setText(_translate("MainMenu", "Take Photo"))
-        self.start_menu_button.setText(_translate("MainMenu", "Exit"))
+        self.take_photo_button.setText(_translate("MainMenu", "Capture"))
+        self.start_menu_button.setText(_translate("MainMenu", "Sortir"))
         #self.epf.setText(_translate("MainMenu", "Test"))
         #self.camera_list_label.setText(_translate("MainMenu", "Camera Control Panel"))
         #item = self.camera_table.horizontalHeaderItem(0)
