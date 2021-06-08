@@ -583,6 +583,16 @@ class Ui_MainMenu(object):
         self.timer3.setVisible(False) 
         self.timer3.setEnabled(False)     
 
+        self.arrow = QtWidgets.QPushButton(self.centralwidget)
+        self.arrow.setGeometry(QtCore.QRect(1550, 900, 80, 40))
+        self.arrow.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("Interface QT Designer\LeftArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.arrow.setIcon(icon)
+        self.arrow.setObjectName("pushButton")
+        #self.arrow.setVisible(False) # par defaut la fleche est desactivee
+        #self.arrow.setEnabled(False)
+
         self.retranslateUi(MainMenu)
         QtCore.QMetaObject.connectSlotsByName(MainMenu)
 
@@ -604,3 +614,7 @@ class Ui_MainMenu(object):
         self.pushButton1.setText(_translate("MainMenu", "Timer"))
         self.pushButton2.setText(_translate("MainMenu", "Statistiques"))
         self.pushButton3.setText(_translate("MainMenu", "Description du projet"))
+
+        self.timer1.setText(_translate("MainMenu", "5 min"))
+        self.timer2.setText(_translate("MainMenu", "10 min"))
+        self.timer3.setText(_translate("MainMenu", "15 min"))
