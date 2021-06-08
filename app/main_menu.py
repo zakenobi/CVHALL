@@ -593,7 +593,7 @@ class Ui_MainMenu(object):
         self.description.setGeometry(QtCore.QRect(550, 230, 100, 100)) # texte de description
         str = open('resources/Description.txt', 'r').read()
         self.description.setText(str)
-        self.description.setFont(QtGui.QFont('Arial', 20))
+        self.description.setFont(QtGui.QFont('Arial', 35))
         self.description.setStyleSheet("color: black")
         self.description.adjustSize()
         #self.description.setVisible(False)
