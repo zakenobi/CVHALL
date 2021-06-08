@@ -608,23 +608,5 @@ class Ui_MainMenu(object):
         self.pushButton1.clicked.connect(self.hide)
         self.pushButton1.clicked.connect(self.reveal)
 
-def reveal(self):
-        self.timer1.setVisible(True)
-        self.timer1.setEnabled(True)
 
-        self.timer2.setVisible(True)
-        self.timer2.setEnabled(True)
-
-        self.timer3.setVisible(True)
-        self.timer3.setEnabled(True)
-        
-def hide(self):
-        self.pushButton1.setVisible(False)
-        self.pushButton1.setEnabled(False)
-
-        self.pushButton2.setVisible(False)
-        self.pushButton2.setEnabled(False)
-
-        self.pushButton3.setVisible(False)
-        self.pushButton3.setEnabled(False)
 
