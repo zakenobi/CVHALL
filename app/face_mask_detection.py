@@ -186,10 +186,10 @@ class MainMenu(QMainWindow):
         self.ui.pushButton1.clicked.connect(self.reveal)
         self.ui.arrow.clicked.connect(self.arrow)
         self.ui.arrow.clicked.connect(self.arrow2)
+        self.ui.arrow.clicked.connect(self.camCancel)
+        self.ui.pushButton1.clicked.connect(self.cam)
         self.camera_dict = {}
         self.get_camera_list_2(cam_list_filename)
-
-     
 
     def get_camera_list(self):
         self.camera_list = []
@@ -291,6 +291,13 @@ class MainMenu(QMainWindow):
 
         self.ui.timer3.setVisible(False)
         self.ui.timer3.setEnabled(False)
+    
+    def cam(self):
+        mainMenu.start_cameras()
+        mainMenu.change_cam(0)
+    
+    def camCancel(self):
+        mainMenu.stop_cameras()
 
 
 if __name__ == '__main__':
@@ -298,7 +305,7 @@ if __name__ == '__main__':
     mainMenu = MainMenu()
     mainMenu.get_camera_list()
     mainMenu.showMaximized()
-    mainMenu.start_cameras()
-    mainMenu.change_cam(0)
+    #mainMenu.start_cameras()
+    #mainMenu.change_cam(0)
 
     sys.exit(app.exec_())
