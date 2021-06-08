@@ -251,24 +251,24 @@ class MainMenu(QMainWindow):
         self.insert_dict_in_table()
     
     def reveal(self):
-        self.timer1.setVisible(True)
-        self.timer1.setEnabled(True)
+        self.ui.timer1.setVisible(True)
+        self.ui.timer1.setEnabled(True)
 
-        self.timer2.setVisible(True)
-        self.timer2.setEnabled(True)
+        self.ui.timer2.setVisible(True)
+        self.ui.timer2.setEnabled(True)
 
-        self.timer3.setVisible(True)
-        self.timer3.setEnabled(True)
+        self.ui.timer3.setVisible(True)
+        self.ui.timer3.setEnabled(True)
         
     def hide(self):
-        self.pushButton1.setVisible(False)
-        self.pushButton1.setEnabled(False)
+        self.ui.pushButton1.setVisible(False)
+        self.ui.pushButton1.setEnabled(False)
 
-        self.pushButton2.setVisible(False)
-        self.pushButton2.setEnabled(False)
+        self.ui.pushButton2.setVisible(False)
+        self.ui.pushButton2.setEnabled(False)
 
-        self.pushButton3.setVisible(False)
-        self.pushButton3.setEnabled(False)
+        self.ui.pushButton3.setVisible(False)
+        self.ui.pushButton3.setEnabled(False)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
