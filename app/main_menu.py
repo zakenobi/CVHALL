@@ -307,6 +307,7 @@ class Ui_MainMenu(object):
         self.status_label = QtWidgets.QLabel(self.centralwidget)
         self.status_label.setEnabled(True)
         self.status_label.setGeometry(QtCore.QRect(1000, 70, 141, 51))
+        self.status_label.setScaledContents(True)
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
