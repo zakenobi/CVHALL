@@ -301,6 +301,7 @@ class MainMenu(QMainWindow):
         for camera in self.camera_list:
             camera.viewable = False
         mainMenu.stop_cameras()
+        self.last_image = None
         
 
 
