@@ -71,8 +71,8 @@ class Camera(QTimer):
         self.confThreshold = confThreshold
         self.nmsThreshold = nmsThreshold
         self.viewable = False
-        self.status = "pas de connection"
-        self.prev_status = "pas de connection"
+        self.status = "pas de connexion"
+        self.prev_status = "pas de connexion"
         self.last_image = None
         self.camera_name_item = QTableWidgetItem(self.camName)
         self.camera_name_item.setTextAlignment(Qt.AlignCenter)
@@ -95,10 +95,10 @@ class Camera(QTimer):
 
     def view_disconnected_cam(self):
         mainMenu.ui.image_label.setStyleSheet("color: rgb(210, 105, 30);")
-        mainMenu.ui.image_label.setText(self.camName + " pas de connection")
+        mainMenu.ui.image_label.setText(self.camName + " pas de connexion")
         status_stylesheet = "border: transparent; background-color: transparent; font: 63 24pt \"URW Gothic L\"; color: rgb(210, 105, 30);"
         mainMenu.ui.image_label.setStyleSheet("color: rgb(210, 105, 30);")
-        mainMenu.ui.image_label.setText(self.camName + " pas de connection")
+        mainMenu.ui.image_label.setText(self.camName + " pas de connexion")
         mainMenu.ui.mask_count_label.setText("")
         mainMenu.ui.no_mask_count_label.setText("")
         mainMenu.ui.status_label.setText('Status:')
@@ -106,7 +106,7 @@ class Camera(QTimer):
         mainMenu.ui.status_type_label.setStyleSheet(status_stylesheet)
 
     def camera_run(self):
-        if self.status != "pas de connection":
+        if self.status != "pas de connexion":
             try:
                 ret, image = self.cam.read() #lecture de la camera
                 self.last_image = image.copy()
@@ -220,7 +220,7 @@ class MainMenu(QMainWindow):
         self.current_camera.viewable = True
 
     def take_photo(self):
-        if self.current_camera is not None and self.current_camera.status != "pas de connection":
+        if self.current_camera is not None and self.current_camera.status != "pas de connexion":
             image_name = self.current_camera.camName + "_" + datetime.now().strftime("%d.%m.%Y_%H.%M.%S") + ".jpg"
             cv2.imwrite(os.path.join(photo_path, image_name), self.current_camera.last_image)
             QTimer.singleShot(0, lambda: self.ui.photo_taken_notification.setText("Photo prise!"))
