@@ -596,7 +596,7 @@ class Ui_MainMenu(object):
         self.description.setFont(QtGui.QFont('Arial', 35))
         self.description.setStyleSheet("color: black")
         self.description.adjustSize()
-        #self.description.setVisible(False)
+        self.description.setVisible(False)
         self.description.setEnabled(True)
 
         self.arrow.setIcon(icon)
