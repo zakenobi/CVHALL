@@ -14,7 +14,7 @@ class Ui_MainMenu(object):
         MainMenu.resize(1400, 720)
         MainMenu.setStyleSheet("QMainWindow \n"
 "{\n"
-"background-color: rgb(5, 23, 47);\n"
+"background-color: rgb(245, 253, 247);\n"
 "}")
         self.centralwidget = QtWidgets.QWidget(MainMenu)
         self.centralwidget.setObjectName("centralwidget")
@@ -268,7 +268,7 @@ class Ui_MainMenu(object):
 #         self.camera_table.verticalHeader().setStretchLastSection(False)
         self.mask_count_label = QtWidgets.QLabel(self.centralwidget)
         self.mask_count_label.setEnabled(True)
-        self.mask_count_label.setGeometry(QtCore.QRect(130, 70, 401, 51))
+        self.mask_count_label.setGeometry(QtCore.QRect(130, 80, 401, 51))
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
@@ -279,7 +279,7 @@ class Ui_MainMenu(object):
         self.mask_count_label.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.mask_count_label.setStyleSheet("border: transparent;\n"
 "background-color: transparent;\n"
-"color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);\n"
 "font: 63 24pt \"URW Gothic L\";")
         self.mask_count_label.setText("")
         self.mask_count_label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
@@ -287,7 +287,7 @@ class Ui_MainMenu(object):
         self.mask_count_label.setObjectName("mask_count_label")
         self.no_mask_count_label = QtWidgets.QLabel(self.centralwidget)
         self.no_mask_count_label.setEnabled(True)
-        self.no_mask_count_label.setGeometry(QtCore.QRect(530, 70, 431, 51))
+        self.no_mask_count_label.setGeometry(QtCore.QRect(530, 80, 431, 51))
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
@@ -298,7 +298,7 @@ class Ui_MainMenu(object):
         self.no_mask_count_label.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.no_mask_count_label.setStyleSheet("border: transparent;\n"
 "background-color: transparent;\n"
-"color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);\n"
 "font: 63 24pt \"URW Gothic L\";")
         self.no_mask_count_label.setText("")
         self.no_mask_count_label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
@@ -307,6 +307,7 @@ class Ui_MainMenu(object):
         self.status_label = QtWidgets.QLabel(self.centralwidget)
         self.status_label.setEnabled(True)
         self.status_label.setGeometry(QtCore.QRect(1000, 70, 141, 51))
+        self.status_label.setScaledContents(True)
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
@@ -545,12 +546,63 @@ class Ui_MainMenu(object):
         MainMenu.setStatusBar(self.statusbar)
 
         self.epf = QtWidgets.QLabel(self.centralwidget) # image
-        self.epf.setGeometry(QtCore.QRect(0, 100, 1280, 720)) 
-        self.epf.setText("")
-        self.epf.setPixmap(QtGui.QPixmap("ressources/Logo_EPF.png"))
+        self.epf.setGeometry(QtCore.QRect(0, 0, 195, 90)) 
+        self.epf.setPixmap(QtGui.QPixmap("resources/epf_logo.png"))
         self.epf.setScaledContents(True)
+        #self.epf.setIcon(QtGui.QIcon("resources/epf_logo.png"))
+        #self.epf.setIconSize(QtCore.QSize(100,100))
         self.epf.setObjectName("epf")
+     
+        self.pushButton1 = QtWidgets.QPushButton(self.centralwidget) 
+        self.pushButton1.setGeometry(QtCore.QRect(1550, 180, 200, 100))
+        self.pushButton1.setObjectName("pushButton1")
 
+        self.pushButton2 = QtWidgets.QPushButton(self.centralwidget) 
+        self.pushButton2.setGeometry(QtCore.QRect(1550, 430, 200, 100))
+        self.pushButton2.setObjectName("pushButton2")
+
+        self.pushButton3 = QtWidgets.QPushButton(self.centralwidget) 
+        self.pushButton3.setGeometry(QtCore.QRect(1550, 680, 200, 100))
+        self.pushButton3.setObjectName("pushButton3")
+
+        self.timer1 = QtWidgets.QPushButton(self.centralwidget) 
+        self.timer1.setGeometry(QtCore.QRect(1550, 180, 200, 100))
+        self.timer1.setObjectName("timer1")
+        self.timer1.setVisible(False) 
+        self.timer1.setEnabled(False)
+
+        self.timer2 = QtWidgets.QPushButton(self.centralwidget)
+        self.timer2.setGeometry(QtCore.QRect(1550, 430, 200, 100))
+        self.timer2.setObjectName("timer2")
+        self.timer2.setVisible(False) 
+        self.timer2.setEnabled(False)
+
+        self.timer3 = QtWidgets.QPushButton(self.centralwidget)
+        self.timer3.setGeometry(QtCore.QRect(1550, 680, 200, 100))
+        self.timer3.setObjectName("timer3")
+        self.timer3.setVisible(False) 
+        self.timer3.setEnabled(False)     
+
+        self.arrow = QtWidgets.QPushButton(self.centralwidget)
+        self.arrow.setGeometry(QtCore.QRect(1550, 900, 80, 40))
+        self.arrow.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("resources\LeftArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+
+        self.description = QtWidgets.QLabel(self.centralwidget)
+        self.description.setGeometry(QtCore.QRect(550, 230, 100, 100)) # texte de description
+        str = open('resources\Description.txt', 'r').read()
+        self.description.setText(str)
+        self.description.setFont(QtGui.QFont('Arial', 15))
+        self.description.setStyleSheet("color: black")
+        self.description.adjustSize()
+        #self.description.setVisible(False)
+        self.description.setEnabled(True)
+
+        self.arrow.setIcon(icon)
+        self.arrow.setObjectName("pushButton")
+        #self.arrow.setVisible(False) # par defaut la fleche est desactivee
+        #self.arrow.setEnabled(False)
 
         self.retranslateUi(MainMenu)
         QtCore.QMetaObject.connectSlotsByName(MainMenu)
@@ -559,13 +611,21 @@ class Ui_MainMenu(object):
         _translate = QtCore.QCoreApplication.translate
         MainMenu.setWindowTitle(_translate("MainMenu", "Face Mask Detector"))
         self.image_label.setText(_translate("MainMenu", "Select a Camera"))
-        self.take_photo_button.setText(_translate("MainMenu", "Take Photo"))
-        self.start_menu_button.setText(_translate("MainMenu", "Exit"))
+        self.take_photo_button.setText(_translate("MainMenu", "Capture"))
+        self.start_menu_button.setText(_translate("MainMenu", "Sortir"))
+        #self.epf.setText(_translate("MainMenu", "Test"))
         #self.camera_list_label.setText(_translate("MainMenu", "Camera Control Panel"))
         #item = self.camera_table.horizontalHeaderItem(0)
         #item.setText(_translate("MainMenu", "Camera"))
         #item = self.camera_table.horizontalHeaderItem(1)
         #item.setText(_translate("MainMenu", "Status"))
-        self.camera_select_label.setText(_translate("MainMenu", "Select Camera:    "))
+        self.camera_select_label.setText(_translate("MainMenu", "List cameras:    "))
         self.camera_select.setProperty("placeholderText", _translate("MainMenu", "Select Camera"))
+        #self.epf.setText(_translate("MainMenu","AAAAAA"))
+        self.pushButton1.setText(_translate("MainMenu", "Timer"))
+        self.pushButton2.setText(_translate("MainMenu", "Statistiques"))
+        self.pushButton3.setText(_translate("MainMenu", "Description du projet"))
 
+        self.timer1.setText(_translate("MainMenu", "5 min"))
+        self.timer2.setText(_translate("MainMenu", "10 min"))
+        self.timer3.setText(_translate("MainMenu", "15 min"))

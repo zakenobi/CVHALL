@@ -8,7 +8,6 @@ from PyQt5.QtCore import QTimer, QRegExp, Qt
 from PyQt5.QtGui import QImage, QPixmap, QColor, QRegExpValidator
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QWidget, QMessageBox
 
-from start_menu import *
 from main_menu import *
 
 LABELS = ["Mask", "Without Mask"]
@@ -16,8 +15,8 @@ COLORS = [[0, 255, 0], [0, 0, 255]]
 weightsPath = "yolo_utils/yolov4-tiny-mask.weights"
 configPath = "yolo_utils/yolov4-tiny-mask.cfg"
 photo_path = "photos"
-camera_list_path = "app/resources/camera_list.txt"
-connect_log_path = "app/resources/connect_history.log"
+camera_list_path = "resources/camera_list.txt"
+connect_log_path = "resources/connect_history.log"
 
 photo_dir = Path(photo_path)
 photo_dir.mkdir(parents=True, exist_ok=True)
@@ -72,8 +71,8 @@ class Camera(QTimer):
         self.confThreshold = confThreshold
         self.nmsThreshold = nmsThreshold
         self.viewable = False
-        self.status = "pas de connection"
-        self.prev_status = "pas de connection"
+        self.status = "pas de connexion"
+        self.prev_status = "pas de connexion"
         self.last_image = None
         self.camera_name_item = QTableWidgetItem(self.camName)
         self.camera_name_item.setTextAlignment(Qt.AlignCenter)
@@ -96,10 +95,10 @@ class Camera(QTimer):
 
     def view_disconnected_cam(self):
         mainMenu.ui.image_label.setStyleSheet("color: rgb(210, 105, 30);")
-        mainMenu.ui.image_label.setText(self.camName + " pas de connection")
+        mainMenu.ui.image_label.setText(self.camName + " pas de connexion")
         status_stylesheet = "border: transparent; background-color: transparent; font: 63 24pt \"URW Gothic L\"; color: rgb(210, 105, 30);"
         mainMenu.ui.image_label.setStyleSheet("color: rgb(210, 105, 30);")
-        mainMenu.ui.image_label.setText(self.camName + " pas de connection")
+        mainMenu.ui.image_label.setText(self.camName + " pas de connexion")
         mainMenu.ui.mask_count_label.setText("")
         mainMenu.ui.no_mask_count_label.setText("")
         mainMenu.ui.status_label.setText('Status:')
@@ -107,7 +106,7 @@ class Camera(QTimer):
         mainMenu.ui.status_type_label.setStyleSheet(status_stylesheet)
 
     def camera_run(self):
-        if self.status != "pas de connection":
+        if self.status != "pas de connexion":
             try:
                 ret, image = self.cam.read() #lecture de la camera
                 self.last_image = image.copy()
@@ -160,15 +159,15 @@ class Camera(QTimer):
                 self.status = "Safe"
             elif self.viewable is True:
                 self.view_disconnected_cam()
-        # automatically take a photo when the status of the camera switches to "Warning" or "Danger"
-        # if self.prev_status == "Safe" or self.prev_status == "Not Connected":
-        #     if self.status == "Warning" or self.status == "Danger":
-        #         self.take_photo()
-        # elif self.prev_status == "Warning" and self.status == "Danger":
-        #     self.take_photo()
-        # elif self.prev_status == "Danger" and self.status == "Warning":
-        #     self.take_photo()
-        # self.prev_status = self.status
+        #automatically take a photo when the status of the camera switches to "Warning" or "Danger"
+        if self.prev_status == "Safe" or self.prev_status == "Not Connected":
+            if self.status == "Warning" or self.status == "Danger":
+                self.take_photo()
+        elif self.prev_status == "Warning" and self.status == "Danger":
+            self.take_photo()
+        elif self.prev_status == "Danger" and self.status == "Warning":
+            self.take_photo()
+        self.prev_status = self.status
 
 
 class MainMenu(QMainWindow):
@@ -177,22 +176,20 @@ class MainMenu(QMainWindow):
         self.ui = Ui_MainMenu()
         self.ui.setupUi(self)
         self.setWindowIcon(QtGui.QIcon('resources/medical-mask.ico'))
-        #header = self.ui.camera_table.horizontalHeader()
-        #header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
-        #header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
         self.net = create_detection_net(configPath, weightsPath) #creation de la fonction de detection
         self.camera_list = []
         self.current_camera = None
         self.ui.camera_select.activated.connect(self.change_cam)
         self.ui.take_photo_button.clicked.connect(self.take_photo)
         self.ui.start_menu_button.clicked.connect(self.close_app)
-
-        self.button1 = QtWidgets.QLabel(self.centralwidget) # image
-        self.button1.setGeometry(QtCore.QRect(0, 100, 1280, 720)) 
-        self.button1.setText("")
-        self.button1.setPixmap(QtGui.QPixmap("ressources/Logo_EPF.png"))
-        self.button1.setScaledContents(True)
-        self.button1.setObjectName("button1")
+        self.ui.pushButton1.clicked.connect(self.hide)
+        self.ui.pushButton1.clicked.connect(self.reveal)
+        self.ui.arrow.clicked.connect(self.arrow)
+        self.ui.arrow.clicked.connect(self.arrow2)
+        self.ui.arrow.clicked.connect(self.camCancel)
+        self.ui.pushButton1.clicked.connect(self.cam)
+        self.camera_dict = {}
+        self.get_camera_list_2(cam_list_filename)
 
     def get_camera_list(self):
         self.camera_list = []
@@ -201,8 +198,8 @@ class MainMenu(QMainWindow):
         #self.ui.camera_table.setRowCount(0)
         self.ui.image_label.setStyleSheet("color: rgb(255, 255, 255);")
         self.ui.image_label.setText("Selectionnez une camera")
-        for camera in startMenu.camera_dict:
-            self.camera_list.append(Camera(camera, startMenu.camera_dict[camera]))
+        for camera in mainMenu.camera_dict:
+            self.camera_list.append(Camera(camera, mainMenu.camera_dict[camera]))
         for camera in self.camera_list:
             self.ui.camera_select.addItem(camera.camName)
             #self.ui.camera_table.insertRow(self.ui.camera_table.rowCount())
@@ -227,7 +224,7 @@ class MainMenu(QMainWindow):
         self.current_camera.viewable = True
 
     def take_photo(self):
-        if self.current_camera is not None and self.current_camera.status != "pas de connection":
+        if self.current_camera is not None and self.current_camera.status != "pas de connexion":
             image_name = self.current_camera.camName + "_" + datetime.now().strftime("%d.%m.%Y_%H.%M.%S") + ".jpg"
             cv2.imwrite(os.path.join(photo_path, image_name), self.current_camera.last_image)
             QTimer.singleShot(0, lambda: self.ui.photo_taken_notification.setText("Photo prise!"))
@@ -235,116 +232,86 @@ class MainMenu(QMainWindow):
             QTimer.singleShot(0, lambda: self.ui.photo_taken_notification.setText("Camera non disponible!"))
         QTimer.singleShot(2000, lambda: self.ui.photo_taken_notification.setText(""))
 
-    # def open_start_menu(self):
-    #     self.hide()
-    #     self.stop_cameras()
-    #     startMenu.get_camera_list(cam_list_filename)
-    #     startMenu.show()
-    #   
     def close_app(self):
         self.stop_cameras()
         self.close()
-         
-
-
-
-class StartMenu(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.ui = Ui_StartMenu()
-        self.ui.setupUi(self)
-        self.setFixedSize(self.size())
-        self.setWindowIcon(QtGui.QIcon('resources/medical-mask.ico'))
-        header = self.ui.camera_table.horizontalHeader()
-        header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
-        header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
-        self.ui.add_cam_button.clicked.connect(self.open_new_cam_menu)
-        self.ui.main_menu_button.clicked.connect(self.open_main_menu)
-        self.ui.exit_button.clicked.connect(self.close_app)
-        self.ui.delete_cam_button.clicked.connect(self.delete_cam)
-        self.ui.camera_table.cellDoubleClicked.connect(self.show_cam_info)
-        self.camera_dict = {}
-        self.get_camera_list(cam_list_filename)
 
     def insert_dict_in_table(self):
         for camera in self.camera_dict:
-            self.ui.camera_table.insertRow(self.ui.camera_table.rowCount())
-            current_row = self.ui.camera_table.rowCount() - 1
             cam_name = QTableWidgetItem(camera)
             cam_name.setTextAlignment(Qt.AlignCenter)
-            self.ui.camera_table.setItem(current_row, 0, cam_name)
             cam_id = QTableWidgetItem(str(self.camera_dict[camera]))
             cam_id.setTextAlignment(Qt.AlignCenter)
-            self.ui.camera_table.setItem(current_row, 1, cam_id)
 
-    def get_camera_list(self, cam_list_filename):
+    def get_camera_list_2(self, cam_list_filename):
         self.camera_dict = {}
-        self.ui.camera_table.clearContents()
-        self.ui.camera_table.setRowCount(0)
         for cam_line in [cam_line.strip() for cam_line in open(cam_list_filename)]:
             if cam_line.split(" ")[1].isdigit():
                 self.camera_dict[cam_line.split(" ")[0]] = int(cam_line.split(" ")[1])
             else:
                 self.camera_dict[cam_line.split(" ")[0]] = cam_line.split(" ")[1]
         self.insert_dict_in_table()
+    
+    def reveal(self):
+        self.ui.timer1.setVisible(True)
+        self.ui.timer1.setEnabled(True)
 
-    def update_camera_list(self, cam_list_filename):
-        self.ui.camera_table.clearContents()
-        self.ui.camera_table.setRowCount(0)
-        self.insert_dict_in_table()
-        cam_file = open(cam_list_filename, "w")
-        for camera in self.camera_dict:
-            cam_file.write(camera + " " + str(self.camera_dict[camera]) + "\n")
+        self.ui.timer2.setVisible(True)
+        self.ui.timer2.setEnabled(True)
 
-    def open_new_cam_menu(self):
-        newCameraMenu.refresh_menu()
-        newCameraMenu.show()
+        self.ui.timer3.setVisible(True)
+        self.ui.timer3.setEnabled(True)
+        
+    def hide(self):
+        self.ui.pushButton1.setVisible(False)
+        self.ui.pushButton1.setEnabled(False)
 
-    def delete_cam(self):
-        if self.ui.camera_table.currentRow() > -1:
-            selected_row = self.ui.camera_table.currentRow()
-            del self.camera_dict[self.ui.camera_table.item(selected_row, 0).text()]
-            self.ui.camera_table.removeRow(selected_row)
-            self.update_camera_list(cam_list_filename)
+        self.ui.pushButton2.setVisible(False)
+        self.ui.pushButton2.setEnabled(False)
 
-    def show_cam_info(self):
-        current_row = self.ui.camera_table.currentRow()
-        camera_name = self.ui.camera_table.item(current_row, 0).text()
-        camera_id = self.ui.camera_table.item(current_row, 1).text()
-        info = QMessageBox(QMessageBox.Information, camera_name + " Info", "Camera Name:\t" + camera_name + "\nCamera ID:\t" + camera_id)
-        info.setWindowIcon(QtGui.QIcon("resources/medical-mask.ico"))
-        info.setStyleSheet("background-color: rgb(15, 50, 80); color: #32CD32; font: 75 13pt \"Gill Sans MT\";")
-        info.exec_()
+        self.ui.pushButton3.setVisible(False)
+        self.ui.pushButton3.setEnabled(False)
+    
+    def arrow(self):
+        self.ui.pushButton1.setVisible(True)
+        self.ui.pushButton1.setEnabled(True)
 
-    def open_main_menu(self):
-        self.hide()
-        mainMenu.current_camera = None
-        mainMenu.ui.mask_count_label.setText("")
-        mainMenu.ui.no_mask_count_label.setText("")
-        mainMenu.ui.status_label.setText("")
-        mainMenu.ui.status_type_label.setText("")
-        mainMenu.get_camera_list()
-        mainMenu.showMaximized()
+        self.ui.pushButton2.setVisible(True)
+        self.ui.pushButton2.setEnabled(True)
+
+        self.ui.pushButton3.setVisible(True)
+        self.ui.pushButton3.setEnabled(True)
+    
+    def arrow2(self):
+        self.ui.timer1.setVisible(False)
+        self.ui.timer1.setEnabled(False)
+
+        self.ui.timer2.setVisible(False)
+        self.ui.timer2.setEnabled(False)
+
+        self.ui.timer3.setVisible(False)
+        self.ui.timer3.setEnabled(False)
+    
+    def cam(self):
         mainMenu.start_cameras()
+        mainMenu.change_cam(0)
+    
+    def camCancel(self):
+        #mainMenu.change_cam(1)
+        mainMenu.stop_cameras()
+        os.execv(sys.executable, ['python3'] + sys.argv)
+        #mainMenu.close_app()
 
-    def close_app(self):
-        self.close()
-        mainMenu.close()
-
-
+       
+        
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    startMenu = StartMenu()
     mainMenu = MainMenu()
-    #startMenu.show()
     mainMenu.get_camera_list()
     mainMenu.showMaximized()
-    mainMenu.start_cameras()
+    #mainMenu.start_cameras()
 
-    mainMenu.show()
-
-    mainMenu.change_cam(0)
 
     sys.exit(app.exec_())
