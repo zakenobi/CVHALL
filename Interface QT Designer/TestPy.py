@@ -10,10 +10,14 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
-import cv2
+#import cv2
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+
+import matplotlib
+matplotlib.use('Qt4Agg')
+from matplotlib import pyplot
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -34,6 +38,12 @@ class Ui_MainWindow(object):
         self.label_2.setPixmap(QtGui.QPixmap("Interface QT Designer\Wallpaper.jpg"))
         self.label_2.setScaledContents(True)
         self.label_2.setObjectName("label_2")
+
+
+        pyplot.figure()
+        pyplot.plot([1, 2, 3, 7, 8, 9])
+        pyplot.get_current_fig_manager().window.setGeometry(0, 0, 800, 800)
+        pyplot.show()
 
         self.pushButton = QtWidgets.QPushButton(self.centralwidget) # bouton 1
         self.pushButton.setGeometry(QtCore.QRect(900, 120, 250, 130))
