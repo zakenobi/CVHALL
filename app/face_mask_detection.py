@@ -186,6 +186,7 @@ class MainMenu(QMainWindow):
         self.ui.pushButton1.clicked.connect(self.reveal)
         self.ui.arrow.clicked.connect(self.arrow)
         self.ui.arrow.clicked.connect(self.arrow2)
+        self.ui.pushButton3.clicked.connect(self.revealDesc)
         self.ui.arrow.clicked.connect(self.camCancel)
         self.ui.pushButton1.clicked.connect(self.cam)
         self.camera_dict = {}
@@ -281,6 +282,8 @@ class MainMenu(QMainWindow):
 
         self.ui.pushButton3.setVisible(True)
         self.ui.pushButton3.setEnabled(True)
+
+        self.ui.description.setVisible(False)
     
     def arrow2(self):
         self.ui.timer1.setVisible(False)
@@ -291,6 +294,9 @@ class MainMenu(QMainWindow):
 
         self.ui.timer3.setVisible(False)
         self.ui.timer3.setEnabled(False)
+    
+    def revealDesc(self):
+        self.ui.description.setVisible(True)
     
     def cam(self):
         mainMenu.start_cameras()
