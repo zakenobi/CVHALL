@@ -182,6 +182,8 @@ class MainMenu(QMainWindow):
         self.ui.camera_select.activated.connect(self.change_cam)
         self.ui.take_photo_button.clicked.connect(self.take_photo)
         self.ui.start_menu_button.clicked.connect(self.close_app)
+        self.ui.pushButton1.clicked.connect(self.hide)
+        self.ui.pushButton1.clicked.connect(self.reveal)
         self.camera_dict = {}
         self.get_camera_list_2(cam_list_filename)
 
@@ -247,6 +249,26 @@ class MainMenu(QMainWindow):
             else:
                 self.camera_dict[cam_line.split(" ")[0]] = cam_line.split(" ")[1]
         self.insert_dict_in_table()
+    
+    def reveal(self):
+        self.timer1.setVisible(True)
+        self.timer1.setEnabled(True)
+
+        self.timer2.setVisible(True)
+        self.timer2.setEnabled(True)
+
+        self.timer3.setVisible(True)
+        self.timer3.setEnabled(True)
+        
+def hide(self):
+        self.pushButton1.setVisible(False)
+        self.pushButton1.setEnabled(False)
+
+        self.pushButton2.setVisible(False)
+        self.pushButton2.setEnabled(False)
+
+        self.pushButton3.setVisible(False)
+        self.pushButton3.setEnabled(False)
          
 
 
