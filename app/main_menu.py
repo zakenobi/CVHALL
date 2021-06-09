@@ -592,7 +592,7 @@ class Ui_MainMenu(object):
         self.arrow.setEnabled(False)
 
         self.description = QtWidgets.QLabel(self.centralwidget)
-        self.description.setGeometry(QtCore.QRect(250, 230, 150, 200)) # texte de description
+        self.description.setGeometry(QtCore.QRect(245, 230, 150, 200)) # texte de description
         str = open('resources/Description.txt', 'r').read()
         self.description.setText(str)
         self.description.setFont(QtGui.QFont('Arial', 35))
@@ -614,7 +614,7 @@ class Ui_MainMenu(object):
         MainMenu.setWindowTitle(_translate("MainMenu", "Face Mask Detector"))
         self.image_label.setText(_translate("MainMenu", "Select a Camera"))
         self.take_photo_button.setText(_translate("MainMenu", "Capture"))
-        self.start_menu_button.setText(_translate("MainMenu", "Sortir"))
+        self.start_menu_button.setText(_translate("MainMenu", "STOP"))
         #self.epf.setText(_translate("MainMenu", "Test"))
         #self.camera_list_label.setText(_translate("MainMenu", "Camera Control Panel"))
         #item = self.camera_table.horizontalHeaderItem(0)

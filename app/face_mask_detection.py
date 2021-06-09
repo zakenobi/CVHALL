@@ -182,7 +182,7 @@ class MainMenu(QMainWindow):
         self.current_camera = None
         self.ui.camera_select.activated.connect(self.change_cam)
         self.ui.take_photo_button.clicked.connect(self.take_photo)
-        self.ui.start_menu_button.clicked.connect(self.close_app)
+        self.ui.start_menu_button.clicked.connect(self.camCancel)
         self.ui.pushButton1.clicked.connect(self.hide)
         self.ui.pushButton1.clicked.connect(self.reveal)
         self.ui.arrow.clicked.connect(self.arrow)
@@ -267,7 +267,6 @@ class MainMenu(QMainWindow):
         self.ui.description.setVisible(False)
         self.ui.description.setEnabled(False)
 
-        
     def hide(self):
         self.ui.pushButton1.setVisible(False)
         self.ui.pushButton1.setEnabled(False)
@@ -320,10 +319,6 @@ class MainMenu(QMainWindow):
         mainMenu.stop_cameras()
         os.execv(sys.executable, ['python3'] + sys.argv)
         #mainMenu.close_app()
-
-       
-        
-
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
