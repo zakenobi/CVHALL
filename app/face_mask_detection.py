@@ -310,7 +310,7 @@ class MainMenu(QMainWindow):
     
     def cam(self):
         mainMenu.start_cameras()
-        #mainMenu.change_cam(0)
+        mainMenu.change_cam(0)
     
     def camCancel(self):
         #mainMenu.change_cam(1)
