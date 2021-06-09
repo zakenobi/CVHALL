@@ -101,7 +101,7 @@ class Ui_MainMenu(object):
         self.photo_taken_notification = QtWidgets.QLabel(self.centralwidget)
         self.photo_taken_notification.setEnabled(True)
         self.photo_taken_notification.setGeometry(QtCore.QRect(1200, 5, 381, 61))
-        self.photo_taken_notification.setScaledContents(True)
+        self.photo_taken_notification.adjustSize()
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
