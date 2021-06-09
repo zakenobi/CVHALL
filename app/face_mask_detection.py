@@ -181,13 +181,14 @@ class MainMenu(QMainWindow):
         self.camera_list = []
         self.current_camera = None
         self.ui.camera_select.activated.connect(self.change_cam)
-        self.ui.start_button.clicked.connect(self.take_photo)
+        #self.ui.start_button.clicked.connect(self.take_photo)
         self.ui.stop_button.clicked.connect(self.camCancel)
         self.ui.pushButton1.clicked.connect(self.hide)
         self.ui.pushButton1.clicked.connect(self.reveal)
         self.ui.arrow.clicked.connect(self.arrow)
         self.ui.arrow.clicked.connect(self.arrow2)
         self.ui.pushButton3.clicked.connect(self.revealDesc)
+        self.ui.start_button.clicked.connect(self.cam)
         #self.ui.arrow.clicked.connect(self.camCancel)
         self.ui.timer1.clicked.connect(self.timer)
         self.camera_dict = {}
