@@ -607,6 +607,6 @@ class Ui_MainMenu(object):
         self.camera_select_label.setText(_translate("MainMenu", "Liste caméras:    "))
         self.camera_select.setProperty("placeholderText", _translate("MainMenu", "Select Camera"))
         #self.epf.setText(_translate("MainMenu","AAAAAA"))
-        self.pushButton1.setText(_translate("MainMenu", "Timer"))
+        self.pushButton1.setText(_translate("MainMenu", "Prendre photo"))
         self.pushButton2.setText(_translate("MainMenu", "Statistiques"))
         self.pushButton3.setText(_translate("MainMenu", "Description du projet"))
