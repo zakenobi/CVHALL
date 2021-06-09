@@ -186,11 +186,10 @@ class MainMenu(QMainWindow):
         self.ui.pushButton1.clicked.connect(self.hide)
         self.ui.pushButton1.clicked.connect(self.reveal)
         self.ui.arrow.clicked.connect(self.arrow)
-        self.ui.arrow.clicked.connect(self.arrow2)
         self.ui.pushButton3.clicked.connect(self.revealDesc)
         self.ui.start_button.clicked.connect(self.cam)
         #self.ui.arrow.clicked.connect(self.camCancel)
-        self.ui.timer1.clicked.connect(self.timer)
+        #self.ui.timer1.clicked.connect(self.timer)
         self.camera_dict = {}
         self.get_camera_list_2(cam_list_filename)
 
@@ -256,15 +255,6 @@ class MainMenu(QMainWindow):
         self.insert_dict_in_table()
     
     def reveal(self):
-        self.ui.timer1.setVisible(True)
-        self.ui.timer1.setEnabled(True)
-
-        self.ui.timer2.setVisible(True)
-        self.ui.timer2.setEnabled(True)
-
-        self.ui.timer3.setVisible(True)
-        self.ui.timer3.setEnabled(True)
-
         self.ui.description.setVisible(False)
         self.ui.description.setEnabled(False)
 
@@ -295,16 +285,6 @@ class MainMenu(QMainWindow):
 
         self.ui.arrow.setVisible(False)
         self.ui.arrow.setEnabled(False)
-    
-    def arrow2(self):
-        self.ui.timer1.setVisible(False)
-        self.ui.timer1.setEnabled(False)
-
-        self.ui.timer2.setVisible(False)
-        self.ui.timer2.setEnabled(False)
-
-        self.ui.timer3.setVisible(False)
-        self.ui.timer3.setEnabled(False)
     
     def revealDesc(self):
         self.ui.description.setVisible(True)

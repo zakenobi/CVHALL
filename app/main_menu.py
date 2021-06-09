@@ -564,24 +564,7 @@ class Ui_MainMenu(object):
         self.pushButton3 = QtWidgets.QPushButton(self.centralwidget) 
         self.pushButton3.setGeometry(QtCore.QRect(1550, 680, 200, 100))
         self.pushButton3.setObjectName("pushButton3")
-
-        self.timer1 = QtWidgets.QPushButton(self.centralwidget) 
-        self.timer1.setGeometry(QtCore.QRect(1550, 180, 200, 100))
-        self.timer1.setObjectName("timer1")
-        self.timer1.setVisible(False) 
-        self.timer1.setEnabled(False)
-
-        self.timer2 = QtWidgets.QPushButton(self.centralwidget)
-        self.timer2.setGeometry(QtCore.QRect(1550, 430, 200, 100))
-        self.timer2.setObjectName("timer2")
-        self.timer2.setVisible(False) 
-        self.timer2.setEnabled(False)
-
-        self.timer3 = QtWidgets.QPushButton(self.centralwidget)
-        self.timer3.setGeometry(QtCore.QRect(1550, 680, 200, 100))
-        self.timer3.setObjectName("timer3")
-        self.timer3.setVisible(False) 
-        self.timer3.setEnabled(False)     
+    
 
         self.arrow = QtWidgets.QPushButton(self.centralwidget)
         self.arrow.setGeometry(QtCore.QRect(1550, 900, 80, 40))
@@ -627,7 +610,3 @@ class Ui_MainMenu(object):
         self.pushButton1.setText(_translate("MainMenu", "Timer"))
         self.pushButton2.setText(_translate("MainMenu", "Statistiques"))
         self.pushButton3.setText(_translate("MainMenu", "Description du projet"))
-
-        self.timer1.setText(_translate("MainMenu", "5 min"))
-        self.timer2.setText(_translate("MainMenu", "10 min"))
-        self.timer3.setText(_translate("MainMenu", "15 min"))
