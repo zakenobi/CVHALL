@@ -100,7 +100,7 @@ class Ui_MainMenu(object):
 #         self.camera_list_label.setObjectName("camera_list_label")
         self.photo_taken_notification = QtWidgets.QLabel(self.centralwidget)
         self.photo_taken_notification.setEnabled(True)
-        self.photo_taken_notification.setGeometry(QtCore.QRect(20, 930, 381, 61))
+        self.photo_taken_notification.setGeometry(QtCore.QRect(1000, 20, 381, 61))
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
@@ -111,7 +111,7 @@ class Ui_MainMenu(object):
         self.photo_taken_notification.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.photo_taken_notification.setStyleSheet("border: transparent;\n"
 "background-color: transparent;\n"
-"color: #DAA520;\n"
+"color: #DA7720;\n"
 "font: 63 24pt \"URW Gothic L\";")
         self.photo_taken_notification.setText("")
         self.photo_taken_notification.setAlignment(QtCore.Qt.AlignCenter)
