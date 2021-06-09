@@ -590,7 +590,7 @@ class Ui_MainMenu(object):
         icon.addPixmap(QtGui.QPixmap("resources/LeftArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 
         self.description = QtWidgets.QLabel(self.centralwidget)
-        self.description.setGeometry(QtCore.QRect(250, 230, 100, 100)) # texte de description
+        self.description.setGeometry(QtCore.QRect(250, 230, 150, 200)) # texte de description
         str = open('resources/Description.txt', 'r').read()
         self.description.setText(str)
         self.description.setFont(QtGui.QFont('Arial', 35))
