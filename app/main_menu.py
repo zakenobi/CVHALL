@@ -588,6 +588,8 @@ class Ui_MainMenu(object):
         self.arrow.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("resources/LeftArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.arrow.setVisible(False)
+        self.arrow.setEnabled(False)
 
         self.description = QtWidgets.QLabel(self.centralwidget)
         self.description.setGeometry(QtCore.QRect(250, 230, 150, 200)) # texte de description
