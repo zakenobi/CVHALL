@@ -318,7 +318,7 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     mainMenu = MainMenu()
     mainMenu.get_camera_list()
-    mainMenu.showMaximized()
+    mainMenu.showFullScreen()
     #mainMenu.start_cameras()
 
 
