@@ -189,7 +189,7 @@ class MainMenu(QMainWindow):
         self.ui.arrow.clicked.connect(self.arrow2)
         self.ui.pushButton3.clicked.connect(self.revealDesc)
         #self.ui.arrow.clicked.connect(self.camCancel)
-        self.ui.pushButton1.clicked.connect(self.cam)
+        self.ui.timer1.clicked.connect(self.sleep_int(10))
         self.camera_dict = {}
         self.get_camera_list_2(cam_list_filename)
 
@@ -320,12 +320,12 @@ class MainMenu(QMainWindow):
         os.execv(sys.executable, ['python3'] + sys.argv)
         #mainMenu.close_app()
 
-    def sleep(i):
+    def sleep_int(i):
         mainMenu.start_cameras()
         mainMenu.change_cam(0)
         time.sleep(i)
         mainMenu.camCancel()
-        
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     mainMenu = MainMenu()
