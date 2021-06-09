@@ -264,6 +264,9 @@ class MainMenu(QMainWindow):
         self.ui.timer3.setVisible(True)
         self.ui.timer3.setEnabled(True)
 
+        self.ui.description.setVisible(False)
+        self.ui.description.setEnabled(False)
+
         
     def hide(self):
         self.ui.pushButton1.setVisible(False)
