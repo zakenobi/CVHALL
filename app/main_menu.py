@@ -619,7 +619,7 @@ class Ui_MainMenu(object):
         #item.setText(_translate("MainMenu", "Camera"))
         #item = self.camera_table.horizontalHeaderItem(1)
         #item.setText(_translate("MainMenu", "Status"))
-        self.camera_select_label.setText(_translate("MainMenu", "List cameras:    "))
+        self.camera_select_label.setText(_translate("MainMenu", "Liste caméras:    "))
         self.camera_select.setProperty("placeholderText", _translate("MainMenu", "Select Camera"))
         #self.epf.setText(_translate("MainMenu","AAAAAA"))
         self.pushButton1.setText(_translate("MainMenu", "Timer"))

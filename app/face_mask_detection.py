@@ -128,9 +128,9 @@ class Camera(QTimer):
                 self.camera_status_item.setText(self.status)
                 if self.viewable is True:
                     mainMenu.ui.image_label.setStyleSheet("color: rgb(255, 255, 255);")
-                    mainMenu.ui.image_label.setText("Selectionnez une camera")
+                    mainMenu.ui.image_label.setText("Selectionnez une caméra")
                     mainMenu.ui.mask_count_label.setText(f'Avec masque:  {mask_count}')
-                    mainMenu.ui.no_mask_count_label.setText(f'Sans Masque:  {nomask_count}')
+                    mainMenu.ui.no_mask_count_label.setText(f'Sans masque:  {nomask_count}')
                     mainMenu.ui.status_label.setText('Status:')
                     mainMenu.ui.status_type_label.setText(status)
                     mainMenu.ui.status_type_label.setStyleSheet(status_stylesheet)
@@ -199,7 +199,7 @@ class MainMenu(QMainWindow):
         #self.ui.camera_table.clearContents()
         #self.ui.camera_table.setRowCount(0)
         self.ui.image_label.setStyleSheet("color: rgb(0, 0, 0);")
-        self.ui.image_label.setText("Selectionnez une camera")
+        self.ui.image_label.setText("Selectionnez une caméra")
         for camera in mainMenu.camera_dict:
             self.camera_list.append(Camera(camera, mainMenu.camera_dict[camera]))
         for camera in self.camera_list:
@@ -231,7 +231,7 @@ class MainMenu(QMainWindow):
             cv2.imwrite(os.path.join(photo_path, image_name), self.current_camera.last_image)
             QTimer.singleShot(0, lambda: self.ui.photo_taken_notification.setText("Photo prise!"))
         else:
-            QTimer.singleShot(0, lambda: self.ui.photo_taken_notification.setText("Camera non disponible!"))
+            QTimer.singleShot(0, lambda: self.ui.photo_taken_notification.setText("Caméra non disponible!"))
         QTimer.singleShot(2000, lambda: self.ui.photo_taken_notification.setText(""))
 
     def close_app(self):
