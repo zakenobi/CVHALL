@@ -335,3 +335,10 @@ if __name__ == '__main__':
 
 
     sys.exit(app.exec_())
+
+# import time
+
+# max_time = #the time you want
+# start_time = time.time()
+# while (time.time() - start_time) < max_time:
+#     game()
