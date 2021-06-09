@@ -29,17 +29,17 @@ class Ui_MainMenu(object):
         self.image_label.setStyleSheet("color: rgb(255, 255, 255);")
         self.image_label.setAlignment(QtCore.Qt.AlignCenter)
         self.image_label.setObjectName("image_label")
-        self.take_photo_button = QtWidgets.QPushButton(self.centralwidget)
-        self.take_photo_button.setGeometry(QtCore.QRect(450, 930, 331, 61))
+        self.start_button = QtWidgets.QPushButton(self.centralwidget)
+        self.start_button.setGeometry(QtCore.QRect(450, 930, 331, 61))
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(28)
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(7)
-        self.take_photo_button.setFont(font)
-        self.take_photo_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.take_photo_button.setStyleSheet("QPushButton{\n"
+        self.start_button.setFont(font)
+        self.start_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.start_button.setStyleSheet("QPushButton{\n"
 "font: 63 28pt \"URW Gothic L\";\n"
 "border:1px transparent;\n"
 "border-radius: 20px;\n"
@@ -55,18 +55,18 @@ class Ui_MainMenu(object):
 "}\n"
 "\n"
 "")
-        self.take_photo_button.setObjectName("take_photo_button")
-        self.start_menu_button = QtWidgets.QPushButton(self.centralwidget)
-        self.start_menu_button.setGeometry(QtCore.QRect(840, 930, 331, 61))
+        self.start_button.setObjectName("start_button")
+        self.stop_button = QtWidgets.QPushButton(self.centralwidget)
+        self.stop_button.setGeometry(QtCore.QRect(840, 930, 331, 61))
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(7)
-        self.start_menu_button.setFont(font)
-        self.start_menu_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.start_menu_button.setStyleSheet("QPushButton{\n"
+        self.stop_button.setFont(font)
+        self.stop_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.stop_button.setStyleSheet("QPushButton{\n"
 "font: 63 24pt \"URW Gothic L\";\n"
 "border:1px transparent;\n"
 "border-radius: 20px;\n"
@@ -82,7 +82,7 @@ class Ui_MainMenu(object):
 "}\n"
 "\n"
 "")
-        self.start_menu_button.setObjectName("start_menu_button")
+        self.stop_button.setObjectName("stop_button")
 #         self.camera_list_label = QtWidgets.QLabel(self.centralwidget)
 #         self.camera_list_label.setGeometry(QtCore.QRect(1440, 60, 371, 51))
 #         font = QtGui.QFont()
@@ -613,8 +613,8 @@ class Ui_MainMenu(object):
         _translate = QtCore.QCoreApplication.translate
         MainMenu.setWindowTitle(_translate("MainMenu", "Face Mask Detector"))
         self.image_label.setText(_translate("MainMenu", "Select a Camera"))
-        self.take_photo_button.setText(_translate("MainMenu", "Capture"))
-        self.start_menu_button.setText(_translate("MainMenu", "STOP"))
+        self.start_button.setText(_translate("MainMenu", "START"))
+        self.stop_button.setText(_translate("MainMenu", "STOP"))
         #self.epf.setText(_translate("MainMenu", "Test"))
         #self.camera_list_label.setText(_translate("MainMenu", "Camera Control Panel"))
         #item = self.camera_table.horizontalHeaderItem(0)
