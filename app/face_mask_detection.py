@@ -181,8 +181,8 @@ class MainMenu(QMainWindow):
         self.camera_list = []
         self.current_camera = None
         self.ui.camera_select.activated.connect(self.change_cam)
-        self.ui.take_photo_button.clicked.connect(self.take_photo)
-        self.ui.start_menu_button.clicked.connect(self.camCancel)
+        self.ui.start_button.clicked.connect(self.take_photo)
+        self.ui.stop_button.clicked.connect(self.camCancel)
         self.ui.pushButton1.clicked.connect(self.hide)
         self.ui.pushButton1.clicked.connect(self.reveal)
         self.ui.arrow.clicked.connect(self.arrow)
