@@ -1,7 +1,7 @@
 import os
 import sys
 import cv2
-import time
+
 import numpy as np
 from pathlib import Path
 from datetime import datetime
@@ -189,7 +189,7 @@ class MainMenu(QMainWindow):
         self.ui.arrow.clicked.connect(self.arrow2)
         self.ui.pushButton3.clicked.connect(self.revealDesc)
         #self.ui.arrow.clicked.connect(self.camCancel)
-        self.ui.timer1.clicked.connect(self.sleep_int(10))
+        self.ui.timer1.clicked.connect(self.timer)
         self.camera_dict = {}
         self.get_camera_list_2(cam_list_filename)
 
@@ -309,7 +309,8 @@ class MainMenu(QMainWindow):
         self.ui.description.setVisible(True)
         self.ui.arrow.setVisible(True)
         self.ui.arrow.setEnabled(True)
-    
+
+
     def cam(self):
         mainMenu.start_cameras()
         mainMenu.change_cam(0)
@@ -320,11 +321,17 @@ class MainMenu(QMainWindow):
         os.execv(sys.executable, ['python3'] + sys.argv)
         #mainMenu.close_app()
 
-    def sleep_int(i):
-        mainMenu.start_cameras()
-        mainMenu.change_cam(0)
-        time.sleep(i)
+    def timer(self):
+        mainMenu.cam()
+        import time
+        t=10
+        while t:
+            time.sleep(1)
+            #Decrementation of t
+            t-=1
+    
         mainMenu.camCancel()
+   
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
