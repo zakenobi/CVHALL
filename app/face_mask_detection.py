@@ -1,6 +1,7 @@
 import os
 import sys
 import cv2
+import time
 import numpy as np
 from pathlib import Path
 from datetime import datetime
@@ -187,7 +188,7 @@ class MainMenu(QMainWindow):
         self.ui.arrow.clicked.connect(self.arrow)
         self.ui.arrow.clicked.connect(self.arrow2)
         self.ui.pushButton3.clicked.connect(self.revealDesc)
-        self.ui.arrow.clicked.connect(self.camCancel)
+        #self.ui.arrow.clicked.connect(self.camCancel)
         self.ui.pushButton1.clicked.connect(self.cam)
         self.camera_dict = {}
         self.get_camera_list_2(cam_list_filename)
@@ -197,7 +198,7 @@ class MainMenu(QMainWindow):
         self.ui.camera_select.clear()
         #self.ui.camera_table.clearContents()
         #self.ui.camera_table.setRowCount(0)
-        self.ui.image_label.setStyleSheet("color: rgb(255, 255, 255);")
+        self.ui.image_label.setStyleSheet("color: rgb(0, 0, 0);")
         self.ui.image_label.setText("Selectionnez une camera")
         for camera in mainMenu.camera_dict:
             self.camera_list.append(Camera(camera, mainMenu.camera_dict[camera]))
@@ -300,7 +301,7 @@ class MainMenu(QMainWindow):
     
     def cam(self):
         mainMenu.start_cameras()
-        mainMenu.change_cam(0)
+        #mainMenu.change_cam(0)
     
     def camCancel(self):
         #mainMenu.change_cam(1)
