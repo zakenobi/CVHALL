@@ -14,7 +14,7 @@ class Ui_MainMenu(object):
         MainMenu.resize(1400, 720)
         MainMenu.setStyleSheet("QMainWindow \n"
 "{\n"
-"background-color: rgb(245, 253, 247);\n"
+"background-color: rgb(255, 255, 255);\n"
 "}")
         self.centralwidget = QtWidgets.QWidget(MainMenu)
         self.centralwidget.setObjectName("centralwidget")
