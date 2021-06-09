@@ -320,6 +320,12 @@ class MainMenu(QMainWindow):
         os.execv(sys.executable, ['python3'] + sys.argv)
         #mainMenu.close_app()
 
+    def sleep(i):
+        mainMenu.start_cameras()
+        mainMenu.change_cam(0)
+        time.sleep(i)
+        mainMenu.camCancel()
+        
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     mainMenu = MainMenu()
