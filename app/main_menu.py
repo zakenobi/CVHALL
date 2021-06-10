@@ -556,15 +556,15 @@ class Ui_MainMenu(object):
         self.epf.setObjectName("epf")
      
         self.pushButton1 = QtWidgets.QPushButton(self.centralwidget) 
-        self.pushButton1.setGeometry(QtCore.QRect(1550, 180, 200, 100))
+        self.pushButton1.setGeometry(QtCore.QRect(1000, 100, 200, 100))
         self.pushButton1.setObjectName("pushButton1")
 
         self.pushButton2 = QtWidgets.QPushButton(self.centralwidget) 
-        self.pushButton2.setGeometry(QtCore.QRect(1550, 430, 200, 100))
+        self.pushButton2.setGeometry(QtCore.QRect(1050, 350, 200, 100))
         self.pushButton2.setObjectName("pushButton2")
 
         self.pushButton3 = QtWidgets.QPushButton(self.centralwidget) 
-        self.pushButton3.setGeometry(QtCore.QRect(1550, 680, 200, 100))
+        self.pushButton3.setGeometry(QtCore.QRect(900, 600, 200, 100))
         self.pushButton3.setObjectName("pushButton3")
     
 
@@ -612,4 +612,3 @@ class Ui_MainMenu(object):
         self.pushButton1.setText(_translate("MainMenu", "Prendre photo"))
         self.pushButton2.setText(_translate("MainMenu", "Statistiques"))
         self.pushButton3.setText(_translate("MainMenu", "Description du projet"))
-        self.camera_select.move(10,220)
