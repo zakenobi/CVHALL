@@ -545,7 +545,6 @@ class Ui_MainMenu(object):
         MainMenu.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainMenu)
         self.statusbar.setObjectName("statusbar")
-        self.statusbar.move(1050,60)
         MainMenu.setStatusBar(self.statusbar)
 
         self.epf = QtWidgets.QLabel(self.centralwidget) # image
@@ -613,4 +612,4 @@ class Ui_MainMenu(object):
         self.pushButton1.setText(_translate("MainMenu", "Prendre photo"))
         self.pushButton2.setText(_translate("MainMenu", "Statistiques"))
         self.pushButton3.setText(_translate("MainMenu", "Description du projet"))
-        self.camera_status_item.move(1050,60)
+        self.status_label.move(1050,60)
