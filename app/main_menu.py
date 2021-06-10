@@ -581,16 +581,16 @@ class Ui_MainMenu(object):
         self.SArrowLeft.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("resources/SArrowLeft.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.SArrowLeft.setVisible(False)
-        self.SArrowLeft.setEnabled(False)
+        # self.SArrowLeft.setVisible(False)
+        # self.SArrowLeft.setEnabled(False)
 
         self.SArrowRight = QtWidgets.QPushButton(self.centralwidget)
         self.SArrowRight.setGeometry(QtCore.QRect(180, 600, 80, 40))
         self.SArrowRight.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("resources/SArrowRight.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.SArrowRight.setVisible(False)
-        self.SArrowRight.setEnabled(False)
+        # self.SArrowRight.setVisible(False)
+        # self.SArrowRight.setEnabled(False)
 
         self.description = QtWidgets.QLabel(self.centralwidget)
         self.description.setGeometry(QtCore.QRect(100, 200, 100, 70)) # texte de description
