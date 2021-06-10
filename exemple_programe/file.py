@@ -77,7 +77,7 @@ recuperation_donnees()
 
 
     # GRAPHIQUE STATISTIQUES
-
+from matplotlib import pyplot as plt
 font1 = {'family':'serif','color':'darkred','size':12} # Création d'une police d'écriture (taille, couleur...)
 font2 = {'family':'serif','color':'k', 'style':'italic','size':10} # Création d'une police d'écriture (taille, couleur...)
 
@@ -93,7 +93,10 @@ def camembert(): # Fonction camembert
     plt.legend(title = "Légende :") # Ajout d'une légende avec les labels définis précedemment
     plt.title("Porportion de masques bien/mal/non portés", fontdict = font1) # Ajout d'un titre au graph
 
-    plt.show() # Affichage du graph
+    plt.savefig('Camembert.png')
+    #plt.show() # Affichage du graph
+camembert()
+
 
 
 # GRAPHIQUE POURCENTAGE DE MASQUES PORTES CORRECTEMENT AU COURS DE LA JOURNEE
@@ -109,6 +112,7 @@ def graphique(): # Fonction graph
 
     plt.grid(color = 'grey', linestyle = '--', linewidth = 0.5) # Ajout d'un quadrillage
 
-    plt.show() # Affichage du graph
-    camembert()
+    plt.savefig('Graphique.png')
+    #plt.show() # Affichage du graph
+   
 graphique()
