@@ -301,17 +301,16 @@ class MainMenu(QMainWindow):
         self.ui.arrow.setVisible(True)
         self.ui.arrow.setEnabled(True)
 
+    def revealStats(self):
+        self.ui.SArrowLeft.setVisible(True)
+        self.ui.SArrowLeft.setEnabled(True)
+        self.ui.SArrowRight.setVisible(True)
+        self.ui.SArrowRight.setEnabled(True)
 
     def cam(self):
         mainMenu.start_cameras()
         mainMenu.change_cam(0)
         self.ui.image_label.setVisible(True)
-    
-    def revealStats(self):
-        self.ui.SArrowLeft.setvisible(True)
-        self.ui.SArrowLeft.setEnabled(True)
-        self.ui.SArrowRight.setvisible(True)
-        self.ui.SArrowRight.setEnabled(True)
     
     def camCancel(self):
         #mainMenu.change_cam(1)
