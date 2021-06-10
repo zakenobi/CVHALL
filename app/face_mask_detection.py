@@ -78,7 +78,7 @@ class Camera(QTimer):
         self.camera_name_item = QTableWidgetItem(self.camName)
         self.camera_name_item.setTextAlignment(Qt.AlignCenter)
         self.camera_status_item = QTableWidgetItem(self.status)
-        self.camera_status_item.setTextAlignment(Qt.AlignCenter)
+        #self.camera_status_item.setTextAlignment(Qt.AlignCenter)
         self.cam = cv2.VideoCapture(self.camID)
         self.timeout.connect(self.camera_run)
 
@@ -188,6 +188,8 @@ class MainMenu(QMainWindow):
         self.ui.arrow.clicked.connect(self.arrow)
         self.ui.pushButton3.clicked.connect(self.revealDesc)
         self.ui.start_button.clicked.connect(self.cam)
+        self.ui.pushButton3.clicked.connect(self.camCancel)
+        #self.ui.arrow.clicked.connect(self.cam)
         #self.ui.arrow.clicked.connect(self.camCancel)
         #self.ui.timer1.clicked.connect(self.timer)
         self.camera_dict = {}

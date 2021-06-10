@@ -19,7 +19,7 @@ class Ui_MainMenu(object):
         self.centralwidget = QtWidgets.QWidget(MainMenu)
         self.centralwidget.setObjectName("centralwidget")
         self.image_label = QtWidgets.QLabel(self.centralwidget)
-        self.image_label.setGeometry(QtCore.QRect(0, 40, 1000, 600)) #cam
+        self.image_label.setGeometry(QtCore.QRect(0, 60, 1000, 600)) #cam
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(48)
@@ -30,7 +30,7 @@ class Ui_MainMenu(object):
         self.image_label.setAlignment(QtCore.Qt.AlignCenter)
         self.image_label.setObjectName("image_label")
         self.start_button = QtWidgets.QPushButton(self.centralwidget)
-        self.start_button.setGeometry(QtCore.QRect(50, 620, 200, 70))
+        self.start_button.setGeometry(QtCore.QRect(300, 620, 200, 70))
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(28)
@@ -57,7 +57,7 @@ class Ui_MainMenu(object):
 "")
         self.start_button.setObjectName("start_button")
         self.stop_button = QtWidgets.QPushButton(self.centralwidget)
-        self.stop_button.setGeometry(QtCore.QRect(350, 620, 200, 70))
+        self.stop_button.setGeometry(QtCore.QRect(550, 620, 200, 70))
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
@@ -556,20 +556,20 @@ class Ui_MainMenu(object):
         self.epf.setObjectName("epf")
      
         self.pushButton1 = QtWidgets.QPushButton(self.centralwidget) 
-        self.pushButton1.setGeometry(QtCore.QRect(1550, 180, 200, 100))
+        self.pushButton1.setGeometry(QtCore.QRect(1050, 100, 200, 100))
         self.pushButton1.setObjectName("pushButton1")
 
         self.pushButton2 = QtWidgets.QPushButton(self.centralwidget) 
-        self.pushButton2.setGeometry(QtCore.QRect(1550, 430, 200, 100))
+        self.pushButton2.setGeometry(QtCore.QRect(1050, 300, 200, 100))
         self.pushButton2.setObjectName("pushButton2")
 
         self.pushButton3 = QtWidgets.QPushButton(self.centralwidget) 
-        self.pushButton3.setGeometry(QtCore.QRect(1550, 680, 200, 100))
+        self.pushButton3.setGeometry(QtCore.QRect(1050, 500, 200, 100))
         self.pushButton3.setObjectName("pushButton3")
     
 
         self.arrow = QtWidgets.QPushButton(self.centralwidget)
-        self.arrow.setGeometry(QtCore.QRect(1550, 900, 80, 40))
+        self.arrow.setGeometry(QtCore.QRect(1050, 650, 80, 40))
         self.arrow.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("resources/LeftArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -577,10 +577,10 @@ class Ui_MainMenu(object):
         self.arrow.setEnabled(False)
 
         self.description = QtWidgets.QLabel(self.centralwidget)
-        self.description.setGeometry(QtCore.QRect(245, 230, 150, 200)) # texte de description
+        self.description.setGeometry(QtCore.QRect(100, 200, 100, 70)) # texte de description
         str = open('resources/Description.txt', 'r').read()
         self.description.setText(str)
-        self.description.setFont(QtGui.QFont('Arial', 35))
+        self.description.setFont(QtGui.QFont('Arial', 45))
         self.description.setStyleSheet("QLabel { background-color : white; color : black; }")
         self.description.adjustSize()
         self.description.setVisible(False)
@@ -611,5 +611,56 @@ class Ui_MainMenu(object):
         #self.epf.setText(_translate("MainMenu","AAAAAA"))
         self.pushButton1.setText(_translate("MainMenu", "Prendre photo"))
         self.pushButton2.setText(_translate("MainMenu", "Statistiques"))
-        self.pushButton3.setText(_translate("MainMenu", "Description du projet"))
-        self.camera_select.move(10,220)
+        self.pushButton3.setText(_translate("MainMenu", "Description du \nprojet"))
+        self.status_label.move(1050,60)
+
+        self.pushButton1.setStyleSheet("QPushButton{\n"
+"font: 63 28pt \"URW Gothic L\";\n"
+"border:1px transparent;\n"
+"border-radius: 20px;\n"
+"color: #FFFFFF;\n"
+"background-color: #000000;\n"
+"border: transparent\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"color: #fff;\n"
+"background-color: #000000;\n"
+"border: transparent\n"
+"}\n"
+"\n"
+"")
+
+        self.pushButton2.setStyleSheet("QPushButton{\n"
+"font: 63 28pt \"URW Gothic L\";\n"
+"border:1px transparent;\n"
+"border-radius: 20px;\n"
+"color: #FFFFFF;\n"
+"background-color: #000000;\n"
+"border: transparent\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"color: #fff;\n"
+"background-color: #000000;\n"
+"border: transparent\n"
+"}\n"
+"\n"
+"")
+
+        self.pushButton3.setStyleSheet("QPushButton{\n"
+"font: 63 28pt \"URW Gothic L\";\n"
+"border:1px transparent;\n"
+"border-radius: 20px;\n"
+"color: #FFFFFF;\n"
+"background-color: #000000;\n"
+"border: transparent\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"color: #fff;\n"
+"background-color: #000000;\n"
+"border: transparent\n"
+"}\n"
+"\n"
+"")
