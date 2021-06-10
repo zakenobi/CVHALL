@@ -3,7 +3,7 @@ import board
 import busio
 import adafruit_mlx90640
 
-PRINT_TEMPERATURES = False
+PRINT_TEMPERATURES = True
 
 i2c = busio.I2C(board.SCL, board.SDA, frequency=800000)
 
@@ -30,4 +30,4 @@ while True:
         
         print()
     print()
-    print(t)
+    #print(t)
