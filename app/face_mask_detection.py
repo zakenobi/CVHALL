@@ -280,17 +280,15 @@ class MainMenu(QMainWindow):
     def arrow(self):
         self.ui.pushButton1.setVisible(True)
         self.ui.pushButton1.setEnabled(True)
-
         self.ui.pushButton2.setVisible(True)
         self.ui.pushButton2.setEnabled(True)
-
         self.ui.pushButton3.setVisible(True)
         self.ui.pushButton3.setEnabled(True)
-
         self.ui.description.setVisible(False)
-
         self.ui.arrow.setVisible(False)
         self.ui.arrow.setEnabled(False)
+        self.ui.SArrowLeft.setVisible(False)
+        self.ui.SArrowLeft.setEnabled(False)
     
     def revealDesc(self):
         self.ui.description.setVisible(True)
