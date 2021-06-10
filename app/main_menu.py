@@ -545,6 +545,7 @@ class Ui_MainMenu(object):
         MainMenu.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainMenu)
         self.statusbar.setObjectName("statusbar")
+        self.statusbar.move(1050,60)
         MainMenu.setStatusBar(self.statusbar)
 
         self.epf = QtWidgets.QLabel(self.centralwidget) # image
