@@ -577,10 +577,10 @@ class Ui_MainMenu(object):
         self.arrow.setEnabled(False)
 
         self.description = QtWidgets.QLabel(self.centralwidget)
-        self.description.setGeometry(QtCore.QRect(245, 230, 150, 200)) # texte de description
+        self.description.setGeometry(QtCore.QRect(245, 230, 100, 100)) # texte de description
         str = open('resources/Description.txt', 'r').read()
         self.description.setText(str)
-        self.description.setFont(QtGui.QFont('Arial', 35))
+        self.description.setFont(QtGui.QFont('Arial', 40))
         self.description.setStyleSheet("QLabel { background-color : white; color : black; }")
         self.description.adjustSize()
         self.description.setVisible(False)
