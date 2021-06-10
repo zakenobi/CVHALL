@@ -30,4 +30,4 @@ while True:
         
         print()
     print()
-    #print(t)
+    print(frame)
