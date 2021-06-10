@@ -18,7 +18,7 @@ from main_menu import *
 
 i2c = busio.I2C(board.SCL, board.SDA, frequency=800000)
 mlx = adafruit_mlx90640.MLX90640(i2c)
-mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_6_HZ
+mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_5_HZ
 
 LABELS = ["Mask", "Without Mask"]
 COLORS = [[0, 255, 0], [0, 0, 255]]
