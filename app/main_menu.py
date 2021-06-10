@@ -57,7 +57,7 @@ class Ui_MainMenu(object):
 "")
         self.start_button.setObjectName("start_button")
         self.stop_button = QtWidgets.QPushButton(self.centralwidget)
-        self.stop_button.setGeometry(QtCore.QRect(200, 660, 120, 50))
+        self.stop_button.setGeometry(QtCore.QRect(200, 300, 120, 50))
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
