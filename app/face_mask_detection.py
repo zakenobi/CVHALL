@@ -16,7 +16,6 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QWidget
 
 from main_menu import *
 
-
 i2c = busio.I2C(board.SCL, board.SDA, frequency=800000)
 mlx = adafruit_mlx90640.MLX90640(i2c)
 mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_4_HZ
@@ -53,14 +52,10 @@ def get_temp():
     return max_temp
 
 # Tres important pour obtenir la detection de masque
-def get_processed_image(img, net, confThreshold, nmsThreshold,fps_temp):
+def get_processed_image(img, net, confThreshold, nmsThreshold):
     mask_count = 0
     nomask_count = 0
-    if fps_temp%2 == 0 :
-        max_temp=get_temp()
-        fps_temp=fps_temp+1
-    
-    print(fps_temp)
+    max_temp=get_temp()
 
     classes, confidences, boxes = net.detect(img, confThreshold, nmsThreshold)#fonction de detection
     for cl, score, (left, top, width, height) in zip(classes, confidences, boxes):
@@ -129,12 +124,11 @@ class Camera(QTimer):
         mainMenu.ui.status_type_label.setStyleSheet(status_stylesheet)
 
     def camera_run(self):
-        fps_temp=0
         if self.status != "pas de connexion":
             try:
                 ret, image = self.cam.read() #lecture de la camera
                 self.last_image = image.copy()
-                image, status, mask_count, nomask_count,fps_temp = get_processed_image(image, mainMenu.net, self.confThreshold, self.nmsThreshold, fps_temp) #recuperation de l'image avec la detection
+                image, status, mask_count, nomask_count = get_processed_image(image, mainMenu.net, self.confThreshold, self.nmsThreshold) #recuperation de l'image avec la detection
                 self.status = status
                 if status == "Pas de danger": #changement de l'etat du text en fonction de l'etat de danger
                     self.camera_name_item.setForeground(QColor(21, 200, 8))
