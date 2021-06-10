@@ -2,6 +2,11 @@ import os
 import sys
 import cv2
 
+import time
+import board
+import busio
+import adafruit_mlx90640
+
 import numpy as np
 from pathlib import Path
 from datetime import datetime
@@ -10,6 +15,8 @@ from PyQt5.QtGui import QImage, QPixmap, QColor, QRegExpValidator
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QWidget, QMessageBox
 
 from main_menu import *
+
+i2c = busio.I2C(board.SCL, board.SDA, frequency=800000)
 
 LABELS = ["Mask", "Without Mask"]
 COLORS = [[0, 255, 0], [0, 0, 255]]
@@ -38,6 +45,11 @@ def create_detection_net(config_path, weights_path):
 
 # Tres important pour obtenir la detection de masque
 def get_processed_image(img, net, confThreshold, nmsThreshold):
+    i2c = busio.I2C(board.SCL, board.SDA, frequency=800000)
+    mlx = adafruit_mlx90640.MLX90640(i2c)
+    frame = [0] * 768
+    mlx.getFrame(frame)
+    max_temp=max(frame)
     mask_count = 0
     nomask_count = 0
     classes, confidences, boxes = net.detect(img, confThreshold, nmsThreshold)#fonction de detection
@@ -48,7 +60,7 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
         end_point = (int(left + width), int(top + height))
         color = COLORS[cl[0]] #definie la couleur du carre
         img = cv2.rectangle(img, start_point, end_point, color, 2)  #dessine le carre sur l'image 
-        text = f'{LABELS[cl[0]]}: {score[0]:0.2f}  Temp: 37.4`C'
+        text = f'{LABELS[cl[0]]}: {score[0]:0.2f}  Temp:{max_temp}'
         (test_width, text_height), baseline = cv2.getTextSize(text, cv2.FONT_ITALIC, 0.6, 1)
         end_point = (int(left + test_width + 2), int(top - text_height - 2))
         img = cv2.rectangle(img, start_point, end_point, color, -1)
