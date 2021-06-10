@@ -517,7 +517,7 @@ class Ui_MainMenu(object):
 "padding: 1px 15px 1px 10px;\n"
 "}\n"
 "\n"
-"QComboBox::down-arrow\n"
+"QComboBox::down-\n"
 "{\n"
 "padding: 10px 10px 5px 5px;\n"
 " }\n"
@@ -570,6 +570,14 @@ class Ui_MainMenu(object):
 
         self.arrow = QtWidgets.QPushButton(self.centralwidget)
         self.arrow.setGeometry(QtCore.QRect(1050, 650, 80, 40))
+        self.arrow.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("resources/LeftArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.arrow.setVisible(False)
+        self.arrow.setEnabled(False)
+
+        self.SArrowLeft = QtWidgets.QPushButton(self.centralwidget)
+        self.arrow.setGeometry(QtCore.QRect(100, 600, 80, 40))
         self.arrow.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("resources/LeftArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
