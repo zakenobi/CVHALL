@@ -321,6 +321,4 @@ if __name__ == '__main__':
     mainMenu.showFullScreen()
     #mainMenu.start_cameras()
 
-
     sys.exit(app.exec_())
-

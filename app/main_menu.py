@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainMenu(object):
     def setupUi(self, MainMenu):
         MainMenu.setObjectName("MainMenu")
-        MainMenu.resize(1400, 720)
+        MainMenu.resize(1280, 720)
         MainMenu.setStyleSheet("QMainWindow \n"
 "{\n"
 "background-color: rgb(255, 255, 255);\n"
