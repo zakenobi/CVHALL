@@ -363,7 +363,7 @@ class Ui_MainMenu(object):
 "font: 32pt \"Gill Sans MT\";")
         #self.camera_select_label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.camera_select_label.move(10,170)
-        self.camera_select.move(10,220)
+        
         self.camera_select_label.setObjectName("camera_select_label")
         self.horizontalLayout.addWidget(self.camera_select_label)
         self.camera_select = QtWidgets.QComboBox(self.horizontalLayoutWidget_2)
@@ -491,6 +491,7 @@ class Ui_MainMenu(object):
         self.camera_select.setFont(font)
         self.camera_select.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.camera_select.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
+        self.camera_select.move(10,220)
         self.camera_select.setStyleSheet("QComboBox\n"
 "{\n"
 "font: 14pt \"URW Gothic L\";\n"
