@@ -491,7 +491,6 @@ class Ui_MainMenu(object):
         self.camera_select.setFont(font)
         self.camera_select.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.camera_select.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
-        self.camera_select.move(10,220)
         self.camera_select.setStyleSheet("QComboBox\n"
 "{\n"
 "font: 14pt \"URW Gothic L\";\n"
@@ -613,3 +612,4 @@ class Ui_MainMenu(object):
         self.pushButton1.setText(_translate("MainMenu", "Prendre photo"))
         self.pushButton2.setText(_translate("MainMenu", "Statistiques"))
         self.pushButton3.setText(_translate("MainMenu", "Description du projet"))
+        self.camera_select.move(10,220)
