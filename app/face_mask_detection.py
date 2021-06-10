@@ -17,6 +17,8 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QWidget
 from main_menu import *
 
 i2c = busio.I2C(board.SCL, board.SDA, frequency=800000)
+mlx = adafruit_mlx90640.MLX90640(i2c)
+mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_2_HZ
 
 LABELS = ["Mask", "Without Mask"]
 COLORS = [[0, 255, 0], [0, 0, 255]]
@@ -43,18 +45,17 @@ def create_detection_net(config_path, weights_path):
     net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
     return net
 
-# Tres important pour obtenir la detection de masque
-def get_processed_image(img, net, confThreshold, nmsThreshold):
-    i2c = busio.I2C(board.SCL, board.SDA, frequency=800000)
-    mlx = adafruit_mlx90640.MLX90640(i2c)
+def get_temp():
     frame = [0] * 768
-    stamp = time.monotonic()
-    mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_2_HZ
     mlx.getFrame(frame)
     max_temp=max(frame)
-    
+    return max_temp
+
+# Tres important pour obtenir la detection de masque
+def get_processed_image(img, net, confThreshold, nmsThreshold):
     mask_count = 0
     nomask_count = 0
+    max_temp=get_temp()
 
     classes, confidences, boxes = net.detect(img, confThreshold, nmsThreshold)#fonction de detection
     for cl, score, (left, top, width, height) in zip(classes, confidences, boxes):
