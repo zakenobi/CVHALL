@@ -613,3 +613,4 @@ class Ui_MainMenu(object):
         self.pushButton1.setText(_translate("MainMenu", "Prendre photo"))
         self.pushButton2.setText(_translate("MainMenu", "Statistiques"))
         self.pushButton3.setText(_translate("MainMenu", "Description du projet"))
+        self.status_label.move(1050,60)
