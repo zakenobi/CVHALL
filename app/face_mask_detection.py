@@ -310,6 +310,8 @@ class MainMenu(QMainWindow):
     def revealStats(self):
         self.ui.SArrowLeft.setvisible(True)
         self.ui.SArrowLeft.setEnabled(True)
+        self.ui.SArrowRight.setvisible(True)
+        self.ui.SArrowRight.setEnabled(True)
     
     def camCancel(self):
         #mainMenu.change_cam(1)
