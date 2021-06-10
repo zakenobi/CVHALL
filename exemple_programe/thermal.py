@@ -3,8 +3,7 @@ import board
 import busio
 import adafruit_mlx90640
 
-PRINT_TEMPERATURES = True
-PRINT_ASCIIART = False
+PRINT_TEMPERATURES = False
 
 i2c = busio.I2C(board.SCL, board.SDA, frequency=800000)
 
@@ -28,28 +27,7 @@ while True:
             t = frame[h * 32 + w]
             if PRINT_TEMPERATURES:
                 print("%0.1f, " % t, end="")
-            if PRINT_ASCIIART:
-                c = "&"
-                # pylint: disable=multiple-statements
-                if t < 20:
-                    c = " "
-                elif t < 23:
-                    c = "."
-                elif t < 25:
-                    c = "-"
-                elif t < 27:
-                    c = "*"
-                elif t < 29:
-                    c = "+"
-                elif t < 31:
-                    c = "x"
-                elif t < 33:
-                    c = "%"
-                elif t < 35:
-                    c = "#"
-                elif t < 37:
-                    c = "X"
-                # pylint: enable=multiple-statements
-                print(c, end="")
+        
         print()
     print()
+    print(mlx)
