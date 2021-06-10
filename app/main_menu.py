@@ -569,7 +569,7 @@ class Ui_MainMenu(object):
     
 
         self.arrow = QtWidgets.QPushButton(self.centralwidget)
-        self.arrow.setGeometry(QtCore.QRect(1550, 900, 80, 40))
+        self.arrow.setGeometry(QtCore.QRect(1050, 650, 80, 40))
         self.arrow.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("resources/LeftArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
