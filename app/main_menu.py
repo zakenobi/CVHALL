@@ -611,7 +611,7 @@ class Ui_MainMenu(object):
         #self.epf.setText(_translate("MainMenu","AAAAAA"))
         self.pushButton1.setText(_translate("MainMenu", "Prendre photo"))
         self.pushButton2.setText(_translate("MainMenu", "Statistiques"))
-        self.pushButton3.setText(_translate("MainMenu", "Description du projet"))
+        self.pushButton3.setText(_translate("MainMenu", "Description du \nprojet"))
         self.status_label.move(1050,60)
 
         self.pushButton1.setStyleSheet("QPushButton{\n"
