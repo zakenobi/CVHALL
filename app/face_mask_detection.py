@@ -289,6 +289,9 @@ class MainMenu(QMainWindow):
         self.ui.arrow.setEnabled(False)
         self.ui.SArrowLeft.setVisible(False)
         self.ui.SArrowLeft.setEnabled(False)
+        self.ui.SArrowRight.setVisible(False)
+        self.ui.SArrowRight.setEnabled(False)
+
     
     def revealDesc(self):
         self.ui.description.setVisible(True)
