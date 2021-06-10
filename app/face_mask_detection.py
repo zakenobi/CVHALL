@@ -79,9 +79,6 @@ class Camera(QTimer):
         self.camera_name_item.setTextAlignment(Qt.AlignCenter)
         self.camera_status_item = QTableWidgetItem(self.status)
         #self.camera_status_item.setTextAlignment(Qt.AlignCenter)
-
-        self.camera_status_item.move(1050,60)
-
         self.cam = cv2.VideoCapture(self.camID)
         self.timeout.connect(self.camera_run)
 
