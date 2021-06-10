@@ -30,7 +30,7 @@ class Ui_MainMenu(object):
         self.image_label.setAlignment(QtCore.Qt.AlignCenter)
         self.image_label.setObjectName("image_label")
         self.start_button = QtWidgets.QPushButton(self.centralwidget)
-        self.start_button.setGeometry(QtCore.QRect(50, 630, 200, 70))
+        self.start_button.setGeometry(QtCore.QRect(50, 630, 150, 50))
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(28)
