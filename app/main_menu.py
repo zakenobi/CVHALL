@@ -613,3 +613,20 @@ class Ui_MainMenu(object):
         self.pushButton2.setText(_translate("MainMenu", "Statistiques"))
         self.pushButton3.setText(_translate("MainMenu", "Description du projet"))
         self.status_label.move(1050,60)
+
+        self.pushButton1.setStyleSheet("QPushButton{\n"
+"font: 63 28pt \"URW Gothic L\";\n"
+"border:1px transparent;\n"
+"border-radius: 20px;\n"
+"color: #fff;\n"
+"background-color: #228B22;\n"
+"border: transparent\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"color: #fff;\n"
+"background-color: #000000;\n"
+"border: transparent\n"
+"}\n"
+"\n"
+"")
