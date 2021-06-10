@@ -295,11 +295,13 @@ class MainMenu(QMainWindow):
     def cam(self):
         mainMenu.start_cameras()
         mainMenu.change_cam(0)
+        self.ui.image_label.setVisible(True)
     
     def camCancel(self):
         #mainMenu.change_cam(1)
         mainMenu.stop_cameras()
-        os.execv(sys.executable, ['python3'] + sys.argv)
+        self.ui.image_label.setVisible(False)
+        #os.execv(sys.executable, ['python3'] + sys.argv)
         #mainMenu.close_app()
 
     def timer(self):
