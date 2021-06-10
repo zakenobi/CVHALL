@@ -319,6 +319,9 @@ class MainMenu(QMainWindow):
         self.ui.image_label.setVisible(False)
         #os.execv(sys.executable, ['python3'] + sys.argv)
         #mainMenu.close_app()
+        self.mask_count_label.setVisible(False)
+        self.no_mask_count_label.setVisible(False)
+        self.status_type_label.setVisible(False)
 
     def timer(self):
         mainMenu.cam()
