@@ -186,7 +186,7 @@ class MainMenu(QMainWindow):
         #self.ui.pushButton1.clicked.connect(self.hide)
         #self.ui.pushButton1.clicked.connect(self.reveal)
         self.ui.arrow.clicked.connect(self.arrow)
-        self.ui.pushButton2.clicked.connect(self.revealDesc)
+        self.ui.pushButton2.clicked.connect(self.revealArrow)
         self.ui.pushButton2.clicked.connect(self.camCancel)
         self.ui.pushButton3.clicked.connect(self.revealDesc)
         self.ui.pushButton3.clicked.connect(self.camCancel)
@@ -293,6 +293,10 @@ class MainMenu(QMainWindow):
     
     def revealDesc(self):
         self.ui.description.setVisible(True)
+        self.ui.arrow.setVisible(True)
+        self.ui.arrow.setEnabled(True)
+
+    def revealArrow(self):
         self.ui.arrow.setVisible(True)
         self.ui.arrow.setEnabled(True)
 
