@@ -603,6 +603,8 @@ class Ui_MainMenu(object):
         self.description.setEnabled(True)
 
         self.arrow.setIcon(icon)
+        self.SArrowLeft.setIcon(icon2)
+        self.SArrowRight.setIcon(icon3)
         self.arrow.setObjectName("pushButton")
         #self.arrow.setVisible(False) # par defaut la fleche est desactivee
         #self.arrow.setEnabled(False)
