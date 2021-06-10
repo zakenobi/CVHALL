@@ -82,6 +82,8 @@ font1 = {'family':'serif','color':'darkred','size':12} # Création d'une police 
 font2 = {'family':'serif','color':'k', 'style':'italic','size':10} # Création d'une police d'écriture (taille, couleur...)
 
 # CAMEMBERT PROPORTION DE MASQUES BIEN/MAL/NON PORTES
+    # Compteur sur une journée du nbr de masques
+
 def camembert(): # Fonction camembert
     y = np.array([nb_masques_bien_portes, nb_masques_mal_portes, nb_masques_non_portes]) # Affectation des valeurs à chaque partie du camembert
     mylabels = ["Masques bien portés", "Masques mal portés", "Masques non portés"] # Ajout de nom pour chaque valeur
@@ -100,6 +102,8 @@ camembert()
 
 
 # GRAPHIQUE POURCENTAGE DE MASQUES PORTES CORRECTEMENT AU COURS DE LA JOURNEE
+    # prise de mesure à heure fixe du nb de masques bien portés divisé par le nb de personnes filmées
+
 def graphique(): # Fonction graph
     xpoints = np.array([8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]) # Etalage des heures de la journée
     ypoints = np.array([15/15*100, 8/10*100, 10/15*100, 10/20*100, 15/20*100, 18/21*100, 15/16*100, 18/20*100, 12/12*100, 16/18*100, 11/12*100, 19/20*100, 10/10*100]) # Pourcentage de masques portés correctement
@@ -116,3 +120,22 @@ def graphique(): # Fonction graph
     #plt.show() # Affichage du graph
    
 graphique()
+
+
+ # RECUPERATION DE LA DATE ET HEURE D'UN INSTANT T
+
+import os
+import sys
+from datetime import datetime
+
+date = datetime.now().strftime("%d.%m.%Y")
+heure = datetime.now().strftime("%H.%M.%S")
+print(date)
+print(heure)
+
+# if heure == "12.08.00" :
+#     print("ok")
+
+# else :
+#     print("non")
+
