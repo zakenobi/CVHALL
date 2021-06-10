@@ -619,7 +619,7 @@ class Ui_MainMenu(object):
 "border:1px transparent;\n"
 "border-radius: 20px;\n"
 "color: #fff;\n"
-"background-color: #228B22;\n"
+"background-color: #FFFFFF;\n"
 "border: transparent\n"
 "}\n"
 "\n"
