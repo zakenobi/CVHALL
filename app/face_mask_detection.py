@@ -48,10 +48,14 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
     i2c = busio.I2C(board.SCL, board.SDA, frequency=800000)
     mlx = adafruit_mlx90640.MLX90640(i2c)
     frame = [0] * 768
+    stamp = time.monotonic()
+    mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_2_HZ
     mlx.getFrame(frame)
     max_temp=max(frame)
+    
     mask_count = 0
     nomask_count = 0
+
     classes, confidences, boxes = net.detect(img, confThreshold, nmsThreshold)#fonction de detection
     for cl, score, (left, top, width, height) in zip(classes, confidences, boxes):
         mask_count += (1 - cl[0])
