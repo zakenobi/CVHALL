@@ -30,7 +30,7 @@ class Ui_MainMenu(object):
         self.image_label.setAlignment(QtCore.Qt.AlignCenter)
         self.image_label.setObjectName("image_label")
         self.start_button = QtWidgets.QPushButton(self.centralwidget)
-        self.start_button.setGeometry(QtCore.QRect(50, 630, 200, 70))
+        self.start_button.setGeometry(QtCore.QRect(50, 620, 200, 70))
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(28)
@@ -57,7 +57,7 @@ class Ui_MainMenu(object):
 "")
         self.start_button.setObjectName("start_button")
         self.stop_button = QtWidgets.QPushButton(self.centralwidget)
-        self.stop_button.setGeometry(QtCore.QRect(350, 630, 200, 70))
+        self.stop_button.setGeometry(QtCore.QRect(350, 620, 200, 70))
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
@@ -361,7 +361,9 @@ class Ui_MainMenu(object):
 "background-color: transparent;\n"
 "color: #228B22;\n"
 "font: 32pt \"Gill Sans MT\";")
-        self.camera_select_label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        #self.camera_select_label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.camera_select_label.move(10,170)
+        
         self.camera_select_label.setObjectName("camera_select_label")
         self.horizontalLayout.addWidget(self.camera_select_label)
         self.camera_select = QtWidgets.QComboBox(self.horizontalLayoutWidget_2)
@@ -610,3 +612,4 @@ class Ui_MainMenu(object):
         self.pushButton1.setText(_translate("MainMenu", "Prendre photo"))
         self.pushButton2.setText(_translate("MainMenu", "Statistiques"))
         self.pushButton3.setText(_translate("MainMenu", "Description du projet"))
+        self.camera_select.move(10,220)
