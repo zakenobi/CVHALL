@@ -84,8 +84,8 @@ class Camera(QTimer):
 
     def start_camera(self):
         self.cam = cv2.VideoCapture(self.camID)
-        self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)#attribu optionnel
-        self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+        self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, 1000)#attribu optionnel
+        self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 600) # taille max cam
 
     def take_photo(self):
         today = datetime.now().strftime("%d.%m.%Y")
@@ -155,8 +155,8 @@ class Camera(QTimer):
             if self.cam.isOpened() and self.cam.get(cv2.CAP_PROP_FPS) != 0:
                 with open(connect_log_path, "a") as connect_log:
                     connect_log.write(datetime.now().strftime("%d/%m/%Y - %H:%M:%S ->\t") + self.camName + " (ID: " + str(self.camID) + ") connected to the system.\n\n")
-                self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
-                self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+                self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, 1000)
+                self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 600)
                 self.status = "Safe"
             elif self.viewable is True:
                 self.view_disconnected_cam()
