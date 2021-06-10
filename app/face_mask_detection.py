@@ -56,7 +56,7 @@ def get_temp():
 def get_processed_image(img, net, confThreshold, nmsThreshold,fps_temp):
     mask_count = 0
     nomask_count = 0
-    if fps_temp%2 == 1 :
+    if fps_temp%2 == 0 :
         max_temp=get_temp()
         fps_temp=fps_temp+1
     
