@@ -11,15 +11,15 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainMenu(object):
     def setupUi(self, MainMenu):
         MainMenu.setObjectName("MainMenu")
-        MainMenu.resize(1400, 720)
+        MainMenu.resize(1280, 720)
         MainMenu.setStyleSheet("QMainWindow \n"
 "{\n"
-"background-color: rgb(5, 23, 47);\n"
+"background-color: rgb(255, 255, 255);\n"
 "}")
         self.centralwidget = QtWidgets.QWidget(MainMenu)
         self.centralwidget.setObjectName("centralwidget")
         self.image_label = QtWidgets.QLabel(self.centralwidget)
-        self.image_label.setGeometry(QtCore.QRect(20, 120, 1280, 720))
+        self.image_label.setGeometry(QtCore.QRect(0, 40, 1000, 600)) #cam
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(48)
@@ -29,17 +29,17 @@ class Ui_MainMenu(object):
         self.image_label.setStyleSheet("color: rgb(255, 255, 255);")
         self.image_label.setAlignment(QtCore.Qt.AlignCenter)
         self.image_label.setObjectName("image_label")
-        self.take_photo_button = QtWidgets.QPushButton(self.centralwidget)
-        self.take_photo_button.setGeometry(QtCore.QRect(450, 930, 331, 61))
+        self.start_button = QtWidgets.QPushButton(self.centralwidget)
+        self.start_button.setGeometry(QtCore.QRect(50, 630, 200, 70))
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(28)
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(7)
-        self.take_photo_button.setFont(font)
-        self.take_photo_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.take_photo_button.setStyleSheet("QPushButton{\n"
+        self.start_button.setFont(font)
+        self.start_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.start_button.setStyleSheet("QPushButton{\n"
 "font: 63 28pt \"URW Gothic L\";\n"
 "border:1px transparent;\n"
 "border-radius: 20px;\n"
@@ -55,18 +55,18 @@ class Ui_MainMenu(object):
 "}\n"
 "\n"
 "")
-        self.take_photo_button.setObjectName("take_photo_button")
-        self.start_menu_button = QtWidgets.QPushButton(self.centralwidget)
-        self.start_menu_button.setGeometry(QtCore.QRect(840, 930, 331, 61))
+        self.start_button.setObjectName("start_button")
+        self.stop_button = QtWidgets.QPushButton(self.centralwidget)
+        self.stop_button.setGeometry(QtCore.QRect(350, 630, 200, 70))
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(7)
-        self.start_menu_button.setFont(font)
-        self.start_menu_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.start_menu_button.setStyleSheet("QPushButton{\n"
+        self.stop_button.setFont(font)
+        self.stop_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.stop_button.setStyleSheet("QPushButton{\n"
 "font: 63 24pt \"URW Gothic L\";\n"
 "border:1px transparent;\n"
 "border-radius: 20px;\n"
@@ -82,7 +82,7 @@ class Ui_MainMenu(object):
 "}\n"
 "\n"
 "")
-        self.start_menu_button.setObjectName("start_menu_button")
+        self.stop_button.setObjectName("stop_button")
 #         self.camera_list_label = QtWidgets.QLabel(self.centralwidget)
 #         self.camera_list_label.setGeometry(QtCore.QRect(1440, 60, 371, 51))
 #         font = QtGui.QFont()
@@ -100,7 +100,7 @@ class Ui_MainMenu(object):
 #         self.camera_list_label.setObjectName("camera_list_label")
         self.photo_taken_notification = QtWidgets.QLabel(self.centralwidget)
         self.photo_taken_notification.setEnabled(True)
-        self.photo_taken_notification.setGeometry(QtCore.QRect(20, 930, 381, 61))
+        self.photo_taken_notification.setGeometry(QtCore.QRect(1200, 0, 420, 61))
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
@@ -111,7 +111,7 @@ class Ui_MainMenu(object):
         self.photo_taken_notification.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.photo_taken_notification.setStyleSheet("border: transparent;\n"
 "background-color: transparent;\n"
-"color: #DAA520;\n"
+"color: #DA7720;\n"
 "font: 63 24pt \"URW Gothic L\";")
         self.photo_taken_notification.setText("")
         self.photo_taken_notification.setAlignment(QtCore.Qt.AlignCenter)
@@ -268,7 +268,7 @@ class Ui_MainMenu(object):
 #         self.camera_table.verticalHeader().setStretchLastSection(False)
         self.mask_count_label = QtWidgets.QLabel(self.centralwidget)
         self.mask_count_label.setEnabled(True)
-        self.mask_count_label.setGeometry(QtCore.QRect(130, 70, 401, 51))
+        self.mask_count_label.setGeometry(QtCore.QRect(130, 80, 401, 51))
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
@@ -279,7 +279,7 @@ class Ui_MainMenu(object):
         self.mask_count_label.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.mask_count_label.setStyleSheet("border: transparent;\n"
 "background-color: transparent;\n"
-"color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);\n"
 "font: 63 24pt \"URW Gothic L\";")
         self.mask_count_label.setText("")
         self.mask_count_label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
@@ -287,7 +287,7 @@ class Ui_MainMenu(object):
         self.mask_count_label.setObjectName("mask_count_label")
         self.no_mask_count_label = QtWidgets.QLabel(self.centralwidget)
         self.no_mask_count_label.setEnabled(True)
-        self.no_mask_count_label.setGeometry(QtCore.QRect(530, 70, 431, 51))
+        self.no_mask_count_label.setGeometry(QtCore.QRect(530, 80, 431, 51))
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
@@ -298,7 +298,7 @@ class Ui_MainMenu(object):
         self.no_mask_count_label.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.no_mask_count_label.setStyleSheet("border: transparent;\n"
 "background-color: transparent;\n"
-"color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);\n"
 "font: 63 24pt \"URW Gothic L\";")
         self.no_mask_count_label.setText("")
         self.no_mask_count_label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
@@ -307,6 +307,7 @@ class Ui_MainMenu(object):
         self.status_label = QtWidgets.QLabel(self.centralwidget)
         self.status_label.setEnabled(True)
         self.status_label.setGeometry(QtCore.QRect(1000, 70, 141, 51))
+        self.status_label.setScaledContents(True)
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
@@ -545,12 +546,48 @@ class Ui_MainMenu(object):
         MainMenu.setStatusBar(self.statusbar)
 
         self.epf = QtWidgets.QLabel(self.centralwidget) # image
-        self.epf.setGeometry(QtCore.QRect(0, 100, 1280, 720)) 
-        self.epf.setText("")
-        self.epf.setPixmap(QtGui.QPixmap("ressources/Logo_EPF.png"))
+        self.epf.setGeometry(QtCore.QRect(0, 0, 195, 90)) 
+        self.epf.setPixmap(QtGui.QPixmap("resources/Logo_EPF.png"))
         self.epf.setScaledContents(True)
+        #self.epf.setIcon(QtGui.QIcon("resources/epf_logo.png"))
+        #self.epf.setIconSize(QtCore.QSize(100,100))
         self.epf.setObjectName("epf")
+     
+        self.pushButton1 = QtWidgets.QPushButton(self.centralwidget) 
+        self.pushButton1.setGeometry(QtCore.QRect(1550, 180, 200, 100))
+        self.pushButton1.setObjectName("pushButton1")
 
+        self.pushButton2 = QtWidgets.QPushButton(self.centralwidget) 
+        self.pushButton2.setGeometry(QtCore.QRect(1550, 430, 200, 100))
+        self.pushButton2.setObjectName("pushButton2")
+
+        self.pushButton3 = QtWidgets.QPushButton(self.centralwidget) 
+        self.pushButton3.setGeometry(QtCore.QRect(1550, 680, 200, 100))
+        self.pushButton3.setObjectName("pushButton3")
+    
+
+        self.arrow = QtWidgets.QPushButton(self.centralwidget)
+        self.arrow.setGeometry(QtCore.QRect(1550, 900, 80, 40))
+        self.arrow.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("resources/LeftArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.arrow.setVisible(False)
+        self.arrow.setEnabled(False)
+
+        self.description = QtWidgets.QLabel(self.centralwidget)
+        self.description.setGeometry(QtCore.QRect(245, 230, 150, 200)) # texte de description
+        str = open('resources/Description.txt', 'r').read()
+        self.description.setText(str)
+        self.description.setFont(QtGui.QFont('Arial', 35))
+        self.description.setStyleSheet("QLabel { background-color : white; color : black; }")
+        self.description.adjustSize()
+        self.description.setVisible(False)
+        self.description.setEnabled(True)
+
+        self.arrow.setIcon(icon)
+        self.arrow.setObjectName("pushButton")
+        #self.arrow.setVisible(False) # par defaut la fleche est desactivee
+        #self.arrow.setEnabled(False)
 
         self.retranslateUi(MainMenu)
         QtCore.QMetaObject.connectSlotsByName(MainMenu)
@@ -559,13 +596,17 @@ class Ui_MainMenu(object):
         _translate = QtCore.QCoreApplication.translate
         MainMenu.setWindowTitle(_translate("MainMenu", "Face Mask Detector"))
         self.image_label.setText(_translate("MainMenu", "Select a Camera"))
-        self.take_photo_button.setText(_translate("MainMenu", "Take Photo"))
-        self.start_menu_button.setText(_translate("MainMenu", "Exit"))
+        self.start_button.setText(_translate("MainMenu", "START"))
+        self.stop_button.setText(_translate("MainMenu", "STOP"))
+        #self.epf.setText(_translate("MainMenu", "Test"))
         #self.camera_list_label.setText(_translate("MainMenu", "Camera Control Panel"))
         #item = self.camera_table.horizontalHeaderItem(0)
         #item.setText(_translate("MainMenu", "Camera"))
         #item = self.camera_table.horizontalHeaderItem(1)
         #item.setText(_translate("MainMenu", "Status"))
-        self.camera_select_label.setText(_translate("MainMenu", "Select Camera:    "))
+        self.camera_select_label.setText(_translate("MainMenu", "Liste caméras:    "))
         self.camera_select.setProperty("placeholderText", _translate("MainMenu", "Select Camera"))
-
+        #self.epf.setText(_translate("MainMenu","AAAAAA"))
+        self.pushButton1.setText(_translate("MainMenu", "Prendre photo"))
+        self.pushButton2.setText(_translate("MainMenu", "Statistiques"))
+        self.pushButton3.setText(_translate("MainMenu", "Description du projet"))

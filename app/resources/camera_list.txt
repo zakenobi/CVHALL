@@ -1,2 +1,1 @@
 Camera_1 0
-test1 2
