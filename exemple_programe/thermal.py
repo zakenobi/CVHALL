@@ -30,4 +30,4 @@ while True:
         
         print()
     print()
-    print(frame)
+    print(max(frame))
