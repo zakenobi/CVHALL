@@ -48,7 +48,7 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
         end_point = (int(left + width), int(top + height))
         color = COLORS[cl[0]] #definie la couleur du carre
         img = cv2.rectangle(img, start_point, end_point, color, 2)  #dessine le carre sur l'image 
-        text = f'{LABELS[cl[0]]}: {score[0]:0.2f}'
+        text = f'{LABELS[cl[0]]}: {score[0]:0.2f}  Temp: 37.4`C'
         (test_width, text_height), baseline = cv2.getTextSize(text, cv2.FONT_ITALIC, 0.6, 1)
         end_point = (int(left + test_width + 2), int(top - text_height - 2))
         img = cv2.rectangle(img, start_point, end_point, color, -1)
