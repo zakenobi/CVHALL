@@ -189,7 +189,7 @@ class MainMenu(QMainWindow):
         self.ui.pushButton3.clicked.connect(self.revealDesc)
         self.ui.start_button.clicked.connect(self.cam)
         self.ui.pushButton3.clicked.connect(self.camCancel)
-        self.ui.arrow.clicked.connect(self.cam)
+        #self.ui.arrow.clicked.connect(self.cam)
         #self.ui.arrow.clicked.connect(self.camCancel)
         #self.ui.timer1.clicked.connect(self.timer)
         self.camera_dict = {}
