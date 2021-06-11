@@ -20,7 +20,7 @@ class Ui_MainMenu(object):
         self.centralwidget = QtWidgets.QWidget(MainMenu)
         self.centralwidget.setObjectName("centralwidget")
         self.image_label = QtWidgets.QLabel(self.centralwidget)
-        self.image_label.setGeometry(QtCore.QRect(0, 0, 1000, 600)) #cam
+        self.image_label.setGeometry(QtCore.QRect(0, 60, 1000, 600)) #cam
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(48)
@@ -28,7 +28,7 @@ class Ui_MainMenu(object):
         font.setWeight(50)
         self.image_label.setFont(font)
         self.image_label.setStyleSheet("color: rgb(255, 255, 255);")
-        self.image_label.setAlignment(QtCore.Qt.AlignCenter)
+        #self.image_label.setAlignment(QtCore.Qt.AlignCenter)
         self.image_label.setObjectName("image_label")
         
         self.start_button = QtWidgets.QPushButton(self.centralwidget)
