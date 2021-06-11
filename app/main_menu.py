@@ -29,6 +29,7 @@ class Ui_MainMenu(object):
         self.image_label.setFont(font)
         self.image_label.setStyleSheet("color: rgb(255, 255, 255);")
         #self.image_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.image_label.setScaledContents(True)
         self.image_label.setObjectName("image_label")
         
         self.start_button = QtWidgets.QPushButton(self.centralwidget)
