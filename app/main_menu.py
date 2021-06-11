@@ -8,6 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class Ui_MainMenu(object):
     def setupUi(self, MainMenu):
         MainMenu.setObjectName("MainMenu")
@@ -29,8 +30,12 @@ class Ui_MainMenu(object):
         self.image_label.setStyleSheet("color: rgb(255, 255, 255);")
         self.image_label.setAlignment(QtCore.Qt.AlignCenter)
         self.image_label.setObjectName("image_label")
+        
         self.start_button = QtWidgets.QPushButton(self.centralwidget)
         self.start_button.setGeometry(QtCore.QRect(300, 620, 200, 70))
+        camIcon = QtGui.QIcon()
+        camIcon.addPixmap(QtGui.QPixmap("resources/CamIcon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.start_button.setIcon(camIcon)
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(28)
@@ -46,7 +51,6 @@ class Ui_MainMenu(object):
 "color: #fff;\n"
 "background-color: #228B22;\n"
 "border: transparent\n"
-"border-radius: 40px;"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -612,7 +616,6 @@ class Ui_MainMenu(object):
         self.stats1.setVisible(False)
         self.stats1.setEnabled(True)
 
-
         self.arrow.setIcon(icon)
         self.SArrowLeft.setIcon(icon2)
         self.SArrowRight.setIcon(icon3)
@@ -627,7 +630,7 @@ class Ui_MainMenu(object):
         _translate = QtCore.QCoreApplication.translate
         MainMenu.setWindowTitle(_translate("MainMenu", "Face Mask Detector"))
         self.image_label.setText(_translate("MainMenu", "Select a Camera"))
-        self.start_button.setText(_translate("MainMenu", "START"))
+        #self.start_button.setText(_translate("MainMenu", "START"))
         self.stop_button.setText(_translate("MainMenu", "STOP"))
         #self.epf.setText(_translate("MainMenu", "Test"))
         #self.camera_list_label.setText(_translate("MainMenu", "Camera Control Panel"))
