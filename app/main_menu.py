@@ -51,20 +51,20 @@ class Ui_MainMenu(object):
 "border:1px transparent;\n"
 "border-radius: 20px;\n"
 "color: #fff;\n"
-"background-color: ##00FF00;\n"
+"background-color: #00FF00;\n"
 "border: transparent\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
 "color: #fff;\n"
-"background-color: ##00FF00;\n"
+"background-color: #00FF00;\n"
 "border: transparent\n"
 "}\n"
 "\n"
 "")
         
         self.stop_button = QtWidgets.QPushButton(self.centralwidget)
-        self.stop_button.setGeometry(QtCore.QRect(35, 420, 200, 120))
+        self.stop_button.setGeometry(QtCore.QRect(35, 420, 120, 120))
         crossIcon = QtGui.QIcon()
         crossIcon.addPixmap(QtGui.QPixmap("resources/cross.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.stop_button.setIcon(crossIcon)
@@ -82,13 +82,13 @@ class Ui_MainMenu(object):
 "border:1px transparent;\n"
 "border-radius: 20px;\n"
 "color: #fff;\n"
-"background-color: ##FF0000;\n"
+"background-color: #FF0000;\n"
 "border: transparent\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
 "color: #fff;\n"
-"background-color: ##FF0000;\n"
+"background-color: #FFF;\n"
 "border: transparent\n"
 "}\n"
 "\n"
