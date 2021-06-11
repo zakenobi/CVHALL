@@ -31,7 +31,6 @@ class Ui_MainMenu(object):
         self.image_label.setObjectName("image_label")
         self.start_button = QtWidgets.QPushButton(self.centralwidget)
         self.start_button.setGeometry(QtCore.QRect(300, 620, 200, 70))
-        self.start_button = QtWidgets.QLabel('round label', self)
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(28)
@@ -47,6 +46,7 @@ class Ui_MainMenu(object):
 "color: #fff;\n"
 "background-color: #228B22;\n"
 "border: transparent\n"
+"border-radius: 40px;"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
