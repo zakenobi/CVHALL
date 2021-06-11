@@ -88,7 +88,7 @@ class Ui_MainMenu(object):
 "\n"
 "QPushButton:hover {\n"
 "color: #fff;\n"
-"background-color: #FFF;\n"
+"background-color: #FF0000;\n"
 "border: transparent\n"
 "}\n"
 "\n"
