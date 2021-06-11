@@ -31,6 +31,7 @@ class Ui_MainMenu(object):
         self.image_label.setObjectName("image_label")
         self.start_button = QtWidgets.QPushButton(self.centralwidget)
         self.start_button.setGeometry(QtCore.QRect(300, 620, 200, 70))
+        self.start_button = QtWidgets.QLabel('round label', self)
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(28)
@@ -601,6 +602,16 @@ class Ui_MainMenu(object):
         self.description.adjustSize()
         self.description.setVisible(False)
         self.description.setEnabled(True)
+
+        self.stats1 = QtWidgets.QLabel(self.centralwidget)
+        self.stats1.setGeometry(QtCore.QRect(100, 200, 800, 1000)) 
+        self.stats1.setText("stats 1")
+        self.stats1.setFont(QtGui.QFont('Arial', 45))
+        self.stats1.setStyleSheet("QLabel { background-color : white; color : black; }")
+        self.stats1.adjustSize()
+        self.stats1.setVisible(False)
+        self.stats1.setEnabled(True)
+
 
         self.arrow.setIcon(icon)
         self.SArrowLeft.setIcon(icon2)
