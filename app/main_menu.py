@@ -64,7 +64,7 @@ class Ui_MainMenu(object):
 "")
         
         self.stop_button = QtWidgets.QPushButton(self.centralwidget)
-        self.stop_button.setGeometry(QtCore.QRect(35, 420, 120, 120))
+        self.stop_button.setGeometry(QtCore.QRect(35, 420, 200, 120))
         crossIcon = QtGui.QIcon()
         crossIcon.addPixmap(QtGui.QPixmap("resources/cross.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.stop_button.setIcon(crossIcon)
