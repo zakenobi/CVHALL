@@ -50,7 +50,7 @@ class Ui_MainMenu(object):
 "border:1px transparent;\n"
 "border-radius: 20px;\n"
 "color: #fff;\n"
-"background-color: #228B22;\n"
+"background-color: #FFF;\n"
 "border: transparent\n"
 "}\n"
 "\n"
@@ -64,6 +64,8 @@ class Ui_MainMenu(object):
         self.start_button.setObjectName("start_button")
         self.stop_button = QtWidgets.QPushButton(self.centralwidget)
         self.stop_button.setGeometry(QtCore.QRect(550, 620, 200, 70))
+        crossIcon = QtGui.QIcon()
+        crossIcon.addPixmap(QtGui.QPixmap("resources/cross.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
@@ -77,7 +79,7 @@ class Ui_MainMenu(object):
 "border:1px transparent;\n"
 "border-radius: 20px;\n"
 "color: #fff;\n"
-"background-color: #8B0000;\n"
+"background-color: #FFF;\n"
 "border: transparent\n"
 "}\n"
 "\n"
@@ -632,7 +634,7 @@ class Ui_MainMenu(object):
         MainMenu.setWindowTitle(_translate("MainMenu", "Face Mask Detector"))
         self.image_label.setText(_translate("MainMenu", "Select a Camera"))
         #self.start_button.setText(_translate("MainMenu", "START"))
-        self.stop_button.setText(_translate("MainMenu", "STOP"))
+        #self.stop_button.setText(_translate("MainMenu", "STOP"))
         #self.epf.setText(_translate("MainMenu", "Test"))
         #self.camera_list_label.setText(_translate("MainMenu", "Camera Control Panel"))
         #item = self.camera_table.horizontalHeaderItem(0)
