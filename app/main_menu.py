@@ -32,11 +32,11 @@ class Ui_MainMenu(object):
         self.image_label.setObjectName("image_label")
         
         self.start_button = QtWidgets.QPushButton(self.centralwidget)
-        self.start_button.setGeometry(QtCore.QRect(300, 620, 80, 80))
+        self.start_button.setGeometry(QtCore.QRect(300, 620, 120, 120))
         camIcon = QtGui.QIcon()
         camIcon.addPixmap(QtGui.QPixmap("resources/CamIcon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.start_button.setIcon(camIcon)
-        self.start_button.setIconSize(QtCore.QSize(80,80))
+        self.start_button.setIconSize(QtCore.QSize(120,120))
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(28)
