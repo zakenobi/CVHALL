@@ -68,7 +68,7 @@ class Ui_MainMenu(object):
         crossIcon = QtGui.QIcon()
         crossIcon.addPixmap(QtGui.QPixmap("resources/cross.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.stop_button.setIcon(crossIcon)
-        self.stop_button.setIconSize(QtCore.QSize(100,100))
+        self.stop_button.setIconSize(QtCore.QSize(80,80))
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
@@ -646,6 +646,9 @@ class Ui_MainMenu(object):
         #item.setText(_translate("MainMenu", "Status"))
         self.camera_select_label.setText(_translate("MainMenu", "Liste caméras:    "))
         self.camera_select.setProperty("placeholderText", _translate("MainMenu", "Select Camera"))
+        self.camera_select.setVisible(False)
+        self.camera_select_label.setVisible(False)
+
         #self.epf.setText(_translate("MainMenu","AAAAAA"))
         self.pushButton1.setText(_translate("MainMenu", "Prendre photo"))
         self.pushButton2.setText(_translate("MainMenu", "Statistiques"))
