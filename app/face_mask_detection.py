@@ -326,6 +326,7 @@ class MainMenu(QMainWindow):
         self.ui.start_button.setEnabled(False)
         self.ui.stop_button.setVisible(False)
         self.ui.stop_button.setEnabled(False)
+        self.ui.description.setVisible(False)
 
     def cam(self):
         mainMenu.start_cameras()
