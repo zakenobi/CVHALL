@@ -315,9 +315,9 @@ class MainMenu(QMainWindow):
         mainMenu.start_cameras()
         mainMenu.change_cam(0)
         self.ui.image_label.setVisible(True)
-        self.mask_count_label.setVisible(False)
-        self.no_mask_count_label.setVisible(False)
-        self.status_type_label.setVisible(False)
+        self.ui.mask_count_label.setVisible(False)
+        self.ui.no_mask_count_label.setVisible(False)
+        self.ui.status_type_label.setVisible(False)
     
     def camCancel(self):
         #mainMenu.change_cam(1)
@@ -325,9 +325,9 @@ class MainMenu(QMainWindow):
         self.ui.image_label.setVisible(False)
         #os.execv(sys.executable, ['python3'] + sys.argv)
         #mainMenu.close_app()
-        self.mask_count_label.setVisible(False)
-        self.no_mask_count_label.setVisible(False)
-        self.status_type_label.setVisible(False)
+        self.ui.mask_count_label.setVisible(False)
+        self.ui.no_mask_count_label.setVisible(False)
+        self.ui.status_type_label.setVisible(False)
 
     def timer(self):
         mainMenu.cam()
