@@ -567,15 +567,15 @@ class Ui_MainMenu(object):
         self.epf.setObjectName("epf")
      
         self.pushButton1 = QtWidgets.QPushButton(self.centralwidget) 
-        self.pushButton1.setGeometry(QtCore.QRect(200, 10, 200, 70))
+        self.pushButton1.setGeometry(QtCore.QRect(300, 10, 200, 70))
         self.pushButton1.setObjectName("pushButton1")
 
         self.pushButton2 = QtWidgets.QPushButton(self.centralwidget) 
-        self.pushButton2.setGeometry(QtCore.QRect(500, 10, 200, 70))
+        self.pushButton2.setGeometry(QtCore.QRect(600, 10, 200, 70))
         self.pushButton2.setObjectName("pushButton2")
 
         self.pushButton3 = QtWidgets.QPushButton(self.centralwidget) 
-        self.pushButton3.setGeometry(QtCore.QRect(800, 10, 200, 70))
+        self.pushButton3.setGeometry(QtCore.QRect(900, 10, 200, 70))
         self.pushButton3.setObjectName("pushButton3")
     
 
