@@ -35,6 +35,7 @@ class Ui_MainMenu(object):
         self.start_button.setGeometry(QtCore.QRect(300, 620, 200, 70))
         camIcon = QtGui.QIcon()
         camIcon.addPixmap(QtGui.QPixmap("resources/CamIcon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.camIcon.setIconSize(QtCore.QSize(128, 128))
         self.start_button.setIcon(camIcon)
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
