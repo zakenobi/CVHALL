@@ -45,6 +45,7 @@ class Ui_MainMenu(object):
         font.setWeight(7)
         self.start_button.setFont(font)
         self.start_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.start_button.setObjectName("start_button")
         self.start_button.setStyleSheet("QPushButton{\n"
 "font: 63 28pt \"URW Gothic L\";\n"
 "border:1px transparent;\n"
@@ -56,14 +57,14 @@ class Ui_MainMenu(object):
 "\n"
 "QPushButton:hover {\n"
 "color: #fff;\n"
-"background-color: #006400;\n"
+"background-color: #FFF;\n"
 "border: transparent\n"
 "}\n"
 "\n"
 "")
-        self.start_button.setObjectName("start_button")
+        
         self.stop_button = QtWidgets.QPushButton(self.centralwidget)
-        self.stop_button.setGeometry(QtCore.QRect(550, 620, 200, 70))
+        self.stop_button.setGeometry(QtCore.QRect(35, 420, 120, 120))
         crossIcon = QtGui.QIcon()
         crossIcon.addPixmap(QtGui.QPixmap("resources/cross.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         font = QtGui.QFont()
@@ -79,7 +80,7 @@ class Ui_MainMenu(object):
 "border:1px transparent;\n"
 "border-radius: 20px;\n"
 "color: #fff;\n"
-"background-color: #FFF;\n"
+"background-color: #228B22;\n"
 "border: transparent\n"
 "}\n"
 "\n"
