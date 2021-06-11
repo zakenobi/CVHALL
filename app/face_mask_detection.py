@@ -78,15 +78,15 @@ class Camera(QTimer):
         self.camera_name_item = QTableWidgetItem(self.camName)
         self.camera_name_item.setTextAlignment(Qt.AlignCenter)
         self.camera_status_item = QTableWidgetItem(self.status)
-        self.camera_status_item.setTextAlignment(Qt.AlignCenter)
+        #self.camera_status_item.setTextAlignment(Qt.AlignCenter)
         self.cam = cv2.VideoCapture(self.camID)
         self.timeout.connect(self.camera_run)
 
     def start_camera(self):
         self.cam = cv2.VideoCapture(self.camID)
-        self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)#attribu optionnel
-        self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
         self.cam.set(cv2.CAP_PROP_FPS, 30)
+        self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, 1000)#attribu optionnel
+        self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 600) # taille max cam
 
     def take_photo(self):
         today = datetime.now().strftime("%d.%m.%Y")
@@ -156,9 +156,10 @@ class Camera(QTimer):
             if self.cam.isOpened() and self.cam.get(cv2.CAP_PROP_FPS) != 0:
                 with open(connect_log_path, "a") as connect_log:
                     connect_log.write(datetime.now().strftime("%d/%m/%Y - %H:%M:%S ->\t") + self.camName + " (ID: " + str(self.camID) + ") connected to the system.\n\n")
-                self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
-                self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+
                 self.cam.set(cv2.CAP_PROP_FPS, 30)
+                self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, 1000)
+                self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 600)
                 self.status = "Safe"
             elif self.viewable is True:
                 self.view_disconnected_cam()
@@ -184,12 +185,18 @@ class MainMenu(QMainWindow):
         self.current_camera = None
         self.ui.camera_select.activated.connect(self.change_cam)
         self.ui.pushButton1.clicked.connect(self.take_photo)
-        self.ui.stop_button.clicked.connect(self.camCancel)
+        
         #self.ui.pushButton1.clicked.connect(self.hide)
         #self.ui.pushButton1.clicked.connect(self.reveal)
         self.ui.arrow.clicked.connect(self.arrow)
+        self.ui.pushButton2.clicked.connect(self.revealArrow)
+        self.ui.pushButton2.clicked.connect(self.camCancel)
+        self.ui.pushButton2.clicked.connect(self.revealStats)
         self.ui.pushButton3.clicked.connect(self.revealDesc)
+        self.ui.pushButton3.clicked.connect(self.camCancel)
         self.ui.start_button.clicked.connect(self.cam)
+        self.ui.stop_button.clicked.connect(self.camCancel)
+        #self.ui.arrow.clicked.connect(self.cam)
         #self.ui.arrow.clicked.connect(self.camCancel)
         #self.ui.timer1.clicked.connect(self.timer)
         self.camera_dict = {}
@@ -276,28 +283,41 @@ class MainMenu(QMainWindow):
     def arrow(self):
         self.ui.pushButton1.setVisible(True)
         self.ui.pushButton1.setEnabled(True)
-
         self.ui.pushButton2.setVisible(True)
         self.ui.pushButton2.setEnabled(True)
-
         self.ui.pushButton3.setVisible(True)
         self.ui.pushButton3.setEnabled(True)
-
         self.ui.description.setVisible(False)
-
         self.ui.arrow.setVisible(False)
         self.ui.arrow.setEnabled(False)
+        self.ui.SArrowLeft.setVisible(False)
+        self.ui.SArrowLeft.setEnabled(False)
+        self.ui.SArrowRight.setVisible(False)
+        self.ui.SArrowRight.setEnabled(False)
+
     
     def revealDesc(self):
         self.ui.description.setVisible(True)
         self.ui.arrow.setVisible(True)
         self.ui.arrow.setEnabled(True)
 
+    def revealArrow(self):
+        self.ui.arrow.setVisible(True)
+        self.ui.arrow.setEnabled(True)
+
+    def revealStats(self):
+        self.ui.SArrowLeft.setVisible(True)
+        self.ui.SArrowLeft.setEnabled(True)
+        self.ui.SArrowRight.setVisible(True)
+        self.ui.SArrowRight.setEnabled(True)
 
     def cam(self):
         mainMenu.start_cameras()
         mainMenu.change_cam(0)
         self.ui.image_label.setVisible(True)
+        self.mask_count_label.setVisible(False)
+        self.no_mask_count_label.setVisible(False)
+        self.status_type_label.setVisible(False)
     
     def camCancel(self):
         #mainMenu.change_cam(1)
@@ -305,6 +325,9 @@ class MainMenu(QMainWindow):
         self.ui.image_label.setVisible(False)
         #os.execv(sys.executable, ['python3'] + sys.argv)
         #mainMenu.close_app()
+        self.mask_count_label.setVisible(False)
+        self.no_mask_count_label.setVisible(False)
+        self.status_type_label.setVisible(False)
 
     def timer(self):
         mainMenu.cam()
