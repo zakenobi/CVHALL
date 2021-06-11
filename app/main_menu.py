@@ -20,7 +20,7 @@ class Ui_MainMenu(object):
         self.centralwidget = QtWidgets.QWidget(MainMenu)
         self.centralwidget.setObjectName("centralwidget")
         self.image_label = QtWidgets.QLabel(self.centralwidget)
-        self.image_label.setGeometry(QtCore.QRect(0, 60, 1000, 600)) #cam
+        self.image_label.setGeometry(QtCore.QRect(5, 100, 1000, 600)) #cam
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(48)
