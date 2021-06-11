@@ -32,7 +32,7 @@ class Ui_MainMenu(object):
         self.image_label.setObjectName("image_label")
         
         self.start_button = QtWidgets.QPushButton(self.centralwidget)
-        self.start_button.setGeometry(QtCore.QRect(50, 200, 120, 120))
+        self.start_button.setGeometry(QtCore.QRect(35, 200, 120, 120))
         camIcon = QtGui.QIcon()
         camIcon.addPixmap(QtGui.QPixmap("resources/CamIcon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.start_button.setIcon(camIcon)
