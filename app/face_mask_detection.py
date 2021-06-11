@@ -308,6 +308,10 @@ class MainMenu(QMainWindow):
         self.ui.start_button.setEnabled(False)
         self.ui.stop_button.setVisible(False)
         self.ui.stop_button.setEnabled(False)
+        self.ui.SArrowLeft.setVisible(False)
+        self.ui.SArrowLeft.setEnabled(False)
+        self.ui.SArrowRight.setVisible(False)
+        self.ui.SArrowRight.setEnabled(False)
 
     def revealArrow(self):
         self.ui.arrow.setVisible(True)
@@ -318,6 +322,10 @@ class MainMenu(QMainWindow):
         self.ui.SArrowLeft.setEnabled(True)
         self.ui.SArrowRight.setVisible(True)
         self.ui.SArrowRight.setEnabled(True)
+        self.ui.start_button.setVisible(False)
+        self.ui.start_button.setEnabled(False)
+        self.ui.stop_button.setVisible(False)
+        self.ui.stop_button.setEnabled(False)
 
     def cam(self):
         mainMenu.start_cameras()
