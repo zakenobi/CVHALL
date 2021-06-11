@@ -294,12 +294,20 @@ class MainMenu(QMainWindow):
         self.ui.SArrowLeft.setEnabled(False)
         self.ui.SArrowRight.setVisible(False)
         self.ui.SArrowRight.setEnabled(False)
+        self.ui.start_button.setVisible(True)
+        self.ui.start_button.setEnabled(True)
+        self.ui.stop_button.setVisible(True)
+        self.ui.stop_button.setEnabled(True)
 
     
     def revealDesc(self):
         self.ui.description.setVisible(True)
         self.ui.arrow.setVisible(True)
         self.ui.arrow.setEnabled(True)
+        self.ui.start_button.setVisible(False)
+        self.ui.start_button.setEnabled(False)
+        self.ui.stop_button.setVisible(False)
+        self.ui.stop_button.setEnabled(False)
 
     def revealArrow(self):
         self.ui.arrow.setVisible(True)
