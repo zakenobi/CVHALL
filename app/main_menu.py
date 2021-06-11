@@ -67,6 +67,7 @@ class Ui_MainMenu(object):
         self.stop_button.setGeometry(QtCore.QRect(35, 420, 120, 120))
         crossIcon = QtGui.QIcon()
         crossIcon.addPixmap(QtGui.QPixmap("resources/cross.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.stop_button.setIcon(crossIcon)
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
