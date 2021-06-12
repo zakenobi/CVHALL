@@ -129,7 +129,7 @@ class Camera(QTimer):
                 self.camera_status_item.setText(self.status)
                 if self.viewable is True:
                     mainMenu.ui.image_label.setStyleSheet("color: rgb(255, 255, 255);")
-                    mainMenu.ui.image_label.setText("Selectionnez une caméra")
+                    mainMenu.ui.image_label.setText("")
                     mainMenu.ui.mask_count_label.setText(f'Avec masque:  {mask_count}')
                     mainMenu.ui.no_mask_count_label.setText(f'Sans masque:  {nomask_count}')
                     mainMenu.ui.status_label.setText('Status:')
@@ -196,9 +196,6 @@ class MainMenu(QMainWindow):
         self.ui.pushButton3.clicked.connect(self.camCancel)
         self.ui.start_button.clicked.connect(self.cam)
         self.ui.stop_button.clicked.connect(self.camCancel)
-        #self.ui.arrow.clicked.connect(self.cam)
-        #self.ui.arrow.clicked.connect(self.camCancel)
-        #self.ui.timer1.clicked.connect(self.timer)
         self.camera_dict = {}
         self.get_camera_list_2(cam_list_filename)
 
@@ -208,7 +205,7 @@ class MainMenu(QMainWindow):
         #self.ui.camera_table.clearContents()
         #self.ui.camera_table.setRowCount(0)
         self.ui.image_label.setStyleSheet("color: rgb(0, 0, 0);")
-        self.ui.image_label.setText("Selectionnez une caméra")
+        self.ui.image_label.setText("")
         for camera in mainMenu.camera_dict:
             self.camera_list.append(Camera(camera, mainMenu.camera_dict[camera]))
         for camera in self.camera_list:
