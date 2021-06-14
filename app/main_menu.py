@@ -585,7 +585,7 @@ class Ui_MainMenu(object):
     
 
         self.arrow = QtWidgets.QPushButton(self.centralwidget)
-        self.arrow.setGeometry(QtCore.QRect(1050, 650, 80, 40))
+        self.arrow.setGeometry(QtCore.QRect(1050, 650, 120, 60))
         self.arrow.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("resources/LeftArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -593,7 +593,7 @@ class Ui_MainMenu(object):
         self.arrow.setEnabled(False)
 
         self.SArrowLeft = QtWidgets.QPushButton(self.centralwidget)
-        self.SArrowLeft.setGeometry(QtCore.QRect(50, 600, 80, 40))
+        self.SArrowLeft.setGeometry(QtCore.QRect(50, 600, 120, 60))
         self.SArrowLeft.setText("")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap("resources/SArrowLeft.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -601,12 +601,13 @@ class Ui_MainMenu(object):
         self.SArrowLeft.setEnabled(False)
 
         self.SArrowRight = QtWidgets.QPushButton(self.centralwidget)
-        self.SArrowRight.setGeometry(QtCore.QRect(130, 600, 80, 40))
+        self.SArrowRight.setGeometry(QtCore.QRect(170, 600, 120, 60))
         self.SArrowRight.setText("")
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap("resources/SArrowRight.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.SArrowRight.setVisible(False)
         self.SArrowRight.setEnabled(False)
+        self.SArrowRight.setIconSize(QtCore.QSize( pushButton = QtCore.QSize.size().width()))
 
         self.description = QtWidgets.QLabel(self.centralwidget)
         self.description.setGeometry(QtCore.QRect(100, 200, 100, 70)) # texte de description
