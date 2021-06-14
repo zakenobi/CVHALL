@@ -632,6 +632,7 @@ class Ui_MainMenu(object):
         self.chart1.setGeometry(QtCore.QRect(300, 100, 1000, 700))
         self.chart1.setPixmap(QtGui.QPixmap("resources/Figure.png"))
         self.chart1.adjustSize()
+        self.chart1.setScaledContents(True)
         self.chart1.setVisible(False)
         self.chart1.setEnabled(True)
 
