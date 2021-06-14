@@ -637,8 +637,8 @@ class Ui_MainMenu(object):
         self.retranslateUi(MainMenu)
         QtCore.QMetaObject.connectSlotsByName(MainMenu)
 
-        self.status_label.move(800,60)
-        self.status_type_label.move(800,60)
+        self.status_label.move(930,80)
+        self.status_type_label.move(950,80)
 
     def retranslateUi(self, MainMenu):
         _translate = QtCore.QCoreApplication.translate
