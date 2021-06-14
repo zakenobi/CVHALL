@@ -205,6 +205,10 @@ class MainMenu(QMainWindow):
         self.ui.pushButton3.clicked.connect(self.camCancel)
         self.ui.start_button.clicked.connect(self.cam)
         self.ui.stop_button.clicked.connect(self.camCancel)
+
+        self.ui.SArrowLeft.clicked.connect(self.leftArrow)
+        self.ui.SArrowRight.clicked.connect(self.rightArrow)
+
         self.camera_dict = {}
         self.get_camera_list_2(cam_list_filename)
 
