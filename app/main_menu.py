@@ -292,7 +292,8 @@ class Ui_MainMenu(object):
         self.mask_count_label.setStyleSheet("border: transparent;\n"
 "background-color: transparent;\n"
 "color: rgb(255,255,255);\n"
-"font: 63 24pt \"URW Gothic L\";")
+"font-weight: bold;\n"
+"font: 63 30pt \"URW Gothic L\";")
         self.mask_count_label.setText("")
         self.mask_count_label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.mask_count_label.setIndent(10)
@@ -311,7 +312,8 @@ class Ui_MainMenu(object):
         self.no_mask_count_label.setStyleSheet("border: transparent;\n"
 "background-color: transparent;\n"
 "color: rgb(255,255,255);\n"
-"font: 63 24pt \"URW Gothic L\";")
+"font-weight: bold;\n"
+"font: 63 30pt \"URW Gothic L\";")
         self.no_mask_count_label.setText("")
         self.no_mask_count_label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.no_mask_count_label.setIndent(10)
