@@ -20,7 +20,7 @@ class Ui_MainMenu(object):
         self.centralwidget = QtWidgets.QWidget(MainMenu)
         self.centralwidget.setObjectName("centralwidget")
         self.image_label = QtWidgets.QLabel(self.centralwidget)
-        self.image_label.setGeometry(QtCore.QRect(0, 60, 1000, 600)) #cam
+        self.image_label.setGeometry(QtCore.QRect(1, 85, 1280, 660)) #cam
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(48)
@@ -28,14 +28,16 @@ class Ui_MainMenu(object):
         font.setWeight(50)
         self.image_label.setFont(font)
         self.image_label.setStyleSheet("color: rgb(255, 255, 255);")
-        self.image_label.setAlignment(QtCore.Qt.AlignCenter)
+        #self.image_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.image_label.setScaledContents(True)
         self.image_label.setObjectName("image_label")
         
         self.start_button = QtWidgets.QPushButton(self.centralwidget)
-        self.start_button.setGeometry(QtCore.QRect(300, 620, 200, 70))
+        self.start_button.setGeometry(QtCore.QRect(35, 200, 120, 120))
         camIcon = QtGui.QIcon()
         camIcon.addPixmap(QtGui.QPixmap("resources/CamIcon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.start_button.setIcon(camIcon)
+        self.start_button.setIconSize(QtCore.QSize(100,100))
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(28)
@@ -44,25 +46,30 @@ class Ui_MainMenu(object):
         font.setWeight(7)
         self.start_button.setFont(font)
         self.start_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.start_button.setObjectName("start_button")
         self.start_button.setStyleSheet("QPushButton{\n"
 "font: 63 28pt \"URW Gothic L\";\n"
 "border:1px transparent;\n"
 "border-radius: 20px;\n"
 "color: #fff;\n"
-"background-color: #228B22;\n"
+"background-color: #00FF00;\n"
 "border: transparent\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
 "color: #fff;\n"
-"background-color: #006400;\n"
+"background-color: #00FF00;\n"
 "border: transparent\n"
 "}\n"
 "\n"
 "")
-        self.start_button.setObjectName("start_button")
+        
         self.stop_button = QtWidgets.QPushButton(self.centralwidget)
-        self.stop_button.setGeometry(QtCore.QRect(550, 620, 200, 70))
+        self.stop_button.setGeometry(QtCore.QRect(35, 420, 120, 120))
+        crossIcon = QtGui.QIcon()
+        crossIcon.addPixmap(QtGui.QPixmap("resources/cross.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.stop_button.setIcon(crossIcon)
+        self.stop_button.setIconSize(QtCore.QSize(80,80))
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
@@ -76,13 +83,13 @@ class Ui_MainMenu(object):
 "border:1px transparent;\n"
 "border-radius: 20px;\n"
 "color: #fff;\n"
-"background-color: #8B0000;\n"
+"background-color: #FF0000;\n"
 "border: transparent\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
 "color: #fff;\n"
-"background-color: rgb(121, 0, 0);\n"
+"background-color: #FF0000;\n"
 "border: transparent\n"
 "}\n"
 "\n"
@@ -284,8 +291,10 @@ class Ui_MainMenu(object):
         self.mask_count_label.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.mask_count_label.setStyleSheet("border: transparent;\n"
 "background-color: transparent;\n"
-"color: rgb(0, 0, 0);\n"
-"font: 63 24pt \"URW Gothic L\";")
+"color: rgb(255,255,255);\n"
+"font-weight: bold;\n"
+"font-weight:600;"
+"font: 63 30pt \"URW Gothic L\";")
         self.mask_count_label.setText("")
         self.mask_count_label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.mask_count_label.setIndent(10)
@@ -296,15 +305,17 @@ class Ui_MainMenu(object):
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
-        font.setBold(False)
+        font.setBold(True)
         font.setItalic(False)
         font.setWeight(7)
         self.no_mask_count_label.setFont(font)
         self.no_mask_count_label.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.no_mask_count_label.setStyleSheet("border: transparent;\n"
 "background-color: transparent;\n"
-"color: rgb(0, 0, 0);\n"
-"font: 63 24pt \"URW Gothic L\";")
+"color: rgb(255,255,255);\n"
+"font-weight: bold;\n"
+"font-weight:600;"
+"font: 63 30pt \"URW Gothic L\";")
         self.no_mask_count_label.setText("")
         self.no_mask_count_label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.no_mask_count_label.setIndent(10)
@@ -316,7 +327,7 @@ class Ui_MainMenu(object):
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
-        font.setBold(False)
+        font.setBold(True)
         font.setItalic(False)
         font.setWeight(7)
         self.status_label.setFont(font)
@@ -561,15 +572,15 @@ class Ui_MainMenu(object):
         self.epf.setObjectName("epf")
      
         self.pushButton1 = QtWidgets.QPushButton(self.centralwidget) 
-        self.pushButton1.setGeometry(QtCore.QRect(1050, 100, 200, 100))
+        self.pushButton1.setGeometry(QtCore.QRect(380, 10, 200, 70))
         self.pushButton1.setObjectName("pushButton1")
 
         self.pushButton2 = QtWidgets.QPushButton(self.centralwidget) 
-        self.pushButton2.setGeometry(QtCore.QRect(1050, 300, 200, 100))
+        self.pushButton2.setGeometry(QtCore.QRect(680, 10, 200, 70))
         self.pushButton2.setObjectName("pushButton2")
 
         self.pushButton3 = QtWidgets.QPushButton(self.centralwidget) 
-        self.pushButton3.setGeometry(QtCore.QRect(1050, 500, 200, 100))
+        self.pushButton3.setGeometry(QtCore.QRect(980, 10, 200, 70))
         self.pushButton3.setObjectName("pushButton3")
     
 
@@ -626,12 +637,27 @@ class Ui_MainMenu(object):
         self.retranslateUi(MainMenu)
         QtCore.QMetaObject.connectSlotsByName(MainMenu)
 
+        self.status_label.move(930,80)
+        self.status_label.setStyleSheet("border: transparent;\n"
+"background-color: transparent;\n"
+"color: rgb(255,255,255);\n"
+"font-weight: bold;\n"
+"font-weight:600;"
+"font: 63 30pt \"URW Gothic L\";")
+        self.status_type_label.move(950,80)
+        self.status_type_label.setStyleSheet("border: transparent;\n"
+"background-color: transparent;\n"
+"color: rgb(255,255,255);\n"
+"font-weight: bold;\n"
+"font-weight:600;"
+"font: 63 30pt \"URW Gothic L\";")
+
     def retranslateUi(self, MainMenu):
         _translate = QtCore.QCoreApplication.translate
         MainMenu.setWindowTitle(_translate("MainMenu", "Face Mask Detector"))
         self.image_label.setText(_translate("MainMenu", "Select a Camera"))
         #self.start_button.setText(_translate("MainMenu", "START"))
-        self.stop_button.setText(_translate("MainMenu", "STOP"))
+        #self.stop_button.setText(_translate("MainMenu", "STOP"))
         #self.epf.setText(_translate("MainMenu", "Test"))
         #self.camera_list_label.setText(_translate("MainMenu", "Camera Control Panel"))
         #item = self.camera_table.horizontalHeaderItem(0)
@@ -640,6 +666,9 @@ class Ui_MainMenu(object):
         #item.setText(_translate("MainMenu", "Status"))
         self.camera_select_label.setText(_translate("MainMenu", "Liste caméras:    "))
         self.camera_select.setProperty("placeholderText", _translate("MainMenu", "Select Camera"))
+        self.camera_select.setVisible(False)
+        self.camera_select_label.setVisible(False)
+
         #self.epf.setText(_translate("MainMenu","AAAAAA"))
         self.pushButton1.setText(_translate("MainMenu", "Prendre photo"))
         self.pushButton2.setText(_translate("MainMenu", "Statistiques"))

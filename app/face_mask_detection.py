@@ -2,6 +2,7 @@ import os
 import sys
 import cv2
 
+from mailer import Mailer
 import numpy as np
 from pathlib import Path
 from datetime import datetime
@@ -85,8 +86,8 @@ class Camera(QTimer):
     def start_camera(self):
         self.cam = cv2.VideoCapture(self.camID)
         self.cam.set(cv2.CAP_PROP_FPS, 30)
-        self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, 1000)#attribu optionnel
-        self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 600) # taille max cam
+        self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)#attribu optionnel
+        self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 690) # taille max cam
 
     def take_photo(self):
         today = datetime.now().strftime("%d.%m.%Y")
@@ -129,7 +130,7 @@ class Camera(QTimer):
                 self.camera_status_item.setText(self.status)
                 if self.viewable is True:
                     mainMenu.ui.image_label.setStyleSheet("color: rgb(255, 255, 255);")
-                    mainMenu.ui.image_label.setText("Selectionnez une caméra")
+                    mainMenu.ui.image_label.setText("")
                     mainMenu.ui.mask_count_label.setText(f'Avec masque:  {mask_count}')
                     mainMenu.ui.no_mask_count_label.setText(f'Sans masque:  {nomask_count}')
                     mainMenu.ui.status_label.setText('Status:')
@@ -158,20 +159,28 @@ class Camera(QTimer):
                     connect_log.write(datetime.now().strftime("%d/%m/%Y - %H:%M:%S ->\t") + self.camName + " (ID: " + str(self.camID) + ") connected to the system.\n\n")
 
                 self.cam.set(cv2.CAP_PROP_FPS, 30)
-                self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, 1000)
-                self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 600)
+                self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+                self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 690)
                 self.status = "Safe"
             elif self.viewable is True:
                 self.view_disconnected_cam()
         #automatically take a photo when the status of the camera switches to "Warning" or "Danger"
-        if self.prev_status == "Safe" or self.prev_status == "Not Connected":
-            if self.status == "Warning" or self.status == "Danger":
-                self.take_photo()
-        elif self.prev_status == "Warning" and self.status == "Danger":
-            self.take_photo()
-        elif self.prev_status == "Danger" and self.status == "Warning":
-            self.take_photo()
-        self.prev_status = self.status
+
+        # if self.prev_status == "Pas de danger" or self.prev_status == "pas de connexion":
+        #     if self.status == "Attention" or self.status == "Danger":
+        #         self.take_photo()
+        #         self.send_email()
+        # elif self.prev_status == "Attention" and self.status == "Danger":
+        #     self.take_photo()
+        #     self.send_email()
+        # elif self.prev_status == "Danger" and self.status == "Attention":
+        #     self.take_photo()
+        #     self.send_email()
+        # self.prev_status = self.status
+
+    def send_email(self):
+        mail = Mailer(email='cvhall.epf@gmail.com', password='PMFGE3A.23')
+        mail.send(receiver='zac.gagnou@gmail.com', subject='ALERT', message='Individu dangereux demasquer !')
 
 
 class MainMenu(QMainWindow):
@@ -196,9 +205,6 @@ class MainMenu(QMainWindow):
         self.ui.pushButton3.clicked.connect(self.camCancel)
         self.ui.start_button.clicked.connect(self.cam)
         self.ui.stop_button.clicked.connect(self.camCancel)
-        #self.ui.arrow.clicked.connect(self.cam)
-        #self.ui.arrow.clicked.connect(self.camCancel)
-        #self.ui.timer1.clicked.connect(self.timer)
         self.camera_dict = {}
         self.get_camera_list_2(cam_list_filename)
 
@@ -208,7 +214,7 @@ class MainMenu(QMainWindow):
         #self.ui.camera_table.clearContents()
         #self.ui.camera_table.setRowCount(0)
         self.ui.image_label.setStyleSheet("color: rgb(0, 0, 0);")
-        self.ui.image_label.setText("Selectionnez une caméra")
+        self.ui.image_label.setText("")
         for camera in mainMenu.camera_dict:
             self.camera_list.append(Camera(camera, mainMenu.camera_dict[camera]))
         for camera in self.camera_list:
@@ -294,12 +300,24 @@ class MainMenu(QMainWindow):
         self.ui.SArrowLeft.setEnabled(False)
         self.ui.SArrowRight.setVisible(False)
         self.ui.SArrowRight.setEnabled(False)
+        self.ui.start_button.setVisible(True)
+        self.ui.start_button.setEnabled(True)
+        self.ui.stop_button.setVisible(True)
+        self.ui.stop_button.setEnabled(True)
 
     
     def revealDesc(self):
         self.ui.description.setVisible(True)
         self.ui.arrow.setVisible(True)
         self.ui.arrow.setEnabled(True)
+        self.ui.start_button.setVisible(False)
+        self.ui.start_button.setEnabled(False)
+        self.ui.stop_button.setVisible(False)
+        self.ui.stop_button.setEnabled(False)
+        self.ui.SArrowLeft.setVisible(False)
+        self.ui.SArrowLeft.setEnabled(False)
+        self.ui.SArrowRight.setVisible(False)
+        self.ui.SArrowRight.setEnabled(False)
 
     def revealArrow(self):
         self.ui.arrow.setVisible(True)
@@ -310,13 +328,18 @@ class MainMenu(QMainWindow):
         self.ui.SArrowLeft.setEnabled(True)
         self.ui.SArrowRight.setVisible(True)
         self.ui.SArrowRight.setEnabled(True)
+        self.ui.start_button.setVisible(False)
+        self.ui.start_button.setEnabled(False)
+        self.ui.stop_button.setVisible(False)
+        self.ui.stop_button.setEnabled(False)
+        self.ui.description.setVisible(False)
 
     def cam(self):
         mainMenu.start_cameras()
         mainMenu.change_cam(0)
         self.ui.image_label.setVisible(True)
-        self.ui.mask_count_label.setVisible(False)
-        self.ui.no_mask_count_label.setVisible(False)
+        #self.ui.mask_count_label.setVisible(False)
+        #self.ui.no_mask_count_label.setVisible(False)
         self.ui.status_type_label.setVisible(False)
     
     def camCancel(self):
@@ -325,9 +348,9 @@ class MainMenu(QMainWindow):
         self.ui.image_label.setVisible(False)
         #os.execv(sys.executable, ['python3'] + sys.argv)
         #mainMenu.close_app()
-        self.ui.mask_count_label.setVisible(False)
-        self.ui.no_mask_count_label.setVisible(False)
-        self.ui.status_type_label.setVisible(False)
+        #self.ui.mask_count_label.setVisible(False)
+        #self.ui.no_mask_count_label.setVisible(False)
+        #self.ui.status_type_label.setVisible(False)
 
     def timer(self):
         mainMenu.cam()
