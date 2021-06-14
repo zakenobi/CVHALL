@@ -11,9 +11,11 @@ labels = ['nb_masques_bien_portes','nb_masques_mal_portes']
 fig = plt.figure()
 
 slices = [dp.iloc[0][0],dp.iloc[0][1]]
-plt.pie(slices)
+labels = [dp.iloc[0][0],dp.iloc[0][1]]
+
+plt.pie(slices, labels = labels)
 plt.title('Proportion de sujets portant leur masque ou non')
 plt.legend(['Masque porté','Masque non porté'],loc = "lower left", facecolor = "lightgray")
 plt.savefig("app/resources/Figure")
-plt.show()
+plt.show() 
 
