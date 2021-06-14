@@ -172,6 +172,8 @@ class Camera(QTimer):
         elif self.prev_status == "Danger" and self.status == "Warning":
             self.take_photo()
         self.prev_status = self.status
+        self.status.move(1060,80)
+        self.prev_status.move(1060,80)
 
 
 class MainMenu(QMainWindow):
