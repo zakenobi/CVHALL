@@ -309,14 +309,15 @@ class MainMenu(QMainWindow):
         self.ui.stop_button.setVisible(True)
         self.ui.stop_button.setEnabled(True)
         self.ui.chart1.setVisible(False)
+        self.ui.chart2.setVisible(False)
 
     def leftArrow(self):
-        self.ui.chart1.setVisible(False)
-        self.ui.chart2.setVisible(True)
-
-    def rightArrow(self):
         self.ui.chart1.setVisible(True)
         self.ui.chart2.setVisible(False)
+
+    def rightArrow(self):
+        self.ui.chart1.setVisible(False)
+        self.ui.chart2.setVisible(True)
 
     
     def revealDesc(self):
