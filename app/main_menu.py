@@ -637,6 +637,21 @@ class Ui_MainMenu(object):
         self.retranslateUi(MainMenu)
         QtCore.QMetaObject.connectSlotsByName(MainMenu)
 
+        self.status_label.move(930,80)
+        self.status_label.setStyleSheet("border: transparent;\n"
+"background-color: transparent;\n"
+"color: rgb(255,255,255);\n"
+"font-weight: bold;\n"
+"font-weight:600;"
+"font: 63 30pt \"URW Gothic L\";")
+        self.status_type_label.move(950,80)
+        self.status_type_label.setStyleSheet("border: transparent;\n"
+"background-color: transparent;\n"
+"color: rgb(255,255,255);\n"
+"font-weight: bold;\n"
+"font-weight:600;"
+"font: 63 30pt \"URW Gothic L\";")
+
     def retranslateUi(self, MainMenu):
         _translate = QtCore.QCoreApplication.translate
         MainMenu.setWindowTitle(_translate("MainMenu", "Face Mask Detector"))
