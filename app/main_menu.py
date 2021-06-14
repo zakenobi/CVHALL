@@ -305,7 +305,7 @@ class Ui_MainMenu(object):
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
-        font.setBold(False)
+        font.setBold(True)
         font.setItalic(False)
         font.setWeight(7)
         self.no_mask_count_label.setFont(font)
@@ -313,7 +313,8 @@ class Ui_MainMenu(object):
         self.no_mask_count_label.setStyleSheet("border: transparent;\n"
 "background-color: transparent;\n"
 "color: rgb(255,255,255);\n"
-"font-weight: bold"
+"font-weight: bold;\n"
+"font-weight:600;"
 "font: 63 30pt \"URW Gothic L\";")
         self.no_mask_count_label.setText("")
         self.no_mask_count_label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
@@ -326,7 +327,7 @@ class Ui_MainMenu(object):
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
-        font.setBold(False)
+        font.setBold(True)
         font.setItalic(False)
         font.setWeight(7)
         self.status_label.setFont(font)
