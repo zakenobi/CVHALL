@@ -165,6 +165,7 @@ class Camera(QTimer):
             elif self.viewable is True:
                 self.view_disconnected_cam()
         #automatically take a photo when the status of the camera switches to "Warning" or "Danger"
+
         # if self.prev_status == "Pas de danger" or self.prev_status == "pas de connexion":
         #     if self.status == "Attention" or self.status == "Danger":
         #         self.take_photo()
