@@ -205,6 +205,10 @@ class MainMenu(QMainWindow):
         self.ui.pushButton3.clicked.connect(self.camCancel)
         self.ui.start_button.clicked.connect(self.cam)
         self.ui.stop_button.clicked.connect(self.camCancel)
+
+        self.ui.SArrowLeft.clicked.connect(self.leftArrow)
+        self.ui.SArrowRight.clicked.connect(self.rightArrow)
+
         self.camera_dict = {}
         self.get_camera_list_2(cam_list_filename)
 
@@ -304,6 +308,36 @@ class MainMenu(QMainWindow):
         self.ui.start_button.setEnabled(True)
         self.ui.stop_button.setVisible(True)
         self.ui.stop_button.setEnabled(True)
+        self.ui.chart1.setVisible(False)
+        self.ui.chart2.setVisible(False)
+
+    def revealStats(self):
+        self.ui.SArrowLeft.setVisible(False)
+        self.ui.SArrowLeft.setEnabled(False)
+        self.ui.SArrowRight.setVisible(True)
+        self.ui.SArrowRight.setEnabled(True)
+        self.ui.start_button.setVisible(False)
+        self.ui.start_button.setEnabled(False)
+        self.ui.stop_button.setVisible(False)
+        self.ui.stop_button.setEnabled(False)
+        self.ui.description.setVisible(False)
+        self.ui.chart1.setVisible(True)
+
+    def leftArrow(self):
+        self.ui.chart1.setVisible(True)
+        self.ui.chart2.setVisible(False)
+        self.ui.SArrowRight.setVisible(True)
+        self.ui.SArrowRight.setEnabled(True)
+        self.ui.SArrowLeft.setVisible(False)
+        self.ui.SArrowLeft.setEnabled(False)
+
+    def rightArrow(self):
+        self.ui.chart1.setVisible(False)
+        self.ui.chart2.setVisible(True)
+        self.ui.SArrowLeft.setVisible(True)
+        self.ui.SArrowLeft.setEnabled(True)
+        self.ui.SArrowRight.setVisible(False)
+        self.ui.SArrowRight.setEnabled(False)
 
     
     def revealDesc(self):
@@ -323,16 +357,7 @@ class MainMenu(QMainWindow):
         self.ui.arrow.setVisible(True)
         self.ui.arrow.setEnabled(True)
 
-    def revealStats(self):
-        self.ui.SArrowLeft.setVisible(True)
-        self.ui.SArrowLeft.setEnabled(True)
-        self.ui.SArrowRight.setVisible(True)
-        self.ui.SArrowRight.setEnabled(True)
-        self.ui.start_button.setVisible(False)
-        self.ui.start_button.setEnabled(False)
-        self.ui.stop_button.setVisible(False)
-        self.ui.stop_button.setEnabled(False)
-        self.ui.description.setVisible(False)
+
 
     def cam(self):
         mainMenu.start_cameras()
