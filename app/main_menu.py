@@ -618,15 +618,6 @@ class Ui_MainMenu(object):
         self.description.setVisible(False)
         self.description.setEnabled(True)
 
-        self.stats1 = QtWidgets.QLabel(self.centralwidget)
-        self.stats1.setGeometry(QtCore.QRect(100, 200, 800, 1000)) 
-        self.stats1.setText("stats 1")
-        self.stats1.setFont(QtGui.QFont('Arial', 45))
-        self.stats1.setStyleSheet("QLabel { background-color : white; color : black; }")
-        self.stats1.adjustSize()
-        self.stats1.setVisible(False)
-        self.stats1.setEnabled(True)
-
         self.arrow.setIcon(icon)
         self.SArrowLeft.setIcon(icon2)
         self.SArrowRight.setIcon(icon3)
@@ -634,10 +625,10 @@ class Ui_MainMenu(object):
         #self.arrow.setVisible(False) # par defaut la fleche est desactivee
         #self.arrow.setEnabled(False)
 
-        self.chart1.setGeometry(QtCore.QRect(100, 200, 900, 500)) # texte de description
+        self.chart1 = QtWidgets.QLabel(self.centralwidget)
+        self.chart1.setGeometry(QtCore.QRect(100, 200, 900, 500))
         self.chart1 = QtWidgets.QLabel(self.centralwidget)
         self.chart1.setPixmap(QtGui.QPixmap("resources/pieChart.png"))
-        self.chart1.setFont(QtGui.QFont('Arial', 45))
         self.chart1.adjustSize()
         self.chart1.setVisible(False)
         self.chart1.setEnabled(True)
