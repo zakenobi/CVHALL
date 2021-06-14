@@ -607,7 +607,8 @@ class Ui_MainMenu(object):
         icon3.addPixmap(QtGui.QPixmap("resources/SArrowRight.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.SArrowRight.setVisible(False)
         self.SArrowRight.setEnabled(False)
-        self.SArrowRight.setIconSize(QtCore.QSize( pushButton = QtCore.QSize.width()))
+        # self.SArrowRight.setIconSize(QtCore.QSize( pushButton = QtCore.QSize.width()))
+        self.SArrowRight.setIconSize(QtCore.QSize(22,22))
 
         self.description = QtWidgets.QLabel(self.centralwidget)
         self.description.setGeometry(QtCore.QRect(100, 200, 100, 70)) # texte de description
