@@ -165,19 +165,18 @@ class Camera(QTimer):
             elif self.viewable is True:
                 self.view_disconnected_cam()
         #automatically take a photo when the status of the camera switches to "Warning" or "Danger"
-        if self.prev_status == "Pas de danger" or self.prev_status == "pas de connexion":
-            if self.status == "Attention" or self.status == "Danger":
-                self.take_photo()
-                self.send_email()
-        elif self.prev_status == "Attention" and self.status == "Danger":
-            self.take_photo()
-            self.send_email()
-        elif self.prev_status == "Danger" and self.status == "Attention":
-            self.take_photo()
-            self.send_email()
-        self.prev_status = self.status
-        self.status.move(1060,80)
-        self.prev_status.move(1060,80)
+
+        # if self.prev_status == "Pas de danger" or self.prev_status == "pas de connexion":
+        #     if self.status == "Attention" or self.status == "Danger":
+        #         self.take_photo()
+        #         self.send_email()
+        # elif self.prev_status == "Attention" and self.status == "Danger":
+        #     self.take_photo()
+        #     self.send_email()
+        # elif self.prev_status == "Danger" and self.status == "Attention":
+        #     self.take_photo()
+        #     self.send_email()
+        # self.prev_status = self.status
 
     def send_email(self):
         mail = Mailer(email='cvhall.epf@gmail.com', password='PMFGE3A.23')
