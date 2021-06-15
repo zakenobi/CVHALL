@@ -585,28 +585,31 @@ class Ui_MainMenu(object):
     
 
         self.arrow = QtWidgets.QPushButton(self.centralwidget)
-        self.arrow.setGeometry(QtCore.QRect(1050, 650, 80, 40))
+        self.arrow.setGeometry(QtCore.QRect(1050, 600, 120, 60))
         self.arrow.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("resources/LeftArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.arrow.setVisible(False)
         self.arrow.setEnabled(False)
+        self.arrow.setIconSize(QtCore.QSize(30,30))
 
         self.SArrowLeft = QtWidgets.QPushButton(self.centralwidget)
-        self.SArrowLeft.setGeometry(QtCore.QRect(50, 600, 80, 40))
+        self.SArrowLeft.setGeometry(QtCore.QRect(50, 600, 120, 60))
         self.SArrowLeft.setText("")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap("resources/SArrowLeft.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.SArrowLeft.setVisible(False)
         self.SArrowLeft.setEnabled(False)
+        self.SArrowLeft.setIconSize(QtCore.QSize(30,30))
 
         self.SArrowRight = QtWidgets.QPushButton(self.centralwidget)
-        self.SArrowRight.setGeometry(QtCore.QRect(130, 600, 80, 40))
+        self.SArrowRight.setGeometry(QtCore.QRect(170, 600, 120, 60))
         self.SArrowRight.setText("")
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap("resources/SArrowRight.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.SArrowRight.setVisible(False)
         self.SArrowRight.setEnabled(False)
+        self.SArrowRight.setIconSize(QtCore.QSize(30,30))
 
         self.description = QtWidgets.QLabel(self.centralwidget)
         self.description.setGeometry(QtCore.QRect(100, 200, 100, 70)) # texte de description
@@ -618,21 +621,28 @@ class Ui_MainMenu(object):
         self.description.setVisible(False)
         self.description.setEnabled(True)
 
-        self.stats1 = QtWidgets.QLabel(self.centralwidget)
-        self.stats1.setGeometry(QtCore.QRect(100, 200, 800, 1000)) 
-        self.stats1.setText("stats 1")
-        self.stats1.setFont(QtGui.QFont('Arial', 45))
-        self.stats1.setStyleSheet("QLabel { background-color : white; color : black; }")
-        self.stats1.adjustSize()
-        self.stats1.setVisible(False)
-        self.stats1.setEnabled(True)
-
         self.arrow.setIcon(icon)
         self.SArrowLeft.setIcon(icon2)
         self.SArrowRight.setIcon(icon3)
         self.arrow.setObjectName("pushButton")
         #self.arrow.setVisible(False) # par defaut la fleche est desactivee
         #self.arrow.setEnabled(False)
+
+        self.chart1 = QtWidgets.QLabel(self.centralwidget)
+        self.chart1.setGeometry(QtCore.QRect(300, 100, 1000, 700))
+        self.chart1.setPixmap(QtGui.QPixmap("resources/Figure.png"))
+        self.chart1.adjustSize()
+        self.chart1.setScaledContents(True)
+        self.chart1.setVisible(False)
+        self.chart1.setEnabled(True)
+
+        self.chart2 = QtWidgets.QLabel(self.centralwidget)
+        self.chart2.setGeometry(QtCore.QRect(300, 100, 1000, 700))
+        self.chart2.setPixmap(QtGui.QPixmap("resources/pieChart2.png"))
+        self.chart2.adjustSize()
+        self.chart2.setVisible(False)
+        self.chart2.setEnabled(True)
+
 
         self.retranslateUi(MainMenu)
         QtCore.QMetaObject.connectSlotsByName(MainMenu)
