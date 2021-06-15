@@ -69,7 +69,7 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
     global mask_total
     global i
     i+=1
-    if i%75==0:
+    if i%50==0:
         max_temp=get_temp()
     
     classes, confidences, boxes = net.detect(img, confThreshold, nmsThreshold)#fonction de detection
