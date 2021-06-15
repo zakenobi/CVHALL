@@ -20,6 +20,10 @@ photo_path = "photos"
 camera_list_path = "resources/camera_list.txt"
 connect_log_path = "resources/connect_history.log"
 
+nomask_total=0
+mask_total=0
+
+i=0
 photo_dir = Path(photo_path)
 photo_dir.mkdir(parents=True, exist_ok=True)
 cam_list_filename = Path(camera_list_path)
@@ -39,6 +43,7 @@ def create_detection_net(config_path, weights_path):
 
 # Tres important pour obtenir la detection de masque
 def get_processed_image(img, net, confThreshold, nmsThreshold):
+    pass
     mask_count = 0
     nomask_count = 0
     classes, confidences, boxes = net.detect(img, confThreshold, nmsThreshold)#fonction de detection
@@ -62,6 +67,19 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
         status = "Attention"
     else:
         status = "Pas de danger"
+    # mask_total=mask_total+mask_count
+    # nomask_total=nomask_total+nomask_count
+    global nomask_total
+    global mask_total
+    global i
+    i+=1
+    print(i)
+    if i%150==0:
+        i=0
+        nomask_total+=nomask_count
+        mask_total+=mask_count
+        print(f'{datetime.now()} : {nomask_total}')
+
     return img, status, mask_count, nomask_count
 
 
@@ -88,6 +106,9 @@ class Camera(QTimer):
         self.cam.set(cv2.CAP_PROP_FPS, 30)
         self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)#attribu optionnel
         self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 690) # taille max cam
+        global nomask_total
+        nomask_total += 1
+        print(nomask_total)
 
     def take_photo(self):
         today = datetime.now().strftime("%d.%m.%Y")
@@ -109,11 +130,18 @@ class Camera(QTimer):
         mainMenu.ui.status_type_label.setStyleSheet(status_stylesheet)
 
     def camera_run(self):
+
         if self.status != "pas de connexion":
             try:
                 ret, image = self.cam.read() #lecture de la camera
                 self.last_image = image.copy()
                 image, status, mask_count, nomask_count = get_processed_image(image, mainMenu.net, self.confThreshold, self.nmsThreshold) #recuperation de l'image avec la detection
+                
+
+                #self.nomask_total+=nomask_count
+                #print(nomask_total)
+                #print(datetime.now().strftime("%S"))
+                #print(nomask_count)
                 self.status = status
                 if status == "Pas de danger": #changement de l'etat du text en fonction de l'etat de danger
                     self.camera_name_item.setForeground(QColor(21, 200, 8))
@@ -141,6 +169,8 @@ class Camera(QTimer):
                     step = channel * width
                     qImg = QImage(image.data, width, height, step, QImage.Format_RGB888)
                     mainMenu.ui.image_label.setPixmap(QPixmap.fromImage(qImg))
+                    
+        
             except:
                 with open(connect_log_path, "a") as connect_log:
                     connect_log.write(datetime.now().strftime("%d/%m/%Y - %H:%M:%S ->\t") + self.camName + " (ID: " + str(self.camID) + ") disconnected from the system.\n\n")
