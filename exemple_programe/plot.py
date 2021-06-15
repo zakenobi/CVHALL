@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from matplotlib.pyplot import pie, axis, show 
+from matplotlib.pyplot import pie, axis, show, figure
 
 path = ("exemple_programe\stat_CS\donnee.csv")
 df = pd.read_csv(path,sep=';',index_col=1)
@@ -28,4 +28,5 @@ hours.plot.bar()
 print(df.index.values)
 plt.title("Nombre de détections en fonction de l'heure")
 plt.savefig("app/resources/Histogram")
+plt.legend(["Masques bien portés","Masques mal portés"],loc = "upper right", facecolor = "lightgray")
 plt.show()
