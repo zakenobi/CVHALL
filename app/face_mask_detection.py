@@ -24,9 +24,12 @@ photo_path = "photos"
 camera_list_path = "resources/camera_list.txt"
 connect_log_path = "resources/connect_history.log"
 
+current_time=int(datetime.utcnow().timestamp())
+
 # i2c = busio.I2C(board.SCL, board.SDA, frequency=1000000)
 # mlx = adafruit_mlx90640.MLX90640(i2c)
 # mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_4_HZ
+max_temp=37.6
 
 nomask_total=0
 mask_total=0
@@ -58,14 +61,15 @@ def create_detection_net(config_path, weights_path):
 
 # Tres important pour obtenir la detection de masque
 def get_processed_image(img, net, confThreshold, nmsThreshold):
-    max_temp=37.6
+    global current_time
+    global max_temp
     mask_count = 0
     nomask_count = 0
     global nomask_total
     global mask_total
     global i
     i+=1
-    if i%100==0:
+    if i%75==0:
         max_temp=37.6 #get_temp()
     
     classes, confidences, boxes = net.detect(img, confThreshold, nmsThreshold)#fonction de detection
@@ -93,11 +97,16 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
     # nomask_total=nomask_total+nomask_count
     
     #print(i)
-    if i%150==0:
+    if i%200==0:
         i=0
         nomask_total+=nomask_count
         mask_total+=mask_count
-        print(f'{datetime.now().strftime("%d.%m.%Y")};{datetime.now().strftime("%H.%M")};{mask_total};{nomask_total}')
+        if int(datetime.utcnow().timestamp())-current_time>=60:
+            with open('resources/data.csv','a') as fd:
+                fd.write(f'\n{datetime.now().strftime("%d/%m/%Y")};{datetime.now().strftime("%H:%M")};{mask_total};{nomask_total};')
+            nomask_total=0
+            mask_total=0
+            current_time=int(datetime.utcnow().timestamp())
 
     return img, status, mask_count, nomask_count
 
