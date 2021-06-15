@@ -630,7 +630,7 @@ class Ui_MainMenu(object):
 
         self.chart1 = QtWidgets.QLabel(self.centralwidget)
         self.chart1.setGeometry(QtCore.QRect(300, 100, 1000, 700))
-        self.chart1.setPixmap(QtGui.QPixmap("resources/Figure.png"))
+        self.chart1.setPixmap(QtGui.QPixmap("resources/Pie.png"))
         self.chart1.adjustSize()
         self.chart1.setScaledContents(True)
         self.chart1.setVisible(False)
@@ -638,7 +638,7 @@ class Ui_MainMenu(object):
 
         self.chart2 = QtWidgets.QLabel(self.centralwidget)
         self.chart2.setGeometry(QtCore.QRect(300, 100, 1000, 700))
-        self.chart2.setPixmap(QtGui.QPixmap("resources/pieChart2.png"))
+        self.chart2.setPixmap(QtGui.QPixmap("resources/Histogram.png"))
         self.chart2.adjustSize()
         self.chart2.setVisible(False)
         self.chart2.setEnabled(True)
