@@ -352,12 +352,12 @@ class MainMenu(QMainWindow):
         self.ui.SArrowLeft.setEnabled(False)
         self.ui.SArrowRight.setVisible(False)
         self.ui.SArrowRight.setEnabled(False)
+        self.ui.chart1.setVisible(False)
+        self.ui.chart2.setVisible(False)      
 
     def revealArrow(self):
         self.ui.arrow.setVisible(True)
         self.ui.arrow.setEnabled(True)
-
-
 
     def cam(self):
         mainMenu.start_cameras()
