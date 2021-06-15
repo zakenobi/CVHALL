@@ -2,6 +2,10 @@ import os
 import sys
 import cv2
 
+import board
+import busio
+import adafruit_mlx90640
+
 from mailer import Mailer
 import numpy as np
 from pathlib import Path
@@ -20,6 +24,10 @@ photo_path = "photos"
 camera_list_path = "resources/camera_list.txt"
 connect_log_path = "resources/connect_history.log"
 
+i2c = busio.I2C(board.SCL, board.SDA, frequency=1000000)
+mlx = adafruit_mlx90640.MLX90640(i2c)
+mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_4_HZ
+
 nomask_total=0
 mask_total=0
 
@@ -30,6 +38,13 @@ cam_list_filename = Path(camera_list_path)
 cam_list_filename.touch(exist_ok=True)
 connect_log_filename = Path(connect_log_path)
 connect_log_filename.touch(exist_ok=True)
+
+def get_temp():
+    frame = [0] * 768
+    mlx.getFrame(frame)
+    max_temp=max(frame)
+    return max_temp
+
 
 # Tres imoprtant pour le reseau de neuronne
 def create_detection_net(config_path, weights_path):
@@ -43,9 +58,14 @@ def create_detection_net(config_path, weights_path):
 
 # Tres important pour obtenir la detection de masque
 def get_processed_image(img, net, confThreshold, nmsThreshold):
-    pass
     mask_count = 0
     nomask_count = 0
+    global nomask_total
+    global mask_total
+    global i
+    i+=1
+    if i%100==0:
+        max_temp=get_temp()
     classes, confidences, boxes = net.detect(img, confThreshold, nmsThreshold)#fonction de detection
     for cl, score, (left, top, width, height) in zip(classes, confidences, boxes):
         mask_count += (1 - cl[0])
@@ -54,7 +74,7 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
         end_point = (int(left + width), int(top + height))
         color = COLORS[cl[0]] #definie la couleur du carre
         img = cv2.rectangle(img, start_point, end_point, color, 2)  #dessine le carre sur l'image 
-        text = f'{LABELS[cl[0]]}: {score[0]:0.2f}'
+        text = f'{LABELS[cl[0]]}: {score[0]:0.2f} Temp:{max_temp}'
         (test_width, text_height), baseline = cv2.getTextSize(text, cv2.FONT_ITALIC, 0.6, 1)
         end_point = (int(left + test_width + 2), int(top - text_height - 2))
         img = cv2.rectangle(img, start_point, end_point, color, -1)
@@ -69,16 +89,13 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
         status = "Pas de danger"
     # mask_total=mask_total+mask_count
     # nomask_total=nomask_total+nomask_count
-    global nomask_total
-    global mask_total
-    global i
-    i+=1
-    print(i)
+    
+    #print(i)
     if i%150==0:
         i=0
         nomask_total+=nomask_count
         mask_total+=mask_count
-        print(f'{datetime.now()} : {nomask_total}')
+        print(f'{datetime.now().strftime("%d.%m.%Y")};{datetime.now().strftime("%H.%M")};{mask_total};{nomask_total}')
 
     return img, status, mask_count, nomask_count
 
