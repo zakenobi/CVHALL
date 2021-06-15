@@ -2,9 +2,9 @@ import os
 import sys
 import cv2
 
-import board
-import busio
-import adafruit_mlx90640
+# import board
+# import busio
+# import adafruit_mlx90640
 
 from mailer import Mailer
 import numpy as np
@@ -24,9 +24,9 @@ photo_path = "photos"
 camera_list_path = "resources/camera_list.txt"
 connect_log_path = "resources/connect_history.log"
 
-i2c = busio.I2C(board.SCL, board.SDA, frequency=1000000)
-mlx = adafruit_mlx90640.MLX90640(i2c)
-mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_4_HZ
+# i2c = busio.I2C(board.SCL, board.SDA, frequency=1000000)
+# mlx = adafruit_mlx90640.MLX90640(i2c)
+# mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_4_HZ
 
 nomask_total=0
 mask_total=0
@@ -39,11 +39,11 @@ cam_list_filename.touch(exist_ok=True)
 connect_log_filename = Path(connect_log_path)
 connect_log_filename.touch(exist_ok=True)
 
-def get_temp():
-    frame = [0] * 768
-    mlx.getFrame(frame)
-    max_temp=max(frame)
-    return max_temp
+# def get_temp():
+#     frame = [0] * 768
+#     mlx.getFrame(frame)
+#     max_temp=max(frame)
+#     return max_temp
 
 
 # Tres imoprtant pour le reseau de neuronne
@@ -58,6 +58,7 @@ def create_detection_net(config_path, weights_path):
 
 # Tres important pour obtenir la detection de masque
 def get_processed_image(img, net, confThreshold, nmsThreshold):
+    max_temp=37.6
     mask_count = 0
     nomask_count = 0
     global nomask_total
@@ -65,7 +66,8 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
     global i
     i+=1
     if i%100==0:
-        max_temp=get_temp()
+        max_temp=37.6 #get_temp()
+    
     classes, confidences, boxes = net.detect(img, confThreshold, nmsThreshold)#fonction de detection
     for cl, score, (left, top, width, height) in zip(classes, confidences, boxes):
         mask_count += (1 - cl[0])
@@ -123,9 +125,7 @@ class Camera(QTimer):
         self.cam.set(cv2.CAP_PROP_FPS, 30)
         self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)#attribu optionnel
         self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 690) # taille max cam
-        global nomask_total
-        nomask_total += 1
-        print(nomask_total)
+
 
     def take_photo(self):
         today = datetime.now().strftime("%d.%m.%Y")
