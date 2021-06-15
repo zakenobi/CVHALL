@@ -2,9 +2,9 @@ import os
 import sys
 import cv2
 
-# import board
-# import busio
-# import adafruit_mlx90640
+import board
+import busio
+import adafruit_mlx90640
 
 from mailer import Mailer
 import numpy as np
@@ -26,9 +26,9 @@ connect_log_path = "resources/connect_history.log"
 
 current_time=int(datetime.utcnow().timestamp())
 
-# i2c = busio.I2C(board.SCL, board.SDA, frequency=1000000)
-# mlx = adafruit_mlx90640.MLX90640(i2c)
-# mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_4_HZ
+i2c = busio.I2C(board.SCL, board.SDA, frequency=1000000)
+mlx = adafruit_mlx90640.MLX90640(i2c)
+mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_4_HZ
 max_temp=37.6
 
 nomask_total=0
@@ -42,11 +42,11 @@ cam_list_filename.touch(exist_ok=True)
 connect_log_filename = Path(connect_log_path)
 connect_log_filename.touch(exist_ok=True)
 
-# def get_temp():
-#     frame = [0] * 768
-#     mlx.getFrame(frame)
-#     max_temp=max(frame)
-#     return max_temp
+def get_temp():
+    frame = [0] * 768
+    mlx.getFrame(frame)
+    max_temp=max(frame)
+    return max_temp
 
 
 # Tres imoprtant pour le reseau de neuronne
@@ -70,7 +70,7 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
     global i
     i+=1
     if i%75==0:
-        max_temp=37.6 #get_temp()
+        max_temp=get_temp()
     
     classes, confidences, boxes = net.detect(img, confThreshold, nmsThreshold)#fonction de detection
     for cl, score, (left, top, width, height) in zip(classes, confidences, boxes):
@@ -93,20 +93,19 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
         status = "Attention"
     else:
         status = "Pas de danger"
-    # mask_total=mask_total+mask_count
-    # nomask_total=nomask_total+nomask_count
+
     
     #print(i)
     if i%200==0:
         i=0
         nomask_total+=nomask_count
         mask_total+=mask_count
-        if int(datetime.utcnow().timestamp())-current_time>=60:
-            with open('resources/data.csv','a') as fd:
-                fd.write(f'\n{datetime.now().strftime("%d/%m/%Y")};{datetime.now().strftime("%H:%M")};{mask_total};{nomask_total};')
-            nomask_total=0
-            mask_total=0
-            current_time=int(datetime.utcnow().timestamp())
+    if int(datetime.utcnow().timestamp())-current_time>=60:
+        with open('resources/data.csv','a') as fd:
+            fd.write(f'\n{datetime.now().strftime("%d/%m/%Y")};{datetime.now().strftime("%H:%M")};{mask_total};{nomask_total};')
+        nomask_total=0
+        mask_total=0
+        current_time=int(datetime.utcnow().timestamp())
 
     return img, status, mask_count, nomask_count
 
