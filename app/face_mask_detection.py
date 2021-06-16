@@ -86,9 +86,9 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
         img = cv2.rectangle(img, start_point, end_point, color, -1)
         cv2.putText(img, text, start_point, cv2.FONT_ITALIC, 0.6, COLORS[1 - cl[0]], 1)  #ecrit les information de port du masque sur l'image
     
-    img = cv2.rectangle(img,(150, 10),(300,300),(255,0,0),2)
+    img = cv2.rectangle(img,(200, 20),(400,300),(255,0,0),2)
     text = f'Temp : {max_temp}'
-    cv2.putText(img, text, (150, 10), cv2.FONT_ITALIC, 0.6,(255, 0, 0),1)
+    cv2.putText(img, text, (200, 20), cv2.FONT_ITALIC, 0.6,(255, 0, 0),1)
     
     ratio = nomask_count / (mask_count + nomask_count + 0.000001)
     
