@@ -401,7 +401,7 @@ class MainMenu(QMainWindow):
 
         plt.pie(slices, labels = labels)
         plt.title('Proportion de sujets portant leur masque ou non')
-        plt.legend(['Masque porté','Masque non porté'],loc = "lower left", facecolor = "lightgray")
+        plt.legend(['Masque porté','Masque non porté'], bbox_to_anchor=(1.05, 1),loc = "lower left", facecolor = "lightgray")
         plt.savefig("resources/Pie")
 
         # Histogramme 
