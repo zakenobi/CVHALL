@@ -399,7 +399,7 @@ class MainMenu(QMainWindow):
         plt.pie(slices, labels = labels)
         plt.title('Proportion de sujets portant leur masque ou non')
         plt.legend(['Masque porté','Masque non porté'],loc = "lower left", facecolor = "lightgray")
-        plt.savefig("resources/Pie.png")
+        plt.savefig("Pie.png")
 
         # Histogramme 
 
@@ -408,7 +408,7 @@ class MainMenu(QMainWindow):
         hours.plot.bar()
         plt.title("Nombre de détections en fonction de l'heure")
         plt.legend(["Masques bien portés","Masques mal portés"],loc = "upper right", facecolor = "lightgray")
-        plt.savefig("resources/Histogram.png")
+        plt.savefig("Histogram.png")
 
         file_size =Path(r"resources/data.csv").stat().st_size
         print('hello')
@@ -416,10 +416,10 @@ class MainMenu(QMainWindow):
             dc = DataFrame(columns=['Date','Heures','nb_masques_bien_portes','nb_masques_non_portes','Somme_avec_masques','Somme_non_masques'])
             dc.to_csv(r"resources/data.csv",  index = False, sep=';', encoding='utf-8')
     
-        self.ui.chart1.setPixmap(QtGui.QPixmap("resources/Pie.png"))
+        self.ui.chart1.setPixmap(QtGui.QPixmap("Pie.png"))
         self.ui.chart1.adjustSize()
         self.ui.chart1.setScaledContents(True)
-        self.ui.chart2.setPixmap(QtGui.QPixmap("resources/Histogram.png"))
+        self.ui.chart2.setPixmap(QtGui.QPixmap("Histogram.png"))
         self.ui.chart2.adjustSize()
         self.ui.chart2.setScaledContents(True)
         self.ui.SArrowLeft.setVisible(False)
