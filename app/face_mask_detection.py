@@ -112,12 +112,8 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
         mask_total+=mask_count
     if int(datetime.utcnow().timestamp())-current_time>=60:
         with open('resources/data.csv','a') as fd:
-            file_size =Path(r"resources\data.csv").stat().st_size
-            if file_size > pow(10,9) : 
-                dc = DataFrame(columns=['Date','Heures','nb_masques_bien_portes','nb_masques_non_portes','Somme_avec_masques','Somme_non_masques'])
-                dc.to_csv(r"resources\data.csv",  index = False, sep=';', encoding='utf-8')
-            if file_size > 100 :
-                fd.write(f'\n{datetime.now().strftime("%d/%m/%Y")};{datetime.now().strftime("%H:%M")};{mask_total};{nomask_total};')
+            print('hello')
+            fd.write(f'\n{datetime.now().strftime("%d/%m/%Y")};{datetime.now().strftime("%H:%M")};{mask_total};{nomask_total};')
         nomask_total=0
         mask_total=0
         current_time=int(datetime.utcnow().timestamp())
@@ -409,7 +405,12 @@ class MainMenu(QMainWindow):
         plt.title("Nombre de détections en fonction de l'heure")
         plt.legend(["Masques bien portés","Masques mal portés"],loc = "upper right", facecolor = "lightgray")
         plt.savefig("resources/Histogram")
-        
+
+        file_size =Path(r"resources\data.csv").stat().st_size
+        if file_size > pow(10,9) : 
+            dc = DataFrame(columns=['Date','Heures','nb_masques_bien_portes','nb_masques_non_portes','Somme_avec_masques','Somme_non_masques'])
+            dc.to_csv(r"resources\data.csv",  index = False, sep=';', encoding='utf-8')
+    
         self.ui.chart1.setPixmap(QtGui.QPixmap("resources/Pie.png"))
         self.ui.chart2.setPixmap(QtGui.QPixmap("resources/Histogram.png"))
         self.ui.SArrowLeft.setVisible(False)
