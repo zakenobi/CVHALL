@@ -16,7 +16,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QWidget
 
 from main_menu import *
 
-LABELS = ["Mask", "Without Mask"]
+LABELS = ["Masque", "Sans Masque"]
 COLORS = [[0, 255, 0], [0, 0, 255]]
 weightsPath = "yolo_utils/yolov4-tiny-mask.weights"
 configPath = "yolo_utils/yolov4-tiny-mask.cfg"
@@ -45,7 +45,8 @@ connect_log_filename.touch(exist_ok=True)
 def get_temp():
     frame = [0] * 768
     mlx.getFrame(frame)
-    max_temp=int(max(frame))
+    #max_temp=int(max(frame))
+    max_temp=float("{0:.2f}".format(max(frame)))
     return max_temp
 
 
