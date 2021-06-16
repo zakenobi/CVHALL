@@ -406,11 +406,11 @@ class MainMenu(QMainWindow):
         plt.legend(["Masques bien portés","Masques mal portés"],loc = "upper right", facecolor = "lightgray")
         plt.savefig("resources/Histogram")
 
-        file_size =Path(r"resources\data.csv").stat().st_size
+        file_size =Path(r"resources/data.csv").stat().st_size
         print('hello')
         if file_size > pow(10,9) : 
             dc = DataFrame(columns=['Date','Heures','nb_masques_bien_portes','nb_masques_non_portes','Somme_avec_masques','Somme_non_masques'])
-            dc.to_csv(r"resources\data.csv",  index = False, sep=';', encoding='utf-8')
+            dc.to_csv(r"resources/data.csv",  index = False, sep=';', encoding='utf-8')
     
         self.ui.chart1.setPixmap(QtGui.QPixmap("resources/Pie.png"))
         self.ui.chart2.setPixmap(QtGui.QPixmap("resources/Histogram.png"))
