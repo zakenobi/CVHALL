@@ -392,8 +392,8 @@ class MainMenu(QMainWindow):
         # Pie
         labels = [dp.iloc[0][0],dp.iloc[0][1]]
 
-        sum_masque = df['Somme_avec_masques'] = df['nb_masques_bien_portes'].sum()
-        sum_Nmasque = df['Somme_sans_masques'] = df['nb_masques_non_portes'].sum()
+        sum_masque = df['nb_masques_bien_portes'].sum()
+        sum_Nmasque = df['nb_masques_non_portes'].sum()
 
         labels = [sum_masque,sum_Nmasque]
 
@@ -430,7 +430,7 @@ class MainMenu(QMainWindow):
         self.ui.stop_button.setVisible(False)
         self.ui.stop_button.setEnabled(False)
         self.ui.description.setVisible(False)
-        self.ui.chart1.setVisible(False)
+        self.ui.chart1.setVisible(True)
         self.ui.chart2.setVisible(False)
 
     def leftArrow(self):
