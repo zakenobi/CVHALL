@@ -4,13 +4,13 @@ from pathlib import Path
 from matplotlib.pyplot import pie, axis, show, figure
 from pandas.core.frame import DataFrame
 
-Path(r"exemple_programe\stat_CS\donnee.csv").stat()
-file_size =Path(r"exemple_programe\stat_CS\donnee.csv").stat().st_size
+Path(r"exemple_programe/stat_CS/donnee.csv").stat()
+file_size =Path(r"exemple_programe/stat_CS/donnee.csv").stat().st_size
 print("The file size is:", file_size,"bytes")
 
 if file_size > 100 : 
 
-    path = ("exemple_programe\stat_CS\donnee.csv")
+    path = ("exemple_programe/stat_CS/donnee.csv")
     df = pd.read_csv(path,sep=';',index_col=1)
     dp = df[['Somme_avec_masques','Somme_non_masques']].iloc[[0]]
 
@@ -40,15 +40,15 @@ if file_size > 100 :
     hours = hours[['nb_masques_bien_portes','nb_masques_non_portes']]
     hours.plot.bar()
     plt.title("Nombre de détections en fonction de l'heure")
-    plt.savefig("app/resources/Histogram")
     plt.legend(["Masques bien portés","Masques mal portés"],loc = "upper right", facecolor = "lightgray")
+    plt.savefig("app/resources/Histogram")
     plt.show()
 
     #On sait que 1 octet = 8 bytes 
 
     if file_size > pow(10,9) : 
         dc = DataFrame(columns=['Date','Heures','nb_masques_bien_portes','nb_masques_non_portes','Somme_avec_masques','Somme_non_masques'])
-        dc.to_csv(r"exemple_programe\stat_CS\donnee.csv",  index = False, sep=';', encoding='utf-8')
+        dc.to_csv(r"exemple_programe/stat_CS/donnee.csv",  index = False, sep=';', encoding='utf-8')
         print("Fichier CSV écrasé")
 
 else : 
