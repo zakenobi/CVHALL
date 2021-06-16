@@ -399,7 +399,7 @@ class MainMenu(QMainWindow):
         plt.pie(slices, labels = labels)
         plt.title('Proportion de sujets portant leur masque ou non')
         plt.legend(['Masque porté','Masque non porté'],loc = "lower left", facecolor = "lightgray")
-        plt.savefig("resources/Pie")
+        plt.savefig("resources/Pie.png")
 
         # Histogramme 
 
@@ -408,7 +408,7 @@ class MainMenu(QMainWindow):
         hours.plot.bar()
         plt.title("Nombre de détections en fonction de l'heure")
         plt.legend(["Masques bien portés","Masques mal portés"],loc = "upper right", facecolor = "lightgray")
-        plt.savefig("resources/Histogram")
+        plt.savefig("resources/Histogram.png")
 
         file_size =Path(r"resources/data.csv").stat().st_size
         print('hello')
