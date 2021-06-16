@@ -389,8 +389,8 @@ class MainMenu(QMainWindow):
         # Pie
         labels = [dp.iloc[0][0],dp.iloc[0][1]]
 
-        sum_masque = df['Somme_avec_masques'] = df['nb_masques_bien_portes'].sum()
-        sum_Nmasque = df['Somme_sans_masques'] = df['nb_masques_non_portes'].sum()
+        sum_masque = df['nb_masques_bien_portes'].sum()
+        sum_Nmasque = df['nb_masques_non_portes'].sum()
 
         labels = [sum_masque,sum_Nmasque]
 
@@ -398,7 +398,7 @@ class MainMenu(QMainWindow):
 
         plt.pie(slices, labels = labels)
         plt.title('Proportion de sujets portant leur masque ou non')
-        plt.legend(['Masque porté','Masque non porté'],loc = "lower left", facecolor = "lightgray")
+        plt.legend(['Masque porté','Masque non porté'], bbox_to_anchor=(1, 1),loc = "lower left", facecolor = "lightgray")
         plt.savefig("resources/Pie")
 
         # Histogramme 
