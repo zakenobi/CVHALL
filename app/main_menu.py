@@ -686,7 +686,7 @@ class Ui_MainMenu(object):
         self.status_label.move(1050,60)
 
         self.pushButton1.setStyleSheet("QPushButton{\n"
-"font: 63 17pt \"URW Gothic L\";\n"
+"font: 63 20pt \"URW Gothic L\";\n"
 "border:1px transparent;\n"
 "border-radius: 20px;\n"
 "color: #FFFFFF;\n"
@@ -720,7 +720,7 @@ class Ui_MainMenu(object):
 "")
 
         self.pushButton3.setStyleSheet("QPushButton{\n"
-"font: 63 24pt \"URW Gothic L\";\n"
+"font: 63 18pt \"URW Gothic L\";\n"
 "border:1px transparent;\n"
 "border-radius: 20px;\n"
 "color: #FFFFFF;\n"
