@@ -417,7 +417,11 @@ class MainMenu(QMainWindow):
             dc.to_csv(r"resources/data.csv",  index = False, sep=';', encoding='utf-8')
     
         self.ui.chart1.setPixmap(QtGui.QPixmap("resources/Pie.png"))
+        self.ui.chart1.adjustSize()
+        self.ui.chart1.setScaledContents(True)
         self.ui.chart2.setPixmap(QtGui.QPixmap("resources/Histogram.png"))
+        self.ui.chart2.adjustSize()
+        self.ui.chart2.setScaledContents(True)
         self.ui.SArrowLeft.setVisible(False)
         self.ui.SArrowLeft.setEnabled(False)
         self.ui.SArrowRight.setVisible(True)
