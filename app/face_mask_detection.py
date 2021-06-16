@@ -8,6 +8,7 @@ import adafruit_mlx90640
 
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt2
 from pathlib import Path
 from matplotlib.pyplot import pie, axis, show, figure
 from pandas.core.frame import DataFrame
@@ -406,9 +407,9 @@ class MainMenu(QMainWindow):
         hours = df.groupby('Heures').agg('sum')
         hours = hours[['nb_masques_bien_portes','nb_masques_non_portes']]
         hours.plot.bar()
-        plt.title("Nombre de détections en fonction de l'heure")
-        plt.legend(["Masques bien portés","Masques mal portés"],loc = "upper right", facecolor = "lightgray")
-        plt.savefig("Histogram.png")
+        plt2.title("Nombre de détections en fonction de l'heure")
+        plt2.legend(["Masques bien portés","Masques mal portés"],loc = "upper right", facecolor = "lightgray")
+        plt2.savefig("Histogram.png")
 
         file_size =Path(r"resources/data.csv").stat().st_size
         print('hello')
