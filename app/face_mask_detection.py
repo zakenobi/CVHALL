@@ -2,9 +2,9 @@ import os
 import sys
 import cv2
 
-# import board
-# import busio
-# import adafruit_mlx90640
+import board
+import busio
+import adafruit_mlx90640
 
 from mailer import Mailer
 import numpy as np
@@ -16,7 +16,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QWidget
 
 from main_menu import *
 
-LABELS = ["Mask", "Without Mask"]
+LABELS = ["Masque", "Sans Masque"]
 COLORS = [[0, 255, 0], [0, 0, 255]]
 weightsPath = "yolo_utils/yolov4-tiny-mask.weights"
 configPath = "yolo_utils/yolov4-tiny-mask.cfg"
@@ -26,9 +26,9 @@ connect_log_path = "resources/connect_history.log"
 
 current_time=int(datetime.utcnow().timestamp())
 
-# i2c = busio.I2C(board.SCL, board.SDA, frequency=1000000)
-# mlx = adafruit_mlx90640.MLX90640(i2c)
-# mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_4_HZ
+i2c = busio.I2C(board.SCL, board.SDA, frequency=1000000)
+mlx = adafruit_mlx90640.MLX90640(i2c)
+mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_4_HZ
 max_temp=37.6
 
 nomask_total=0
@@ -42,11 +42,12 @@ cam_list_filename.touch(exist_ok=True)
 connect_log_filename = Path(connect_log_path)
 connect_log_filename.touch(exist_ok=True)
 
-# def get_temp():
-#     frame = [0] * 768
-#     mlx.getFrame(frame)
-#     max_temp=max(frame)
-#     return max_temp
+def get_temp():
+    frame = [0] * 768
+    mlx.getFrame(frame)
+    #max_temp=int(max(frame))
+    max_temp=float("{0:.2f}".format(max(frame)))
+    return max_temp
 
 
 # Tres imoprtant pour le reseau de neuronne
@@ -69,8 +70,8 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
     global mask_total
     global i
     i+=1
-    if i%75==0:
-        max_temp=37.6 #get_temp()
+    if i%50==0:
+        max_temp=get_temp()
     
     classes, confidences, boxes = net.detect(img, confThreshold, nmsThreshold)#fonction de detection
     for cl, score, (left, top, width, height) in zip(classes, confidences, boxes):
@@ -80,11 +81,16 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
         end_point = (int(left + width), int(top + height))
         color = COLORS[cl[0]] #definie la couleur du carre
         img = cv2.rectangle(img, start_point, end_point, color, 2)  #dessine le carre sur l'image 
-        text = f'{LABELS[cl[0]]}: {score[0]:0.2f} Temp:{max_temp}'
+        text = f'{LABELS[cl[0]]}: {score[0]:0.2f}'
         (test_width, text_height), baseline = cv2.getTextSize(text, cv2.FONT_ITALIC, 0.6, 1)
         end_point = (int(left + test_width + 2), int(top - text_height - 2))
         img = cv2.rectangle(img, start_point, end_point, color, -1)
         cv2.putText(img, text, start_point, cv2.FONT_ITALIC, 0.6, COLORS[1 - cl[0]], 1)  #ecrit les information de port du masque sur l'image
+    
+    img = cv2.rectangle(img,(200, 70),(450,350),(255,0,0),2)
+    text = f'Temp : {max_temp}'
+    cv2.putText(img, text, (200, 68), cv2.FONT_ITALIC, 0.6,(255, 0, 0),1)
+    
     ratio = nomask_count / (mask_count + nomask_count + 0.000001)
     
     if ratio >= 0.1 and nomask_count >= 3: #
@@ -93,20 +99,17 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
         status = "Attention"
     else:
         status = "Pas de danger"
-    # mask_total=mask_total+mask_count
-    # nomask_total=nomask_total+nomask_count
     
-    #print(i)
     if i%200==0:
         i=0
         nomask_total+=nomask_count
         mask_total+=mask_count
-        if int(datetime.utcnow().timestamp())-current_time>=60:
-            with open('resources/data.csv','a') as fd:
-                fd.write(f'\n{datetime.now().strftime("%d/%m/%Y")};{datetime.now().strftime("%H:%M")};{mask_total};{nomask_total};')
-            nomask_total=0
-            mask_total=0
-            current_time=int(datetime.utcnow().timestamp())
+    if int(datetime.utcnow().timestamp())-current_time>=60:
+        with open('resources/data.csv','a') as fd:
+            fd.write(f'\n{datetime.now().strftime("%d/%m/%Y")};{datetime.now().strftime("%H:%M")};{mask_total};{nomask_total};')
+        nomask_total=0
+        mask_total=0
+        current_time=int(datetime.utcnow().timestamp())
 
     return img, status, mask_count, nomask_count
 
