@@ -7,6 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import os
 
 
 class Ui_MainMenu(object):
@@ -642,7 +643,6 @@ class Ui_MainMenu(object):
         self.chart2.adjustSize()
         self.chart2.setVisible(False)
         self.chart2.setEnabled(True)
-
 
         self.retranslateUi(MainMenu)
         QtCore.QMetaObject.connectSlotsByName(MainMenu)
