@@ -1,6 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from pathlib import Path
 from matplotlib.pyplot import pie, axis, show, figure
+from pandas.core.frame import DataFrame
 
 path = ("exemple_programe\stat_CS\donnee.csv")
 df = pd.read_csv(path,sep=';',index_col=1)
@@ -37,4 +39,14 @@ plt.legend(["Masques bien portés","Masques mal portés"],loc = "upper right", f
 plt.show()
 
 
-   
+Path(r"exemple_programe\stat_CS\donnee.csv").stat()
+file_size =Path(r"exemple_programe\stat_CS\donnee.csv").stat().st_size
+print("The file size is:", file_size,"bytes")
+
+#On sait que 1 octet = 8 bytes 
+
+dc = DataFrame(columns= ['Date','Heures','nb_masques_bien_portes','nb_masques_non_portes','Somme_avec_masques','Somme_non_masques'])
+dc.to_csv("exemple_programe\stat_CS\donnee.csv", sep=';', encoding='utf-8')
+
+if file_size >1000000 : 
+    print("Tk le plus beau ")
