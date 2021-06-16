@@ -6,6 +6,12 @@ import board
 import busio
 import adafruit_mlx90640
 
+import pandas as pd
+import matplotlib.pyplot as plt
+from pathlib import Path
+from matplotlib.pyplot import pie, axis, show, figure
+from pandas.core.frame import DataFrame
+
 from mailer import Mailer
 import numpy as np
 from pathlib import Path
@@ -106,7 +112,12 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
         mask_total+=mask_count
     if int(datetime.utcnow().timestamp())-current_time>=60:
         with open('resources/data.csv','a') as fd:
-            fd.write(f'\n{datetime.now().strftime("%d/%m/%Y")};{datetime.now().strftime("%H:%M")};{mask_total};{nomask_total};')
+            file_size =Path(r"resources\data.csv").stat().st_size
+            if file_size > pow(10,9) : 
+                dc = DataFrame(columns=['Date','Heures','nb_masques_bien_portes','nb_masques_non_portes','Somme_avec_masques','Somme_non_masques'])
+                dc.to_csv(r"resources\data.csv",  index = False, sep=';', encoding='utf-8')
+            if file_size > 100 :
+                fd.write(f'\n{datetime.now().strftime("%d/%m/%Y")};{datetime.now().strftime("%H:%M")};{mask_total};{nomask_total};')
         nomask_total=0
         mask_total=0
         current_time=int(datetime.utcnow().timestamp())
@@ -371,6 +382,36 @@ class MainMenu(QMainWindow):
         self.ui.chart2.setVisible(False)
 
     def revealStats(self):
+        path = ("resources/data.csv")
+        df = pd.read_csv(path,sep=';',index_col=1)
+        dp = df[['Somme_avec_masques','Somme_non_masques']].iloc[[0]]
+
+        # Pie
+        labels = [dp.iloc[0][0],dp.iloc[0][1]]
+
+        sum_masque = df['Somme_avec_masques'] = df['nb_masques_bien_portes'].sum()
+        sum_Nmasque = df['Somme_sans_masques'] = df['nb_masques_non_portes'].sum()
+
+        labels = [sum_masque,sum_Nmasque]
+
+        slices = [sum_masque,sum_Nmasque]
+
+        plt.pie(slices, labels = labels)
+        plt.title('Proportion de sujets portant leur masque ou non')
+        plt.legend(['Masque porté','Masque non porté'],loc = "lower left", facecolor = "lightgray")
+        plt.savefig("resources/Pie")
+
+        # Histogramme 
+
+        hours = df.groupby('Heures').agg('sum')
+        hours = hours[['nb_masques_bien_portes','nb_masques_non_portes']]
+        hours.plot.bar()
+        plt.title("Nombre de détections en fonction de l'heure")
+        plt.legend(["Masques bien portés","Masques mal portés"],loc = "upper right", facecolor = "lightgray")
+        plt.savefig("resources/Histogram")
+        
+        self.ui.chart1.setPixmap(QtGui.QPixmap("resources/Pie.png"))
+        self.ui.chart2.setPixmap(QtGui.QPixmap("resources/Histogram.png"))
         self.ui.SArrowLeft.setVisible(False)
         self.ui.SArrowLeft.setEnabled(False)
         self.ui.SArrowRight.setVisible(True)
