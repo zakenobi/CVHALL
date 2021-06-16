@@ -629,7 +629,7 @@ class Ui_MainMenu(object):
         #self.arrow.setEnabled(False)
 
         self.chart1 = QtWidgets.QLabel(self.centralwidget)
-        self.chart1.setGeometry(QtCore.QRect(300, 100, 1260, 800))
+        self.chart1.setGeometry(QtCore.QRect(300, 100, 800, 800))
         self.chart1.setPixmap(QtGui.QPixmap("resources/Pie.png"))
         self.chart1.adjustSize()
         self.chart1.setScaledContents(True)
