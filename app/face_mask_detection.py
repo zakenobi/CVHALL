@@ -49,15 +49,13 @@ connect_log_filename = Path(connect_log_path)
 connect_log_filename.touch(exist_ok=True)
 
 def get_temp():
+    x=0
     frame = [0] * 768
     mlx.getFrame(frame)
-    #max_temp=int(max(frame))
-    for i in range(24) :
-        for j in range(32) :
-            if frame[i,j] < 41 and frame[i,j]>35 :
-                max_temp = float("{0:.2f}".format(frame[i,j]))
-                break
-            break
+    frame.sort()
+    while frame[-x]>41 :
+        x+=1
+    max_temp=frame[-x]        
 
     #max_temp=float("{0:.2f}".format(max(frame)))
     return max_temp
@@ -119,7 +117,6 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
         mask_total+=mask_count
     if int(datetime.utcnow().timestamp())-current_time>=60:
         with open('resources/data.csv','a') as fd:
-            print('hello')
             fd.write(f'\n{datetime.now().strftime("%d/%m/%Y")};{datetime.now().strftime("%H:%M")};{mask_total};{nomask_total};')
         nomask_total=0
         mask_total=0
