@@ -1,7 +1,7 @@
-Description du projet :
-L'application permet de detecter le port du masque et la 
-temperature des sujets.
-Chaque declenchement est comptabilise et permet de recueillir 
-des statistiques comme la proportion de personnes portant 
-leur masque correctement, le nombre de personne ayant une 
-temperature trop elevee et autres.
+L'application permet de detecter le port du masque 
+et la temperature des sujets.
+Chaque declenchement est comptabilise et permet 
+de recueillir des statistiques comme la proportion 
+de personnes portant leur masque correctement, 
+le nombre de personne ayant une temperature trop 
+elevee et autres.
