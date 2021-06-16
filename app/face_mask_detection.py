@@ -431,6 +431,7 @@ class MainMenu(QMainWindow):
         self.ui.chart2.setVisible(False)
 
         os.remove("resources/Pie.png")
+        os.remove("resources/Histogram.png")
 
     def leftArrow(self):
         self.ui.chart1.setVisible(True)
