@@ -25,12 +25,12 @@ sum_masque = df['Somme_avec_masques'] = df['nb_masques_bien_portes'].sum()
 sum_Nmasque = df['Somme_sans_masques'] = df['nb_masques_non_portes'].sum()
 
 
-# labels = [sum_masque,sum_Nmasque]
-# slices = [sum_masque,sum_Nmasque]
-# plt.pie(slices, labels = labels)
-# plt.title('Proportion de sujets portant leur masque ou non')
-# plt.legend(['Masque porté','Masque non porté'],loc = "lower left", facecolor = "lightgray")
-# plt.savefig("app/resources/Pie")
+labels = [sum_masque,sum_Nmasque]
+slices = [sum_masque,sum_Nmasque]
+plt.bar([sum_masque,sum_Nmasque],height=1)
+plt.title('Proportion de sujets portant leur masque ou non')
+plt.legend(['Masque porté','Masque non porté'],loc = "lower left", facecolor = "lightgray")
+plt.savefig("app/resources/Pie")
 
 #Histogramme 
 hours = df.groupby('Heures').agg('sum')
@@ -41,9 +41,6 @@ plt.legend(["Masques bien portés","Masques mal portés"],loc = "upper right", f
 plt.savefig("app/resources/Histogram")
 plt.show()
 
-venn2(subsets= (sum_masque,sum_Nmasque,sum_Nmasque+sum_masque),set_labels=('Sans masque','Avec masque'))
-plt.show()
-plt.savefig("app/resources/Pie")
 
 #On sait que 1 octet = 8 bytes 
 if file_size > pow(10,9) : 
