@@ -54,9 +54,12 @@ def get_temp():
     frame = [0] * 768
     mlx.getFrame(frame)
     frame.sort()
-    while frame[-x]>41 :
-        max_temp=frame[-x] 
-        x+=1   
+    max_temp=frame[0]
+    if max_temp>41:
+        max_temp=frame[1]
+    # while frame[-x]>41 :
+    #     max_temp=frame[-x] 
+    #     x+=1   
 
     #max_temp=float("{0:.2f}".format(max(frame)))
     return max_temp
@@ -413,7 +416,6 @@ class MainMenu(QMainWindow):
         plt2.savefig("Histogram.png")
 
         file_size =Path(r"resources/data.csv").stat().st_size
-        print('hello')
         if file_size > pow(10,9) : 
             dc = DataFrame(columns=['Date','Heures','nb_masques_bien_portes','nb_masques_non_portes','Somme_avec_masques','Somme_non_masques'])
             dc.to_csv(r"resources/data.csv",  index = False, sep=';', encoding='utf-8')
