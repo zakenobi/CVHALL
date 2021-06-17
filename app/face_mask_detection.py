@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 import matplotlib.pyplot as plt2
 from pathlib import Path
 from matplotlib.pyplot import pie, axis, show, figure
+from matplotlib_venn import venn2
 from pandas.core.frame import DataFrame
 
 from mailer import Mailer
@@ -385,22 +386,22 @@ class MainMenu(QMainWindow):
     def revealStats(self):
         path = ("resources/data.csv")
         df = pd.read_csv(path,sep=';',index_col=1)
-        dp = df[['Somme_avec_masques','Somme_non_masques']].iloc[[0]]
+        #dp = df[['Somme_avec_masques','Somme_non_masques']].iloc[[0]]
 
         # Pie
-        labels = [dp.iloc[0][0],dp.iloc[0][1]]
+
+        #labels = [dp.iloc[0][0],dp.iloc[0][1]]
 
         sum_masque = df['nb_masques_bien_portes'].sum()
         sum_Nmasque = df['nb_masques_non_portes'].sum()
 
-        labels = [sum_masque,sum_Nmasque]
+        #labels = [sum_masque,sum_Nmasque]
 
-        slices = [sum_masque,sum_Nmasque]
+        #slices = [sum_masque,sum_Nmasque]
 
-        plt.pie(slices, labels = labels)
-        plt.title('Proportion de sujets portant leur masque ou non')
-        plt.legend(['Masque porté','Masque non porté'],loc = "lower left", facecolor = "lightgray")
-        plt.savefig("Pie.png")
+        venn2(subsets= (sum_masque,sum_Nmasque,sum_Nmasque+sum_masque),set_labels=('Sans masque','Avec masque'))
+        plt.show()
+        plt.savefig("app/resources/Pie")
 
         # Histogramme 
 
