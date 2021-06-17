@@ -55,9 +55,12 @@ def get_temp():
     frame = [0] * 768
     mlx.getFrame(frame)
     frame.sort()
-    while frame[-x]>41 :
-        x+=1
-    max_temp=frame[-x]        
+    max_temp=frame[0]
+    if max_temp>41:
+        max_temp=frame[1]
+    # while frame[-x]>41 :
+    #     max_temp=frame[-x] 
+    #     x+=1   
 
     #max_temp=float("{0:.2f}".format(max(frame)))
     return max_temp
@@ -118,10 +121,11 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
         nomask_total+=nomask_count
         mask_total+=mask_count
     if int(datetime.utcnow().timestamp())-current_time>=60:
-        with open('resources/data.csv','a') as fd:
-            fd.write(f'\n{datetime.now().strftime("%d/%m/%Y")};{datetime.now().strftime("%H:%M")};{mask_total};{nomask_total};')
-        nomask_total=0
-        mask_total=0
+        if nomask_total!=0 | mask_total!=0:
+            with open('resources/data.csv','a') as fd:
+                fd.write(f'\n{datetime.now().strftime("%d/%m/%Y")};{datetime.now().strftime("%H:%M")};{mask_total};{nomask_total};')
+            nomask_total=0
+            mask_total=0
         current_time=int(datetime.utcnow().timestamp())
 
     return img, status, mask_count, nomask_count
@@ -413,7 +417,6 @@ class MainMenu(QMainWindow):
         plt2.savefig("Histogram.png")
 
         file_size =Path(r"resources/data.csv").stat().st_size
-        print('hello')
         if file_size > pow(10,9) : 
             dc = DataFrame(columns=['Date','Heures','nb_masques_bien_portes','nb_masques_non_portes','Somme_avec_masques','Somme_non_masques'])
             dc.to_csv(r"resources/data.csv",  index = False, sep=';', encoding='utf-8')
@@ -436,8 +439,8 @@ class MainMenu(QMainWindow):
         self.ui.chart1.setVisible(True)
         self.ui.chart2.setVisible(False)
 
-        os.remove("resources/Pie.png")
-        os.remove("resources/Histogram.png")
+        os.remove("Pie.png")
+        os.remove("Histogram.png")
         df.drop(["nb_masques_bien_portes","nb_masques_non_portes"], axis = 1)
 
     def leftArrow(self):
