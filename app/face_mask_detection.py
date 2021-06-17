@@ -399,13 +399,13 @@ class MainMenu(QMainWindow):
         sum_masque = df['nb_masques_bien_portes'].sum()
         sum_Nmasque = df['nb_masques_non_portes'].sum()
 
-        #labels = [sum_masque,sum_Nmasque]
+        labels = [sum_masque,sum_Nmasque]
 
-        #slices = [sum_masque,sum_Nmasque]
+        slices = [sum_masque,sum_Nmasque]
 
-        # venn2(subsets= (sum_masque,sum_Nmasque,sum_Nmasque+sum_masque),set_labels=('Sans masque','Avec masque'))
-        # plt.show()
-        # plt.savefig("app/resources/Pie")
+        plt.pie(slices, labels=labels)
+        plt.show()
+        plt.savefig("app/resources/Pie")
 
         # Histogramme 
 
@@ -441,7 +441,7 @@ class MainMenu(QMainWindow):
 
         os.remove("Pie.png")
         os.remove("Histogram.png")
-        df.drop(["nb_masques_bien_portes","nb_masques_non_portes"], axis = 1)
+        #df.drop(["nb_masques_bien_portes","nb_masques_non_portes"], axis = 1)
 
     def leftArrow(self):
         self.ui.chart1.setVisible(True)
