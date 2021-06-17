@@ -123,7 +123,7 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
     if int(datetime.utcnow().timestamp())-current_time>=60:
         if nomask_total!=0 | mask_total!=0:
             with open('resources/data.csv','a') as fd:
-                fd.write(f'\n{datetime.now().strftime("%d/%m/%Y")};{datetime.now().strftime("%H:%M")};{mask_total};{nomask_total};')
+                fd.write(f'\n{datetime.now().strftime("%d/%m/%Y")};{datetime.now().strftime("%H")};{mask_total};{nomask_total};')
             nomask_total=0
             mask_total=0
         current_time=int(datetime.utcnow().timestamp())
@@ -160,7 +160,7 @@ class Camera(QTimer):
         today = datetime.now().strftime("%d.%m.%Y")
         photo_dir_today = Path(os.path.join(photo_path, today, self.status))
         photo_dir_today.mkdir(parents=True, exist_ok=True)
-        image_name = self.camName + "_" + datetime.now().strftime("%d.%m.%Y_%H.%M.%S") + ".jpg"
+        image_name = self.camName + "_" + datetime.now().strftime("%d.%m.%Y_%H") + ".jpg"
         cv2.imwrite(os.path.join(photo_dir_today, image_name), self.last_image)
 
     def view_disconnected_cam(self):
@@ -219,7 +219,7 @@ class Camera(QTimer):
         
             except:
                 with open(connect_log_path, "a") as connect_log:
-                    connect_log.write(datetime.now().strftime("%d/%m/%Y - %H:%M:%S ->\t") + self.camName + " (ID: " + str(self.camID) + ") disconnected from the system.\n\n")
+                    connect_log.write(datetime.now().strftime("%d/%m/%Y - %H ->\t") + self.camName + " (ID: " + str(self.camID) + ") disconnected from the system.\n\n")
                 self.status = "Not Connected"
                 self.camera_name_item.setForeground(QColor(210, 105, 30))
                 self.camera_status_item.setForeground(QColor(210, 105, 30))
@@ -232,7 +232,7 @@ class Camera(QTimer):
             self.cam = cv2.VideoCapture(self.camID)
             if self.cam.isOpened() and self.cam.get(cv2.CAP_PROP_FPS) != 0:
                 with open(connect_log_path, "a") as connect_log:
-                    connect_log.write(datetime.now().strftime("%d/%m/%Y - %H:%M:%S ->\t") + self.camName + " (ID: " + str(self.camID) + ") connected to the system.\n\n")
+                    connect_log.write(datetime.now().strftime("%d/%m/%Y - %H ->\t") + self.camName + " (ID: " + str(self.camID) + ") connected to the system.\n\n")
 
                 self.cam.set(cv2.CAP_PROP_FPS, 30)
                 self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
@@ -322,7 +322,7 @@ class MainMenu(QMainWindow):
 
     def take_photo(self):
         if self.current_camera is not None and self.current_camera.status != "pas de connexion":
-            image_name = self.current_camera.camName + "_" + datetime.now().strftime("%d.%m.%Y_%H.%M.%S") + ".jpg"
+            image_name = self.current_camera.camName + "_" + datetime.now().strftime("%d.%m.%Y_%H") + ".jpg"
             cv2.imwrite(os.path.join(photo_path, image_name), self.current_camera.last_image)
             QTimer.singleShot(0, lambda: self.ui.photo_taken_notification.setText("Photo prise!"))
         else:
@@ -403,9 +403,9 @@ class MainMenu(QMainWindow):
 
         #slices = [sum_masque,sum_Nmasque]
 
-        venn2(subsets= (sum_masque,sum_Nmasque,sum_Nmasque+sum_masque),set_labels=('Sans masque','Avec masque'))
-        plt.show()
-        plt.savefig("app/resources/Pie")
+        # venn2(subsets= (sum_masque,sum_Nmasque,sum_Nmasque+sum_masque),set_labels=('Sans masque','Avec masque'))
+        # plt.show()
+        # plt.savefig("app/resources/Pie")
 
         # Histogramme 
 
