@@ -404,7 +404,7 @@ class MainMenu(QMainWindow):
         slices = [sum_masque,sum_Nmasque]
 
         plt.pie(slices, labels=labels)
-        plt.show()
+        
         plt.savefig("app/resources/Pie")
 
         # Histogramme 
