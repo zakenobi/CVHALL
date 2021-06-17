@@ -435,8 +435,8 @@ class MainMenu(QMainWindow):
         self.ui.chart1.setVisible(True)
         self.ui.chart2.setVisible(False)
 
-        os.remove("resources/Pie.png")
-        os.remove("resources/Histogram.png")
+        os.remove("Pie.png")
+        os.remove("Histogram.png")
         df.drop(["nb_masques_bien_portes","nb_masques_non_portes"], axis = 1)
 
     def leftArrow(self):
