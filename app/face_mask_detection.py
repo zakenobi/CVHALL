@@ -117,10 +117,11 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
         nomask_total+=nomask_count
         mask_total+=mask_count
     if int(datetime.utcnow().timestamp())-current_time>=60:
-        with open('resources/data.csv','a') as fd:
-            fd.write(f'\n{datetime.now().strftime("%d/%m/%Y")};{datetime.now().strftime("%H:%M")};{mask_total};{nomask_total};')
-        nomask_total=0
-        mask_total=0
+        if nomask_total!=0 | mask_total!=0:
+            with open('resources/data.csv','a') as fd:
+                fd.write(f'\n{datetime.now().strftime("%d/%m/%Y")};{datetime.now().strftime("%H:%M")};{mask_total};{nomask_total};')
+            nomask_total=0
+            mask_total=0
         current_time=int(datetime.utcnow().timestamp())
 
     return img, status, mask_count, nomask_count
