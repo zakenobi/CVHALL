@@ -638,11 +638,19 @@ class Ui_MainMenu(object):
         self.chart1.setEnabled(True)
 
         self.chart2 = QtWidgets.QLabel(self.centralwidget)
-        self.chart2.setGeometry(QtCore.QRect(50, 100, 1000, 800))
+        self.chart2.setGeometry(QtCore.QRect(50, 150, 1000, 800))
         #self.chart2.setPixmap(QtGui.QPixmap("resources/Histogram.png"))
         self.chart2.adjustSize()
         self.chart2.setVisible(False)
         self.chart2.setEnabled(True)
+
+        self.labelStat = QtWidgets.QLabel(self.centralwidget)
+        self.labelStat.setGeometry(QtCore.QRect(50, 150, 1000, 800))
+        self.labelStat.adjustSize()
+        self.labelStat.setVisible(False)
+        self.labelStat.setEnabled(True)
+        self.labelStat.setText(" ")
+
 
         self.retranslateUi(MainMenu)
         QtCore.QMetaObject.connectSlotsByName(MainMenu)

@@ -389,8 +389,9 @@ class MainMenu(QMainWindow):
         self.ui.start_button.setEnabled(True)
         self.ui.stop_button.setVisible(True)
         self.ui.stop_button.setEnabled(True)
-        self.ui.chart1.setVisible(False)
+        # self.ui.chart1.setVisible(False)
         self.ui.chart2.setVisible(False)
+        self.ui.labelStat.setVisible(False)
 
     def square(self):
         global temp
@@ -412,10 +413,12 @@ class MainMenu(QMainWindow):
 
         sum_masque = df['nb_masques_bien_portes'].sum()
         sum_Nmasque = df['nb_masques_non_portes'].sum()
+        sum_masque = 100 * (sum_masque/(sum_masque+sum_Nmasque))
+        sum_Nmasque = 100 * (sum_Nmasque/(sum_masque+sum_Nmasque))
 
-        labels = [sum_masque,sum_Nmasque]
+        # labels = [sum_masque,sum_Nmasque]
 
-        slices = [sum_masque,sum_Nmasque]
+        # slices = [sum_masque,sum_Nmasque]
 
         # plt.pie(slices, labels=labels)
         
@@ -452,6 +455,8 @@ class MainMenu(QMainWindow):
         self.ui.description.setVisible(False)
         # self.ui.chart1.setVisible(True)
         self.ui.chart2.setVisible(True)
+        self.ui.labelStat.setVisible(True)
+        self.ui.labelStat.setText("Pourcentage de personnes sans masque : (%d)\nPourcentage de personnes avec masque : (%d)" %(sum_Nmasque,sum_masque))
 
         # os.remove("Pie.png")
         # os.remove("Histogram.png")
@@ -486,8 +491,9 @@ class MainMenu(QMainWindow):
         # self.ui.SArrowLeft.setEnabled(False)
         # self.ui.SArrowRight.setVisible(False)
         # self.ui.SArrowRight.setEnabled(False)
-        self.ui.chart1.setVisible(False)
-        self.ui.chart2.setVisible(False)      
+        # self.ui.chart1.setVisible(False)
+        self.ui.chart2.setVisible(False) 
+        self.ui.labelStat.setVisible(False)         
 
     def revealArrow(self):
         self.ui.arrow.setVisible(True)
