@@ -285,8 +285,10 @@ class MainMenu(QMainWindow):
         self.ui.pushButton2.clicked.connect(self.revealStats)
         self.ui.pushButton3.clicked.connect(self.revealDesc)
         self.ui.pushButton3.clicked.connect(self.camCancel)
+        self.ui.pushButton3.clicked.connect(self.revealArrow)
         self.ui.start_button.clicked.connect(self.cam)
         self.ui.stop_button.clicked.connect(self.camCancel)
+    
         # self.ui.fond.setVisible(True)
 
         # self.ui.SArrowLeft.clicked.connect(self.leftArrow)
@@ -506,6 +508,7 @@ class MainMenu(QMainWindow):
         self.ui.labelStat.setVisible(False) 
         self.ui.fond.setVisible(False)
         # self.ui.fond.setVisible(False)     
+        self.ui.fond.move(1280,720)
 
     def revealArrow(self):
         self.ui.arrow.setVisible(True)
