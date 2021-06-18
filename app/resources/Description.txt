@@ -5,3 +5,5 @@ de recueillir des statistiques comme la proportion
 de personnes portant leur masque correctement, 
 le nombre de personne ayant une temperature trop 
 elevee et autres.
+
+Contact: etienne.gibaud@epf.fr
