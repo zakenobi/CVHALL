@@ -645,12 +645,10 @@ class Ui_MainMenu(object):
         self.chart2.setEnabled(True)
 
         self.labelStat = QtWidgets.QLabel(self.centralwidget)
-        self.labelStat.setGeometry(QtCore.QRect(870, 150, 1000, 800))
+        self.labelStat.setGeometry(QtCore.QRect(870, 300, 1000, 800))
         self.labelStat.adjustSize()
         self.labelStat.setVisible(False)
         self.labelStat.setEnabled(True)
-        self.labelStat.setText(" ")
-
 
         self.retranslateUi(MainMenu)
         QtCore.QMetaObject.connectSlotsByName(MainMenu)
