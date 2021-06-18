@@ -680,7 +680,7 @@ class Ui_MainMenu(object):
         self.camera_select_label.setVisible(False)
 
         #self.epf.setText(_translate("MainMenu","AAAAAA"))
-        self.pushButton1.setText(_translate("MainMenu", "Prendre photo"))
+        self.pushButton1.setText(_translate("MainMenu", "Afficher \ntempérature"))
         self.pushButton2.setText(_translate("MainMenu", "Statistiques"))
         self.pushButton3.setText(_translate("MainMenu", "Description du \nprojet"))
         self.status_label.move(1050,60)

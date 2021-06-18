@@ -88,8 +88,7 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
     global mask_total
     global i
     i+=1
-    if i%50==0:
-        max_temp=get_temp()
+ 
     
     classes, confidences, boxes = net.detect(img, confThreshold, nmsThreshold)#fonction de detection
     for cl, score, (left, top, width, height) in zip(classes, confidences, boxes):
@@ -105,7 +104,10 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
         img = cv2.rectangle(img, start_point, end_point, color, -1)
         cv2.putText(img, text, start_point, cv2.FONT_ITALIC, 0.6, COLORS[1 - cl[0]], 1)  #ecrit les information de port du masque sur l'image
     
-    img = cv2.rectangle(img,(200, 70),(450,350),(255,0,0),2)
+    if temp == True :
+        if i%50==0:
+            max_temp=get_temp()
+        img = cv2.rectangle(img,(200, 70),(450,350),(255,0,0),2)
     text = f'Temp : {max_temp}'
     cv2.putText(img, text, (200, 68), cv2.FONT_ITALIC, 0.6,(255, 0, 0),1)
     
@@ -271,11 +273,12 @@ class MainMenu(QMainWindow):
         self.camera_list = []
         self.current_camera = None
         self.ui.camera_select.activated.connect(self.change_cam)
-        self.ui.pushButton1.clicked.connect(self.take_photo)
+        #self.ui.pushButton1.clicked.connect(self.take_photo)
         
         #self.ui.pushButton1.clicked.connect(self.hide)
         #self.ui.pushButton1.clicked.connect(self.reveal)
         self.ui.arrow.clicked.connect(self.arrow)
+        self.ui.pushButton1.clicked.connect(self.square)
         self.ui.pushButton2.clicked.connect(self.revealArrow)
         self.ui.pushButton2.clicked.connect(self.camCancel)
         self.ui.pushButton2.clicked.connect(self.revealStats)
@@ -284,8 +287,8 @@ class MainMenu(QMainWindow):
         self.ui.start_button.clicked.connect(self.cam)
         self.ui.stop_button.clicked.connect(self.camCancel)
 
-        self.ui.SArrowLeft.clicked.connect(self.leftArrow)
-        self.ui.SArrowRight.clicked.connect(self.rightArrow)
+        # self.ui.SArrowLeft.clicked.connect(self.leftArrow)
+        # self.ui.SArrowRight.clicked.connect(self.rightArrow)
 
         self.camera_dict = {}
         self.get_camera_list_2(cam_list_filename)
@@ -378,16 +381,25 @@ class MainMenu(QMainWindow):
         self.ui.description.setVisible(False)
         self.ui.arrow.setVisible(False)
         self.ui.arrow.setEnabled(False)
-        self.ui.SArrowLeft.setVisible(False)
-        self.ui.SArrowLeft.setEnabled(False)
-        self.ui.SArrowRight.setVisible(False)
-        self.ui.SArrowRight.setEnabled(False)
+        # self.ui.SArrowLeft.setVisible(False)
+        # self.ui.SArrowLeft.setEnabled(False)
+        # self.ui.SArrowRight.setVisible(False)
+        # self.ui.SArrowRight.setEnabled(False)
         self.ui.start_button.setVisible(True)
         self.ui.start_button.setEnabled(True)
         self.ui.stop_button.setVisible(True)
         self.ui.stop_button.setEnabled(True)
         self.ui.chart1.setVisible(False)
         self.ui.chart2.setVisible(False)
+
+    def square(self):
+        global temp
+        if temp:
+            temp = False
+        else:
+             temp = True
+            
+
 
     def revealStats(self):
         path = ("resources/data.csv")
@@ -423,9 +435,9 @@ class MainMenu(QMainWindow):
             dc = DataFrame(columns=['Date','Heures','nb_masques_bien_portes','nb_masques_non_portes','Somme_avec_masques','Somme_non_masques'])
             dc.to_csv(r"resources/data.csv",  index = False, sep=';', encoding='utf-8')
     
-        self.ui.chart1.setPixmap(QtGui.QPixmap("Pie.png"))
-        self.ui.chart1.adjustSize()
-        self.ui.chart1.setScaledContents(True)
+        # self.ui.chart1.setPixmap(QtGui.QPixmap("Pie.png"))
+        # self.ui.chart1.adjustSize()
+        # self.ui.chart1.setScaledContents(True)
         self.ui.chart2.setPixmap(QtGui.QPixmap("Histogram.png"))
         self.ui.chart2.adjustSize()
         self.ui.chart2.setScaledContents(True)
@@ -438,28 +450,28 @@ class MainMenu(QMainWindow):
         self.ui.stop_button.setVisible(False)
         self.ui.stop_button.setEnabled(False)
         self.ui.description.setVisible(False)
-        self.ui.chart1.setVisible(True)
-        self.ui.chart2.setVisible(False)
+        # self.ui.chart1.setVisible(True)
+        self.ui.chart2.setVisible(True)
 
-        os.remove("Pie.png")
-        os.remove("Histogram.png")
+        # os.remove("Pie.png")
+        # os.remove("Histogram.png")
         #df.drop(["nb_masques_bien_portes","nb_masques_non_portes"], axis = 1)
 
-    def leftArrow(self):
-        self.ui.chart1.setVisible(True)
-        self.ui.chart2.setVisible(False)
-        self.ui.SArrowRight.setVisible(True)
-        self.ui.SArrowRight.setEnabled(True)
-        self.ui.SArrowLeft.setVisible(False)
-        self.ui.SArrowLeft.setEnabled(False)
+    # def leftArrow(self):
+    #     self.ui.chart1.setVisible(True)
+    #     self.ui.chart2.setVisible(False)
+    #     self.ui.SArrowRight.setVisible(True)
+    #     self.ui.SArrowRight.setEnabled(True)
+    #     self.ui.SArrowLeft.setVisible(False)
+    #     self.ui.SArrowLeft.setEnabled(False)
 
-    def rightArrow(self):
-        self.ui.chart1.setVisible(False)
-        self.ui.chart2.setVisible(True)
-        self.ui.SArrowLeft.setVisible(True)
-        self.ui.SArrowLeft.setEnabled(True)
-        self.ui.SArrowRight.setVisible(False)
-        self.ui.SArrowRight.setEnabled(False)
+    # def rightArrow(self):
+    #     self.ui.chart1.setVisible(False)
+    #     self.ui.chart2.setVisible(True)
+    #     self.ui.SArrowLeft.setVisible(True)
+    #     self.ui.SArrowLeft.setEnabled(True)
+    #     self.ui.SArrowRight.setVisible(False)
+    #     self.ui.SArrowRight.setEnabled(False)
 
     
     def revealDesc(self):
