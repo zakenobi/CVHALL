@@ -414,8 +414,8 @@ class MainMenu(QMainWindow):
 
         sum_masque = df['nb_masques_bien_portes'].sum()
         sum_Nmasque = df['nb_masques_non_portes'].sum()
-        sum_masque =  (sum_masque/(sum_masque+sum_Nmasque))
-        sum_Nmasque = (sum_Nmasque/(sum_masque+sum_Nmasque))
+        sum_masque = 100* (sum_masque/(sum_masque+sum_Nmasque))
+        sum_Nmasque = 100*(sum_Nmasque/(sum_masque+sum_Nmasque))
 
         # labels = [sum_masque,sum_Nmasque]
 
@@ -458,7 +458,7 @@ class MainMenu(QMainWindow):
         # self.ui.chart1.setVisible(True)
         self.ui.chart2.setVisible(True)
         self.ui.labelStat.setVisible(True)
-        labelString = "Pourcentage de personnes\nsans masque : %d\nPourcentage de personnes\navec masque : %d" %(sum_Nmasque,sum_masque)
+        labelString = "Pourcentage de personnes\nsans masque : %f\nPourcentage de personnes\navec masque : %f" %(sum_Nmasque,sum_masque)
         self.ui.labelStat.setText(labelString)
         self.ui.labelStat.setFont(QtGui.QFont('Arial', 25))
         self.ui.labelStat.setStyleSheet("QLabel { background-color : white; color : black; }")
@@ -516,8 +516,7 @@ class MainMenu(QMainWindow):
     def camCancel(self):
         #mainMenu.change_cam(1)
         mainMenu.stop_cameras()
-        self.ui.image_label.setVisible(False)
-        self.ui.fond.setVisible(False)   
+        self.ui.image_label.setVisible(False)  
         #os.execv(sys.executable, ['python3'] + sys.argv)
         #mainMenu.close_app()
         #self.ui.mask_count_label.setVisible(False)
