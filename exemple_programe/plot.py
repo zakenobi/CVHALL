@@ -1,3 +1,4 @@
+from os import truncate
 import pandas as pd
 import matplotlib.pyplot as plt
 from pathlib import Path
@@ -27,6 +28,9 @@ print(sum_Nmasque)
 denom = sum_masque+sum_Nmasque
 sum_masque = 100* (sum_masque/denom)
 sum_Nmasque = 100* (sum_Nmasque/denom)
+print('===')
+sum_masque=float("{0:.2f}".format(sum_masque))
+print(sum_masque)
 
 print("Pourcentage de personnes sans masque : %f\nPourcentage de personnes avec masque : %f" %(sum_Nmasque,sum_masque))
 

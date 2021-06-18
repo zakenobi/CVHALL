@@ -417,8 +417,9 @@ class MainMenu(QMainWindow):
         denom = sum_masque+sum_Nmasque
         sum_masque = 100* (sum_masque/denom)
         sum_Nmasque = 100* (sum_Nmasque/denom)
-        round(sum_masque,2)
-        round(sum_Nmasque,2)
+        sum_masque=float("{0:.2f}".format(sum_masque))
+        sum_Nmasque=float("{0:.2f}".format(sum_Nmasque))
+        
 
         # labels = [sum_masque,sum_Nmasque]
 
