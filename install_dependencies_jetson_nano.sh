@@ -5,6 +5,9 @@ apt-get -y install build-essential cmake unzip pkg-config
 apt-get -y install libjpeg-dev libpng-dev libtiff-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev libgtk-3-dev libatlas-base-dev gfortran
 apt-get -y install python3-dev python3-numpy python3-pyqt5 pyqt5-dev-tools qttools5-dev-tools
 pip3 install quick-mailer
+pip3 install adafruit-circuitpython-mlx90640
+pip3 install pandas
+pip3 install matplotlib
 git clone https://github.com/opencv/opencv
 git clone https://github.com/opencv/opencv_contrib
 cd opencv
