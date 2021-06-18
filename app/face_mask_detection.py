@@ -108,9 +108,9 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
         if i%50==0:
             max_temp=get_temp()
         img = cv2.rectangle(img,(200, 70),(450,350),(255,0,0),2)
-    text = f'Temp : {max_temp}'
-    cv2.putText(img, text, (200, 68), cv2.FONT_ITALIC, 0.6,(255, 0, 0),1)
-    
+        text = f'Temp : {max_temp}'
+        cv2.putText(img, text, (200, 68), cv2.FONT_ITALIC, 0.6,(255, 0, 0),1)
+        
     ratio = nomask_count / (mask_count + nomask_count + 0.000001)
     
     if ratio >= 0.1 and nomask_count >= 3: #
@@ -441,10 +441,10 @@ class MainMenu(QMainWindow):
         self.ui.chart2.setPixmap(QtGui.QPixmap("Histogram.png"))
         self.ui.chart2.adjustSize()
         self.ui.chart2.setScaledContents(True)
-        self.ui.SArrowLeft.setVisible(False)
-        self.ui.SArrowLeft.setEnabled(False)
-        self.ui.SArrowRight.setVisible(True)
-        self.ui.SArrowRight.setEnabled(True)
+        # self.ui.SArrowLeft.setVisible(False)
+        # self.ui.SArrowLeft.setEnabled(False)
+        # self.ui.SArrowRight.setVisible(True)
+        # self.ui.SArrowRight.setEnabled(True)
         self.ui.start_button.setVisible(False)
         self.ui.start_button.setEnabled(False)
         self.ui.stop_button.setVisible(False)
@@ -482,10 +482,10 @@ class MainMenu(QMainWindow):
         self.ui.start_button.setEnabled(False)
         self.ui.stop_button.setVisible(False)
         self.ui.stop_button.setEnabled(False)
-        self.ui.SArrowLeft.setVisible(False)
-        self.ui.SArrowLeft.setEnabled(False)
-        self.ui.SArrowRight.setVisible(False)
-        self.ui.SArrowRight.setEnabled(False)
+        # self.ui.SArrowLeft.setVisible(False)
+        # self.ui.SArrowLeft.setEnabled(False)
+        # self.ui.SArrowRight.setVisible(False)
+        # self.ui.SArrowRight.setEnabled(False)
         self.ui.chart1.setVisible(False)
         self.ui.chart2.setVisible(False)      
 
