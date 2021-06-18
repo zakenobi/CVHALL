@@ -511,7 +511,8 @@ class MainMenu(QMainWindow):
         #self.ui.mask_count_label.setVisible(False)
         #self.ui.no_mask_count_label.setVisible(False)
         self.ui.status_type_label.setVisible(False)
-        self.ui.fond.setVisible(False)  
+        self.ui.fond.setVisible(False) 
+        self.ui.fond.setVisible(True)   
     
     def camCancel(self):
         #mainMenu.change_cam(1)
