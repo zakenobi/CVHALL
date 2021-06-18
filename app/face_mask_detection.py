@@ -513,6 +513,7 @@ class MainMenu(QMainWindow):
     def revealArrow(self):
         self.ui.arrow.setVisible(True)
         self.ui.arrow.setEnabled(True)
+        self.ui.fond.move(1279,719)
 
     def cam(self):
         mainMenu.start_cameras()
