@@ -645,7 +645,7 @@ class Ui_MainMenu(object):
         self.chart2.setEnabled(True)
 
         self.labelStat = QtWidgets.QLabel(self.centralwidget)
-        self.labelStat.setGeometry(QtCore.QRect(800, 300, 900, 400))
+        self.labelStat.setGeometry(QtCore.QRect(580, 150, 900, 400))
         #self.labelStat.adjustSize()
         self.labelStat.setVisible(False)
         self.labelStat.setEnabled(True)
