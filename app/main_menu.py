@@ -652,10 +652,13 @@ class Ui_MainMenu(object):
 
         self.fond = QtWidgets.QLabel(self.centralwidget)
         self.fond.setGeometry(QtCore.QRect(300, 100, 900, 400))
-        self.fond.setPixmap(QtGui.QPixmap("resources/fmde_logo.png"))
+        #self.fond.setPixmap(QtGui.QPixmap("resources/fmde_logo.png"))
         self.fond.adjustSize()
         self.fond.setVisible(True)
         self.fond.setEnabled(True)
+        self.fond.setStyleSheet("border: transparent;\n"
+"background-image: url(:resources/fmde_logo.png);"
+)
 
         self.retranslateUi(MainMenu)
         QtCore.QMetaObject.connectSlotsByName(MainMenu)
