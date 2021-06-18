@@ -414,8 +414,9 @@ class MainMenu(QMainWindow):
 
         sum_masque = df['nb_masques_bien_portes'].sum()
         sum_Nmasque = df['nb_masques_non_portes'].sum()
-        sum_masque = 100* (sum_masque/(sum_masque+sum_Nmasque))
-        sum_Nmasque = 100*(sum_Nmasque/(sum_masque+sum_Nmasque))
+        denom = sum_masque+sum_Nmasque
+        sum_masque = 100* (sum_masque/denom)
+        sum_Nmasque = 100* (sum_Nmasque/denom)
 
         # labels = [sum_masque,sum_Nmasque]
 

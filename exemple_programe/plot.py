@@ -23,14 +23,20 @@ sum2= dp.iloc[0][1].sum()
 
 sum_masque = df['Somme_avec_masques'] = df['nb_masques_bien_portes'].sum()
 sum_Nmasque = df['Somme_sans_masques'] = df['nb_masques_non_portes'].sum()
+print(sum_Nmasque)
+denom = sum_masque+sum_Nmasque
+sum_masque = 100* (sum_masque/denom)
+sum_Nmasque = 100* (sum_Nmasque/denom)
+
+print("Pourcentage de personnes sans masque : %f\nPourcentage de personnes avec masque : %f" %(sum_Nmasque,sum_masque))
 
 
 labels = [sum_masque,sum_Nmasque]
 slices = [sum_masque,sum_Nmasque]
-plt.bar([sum_masque,sum_Nmasque],height=1)
-plt.title('Proportion de sujets portant leur masque ou non')
-plt.legend(['Masque porté','Masque non porté'],loc = "lower left", facecolor = "lightgray")
-plt.savefig("app/resources/Pie")
+#plt.bar([sum_masque,sum_Nmasque],height=1)
+# plt.title('Proportion de sujets portant leur masque ou non')
+# plt.legend(['Masque porté','Masque non porté'],loc = "lower left", facecolor = "lightgray")
+# plt.savefig("app/resources/Pie")
 
 #Histogramme 
 hours = df.groupby('Heures').agg('sum')
@@ -39,7 +45,7 @@ hours.plot.bar()
 plt.title("Nombre de détections en fonction de l'heure")
 plt.legend(["Masques bien portés","Masques mal portés"],loc = "upper right", facecolor = "lightgray")
 plt.savefig("app/resources/Histogram")
-plt.show()
+#plt.show()
 
 
 #On sait que 1 octet = 8 bytes 
