@@ -456,7 +456,7 @@ class MainMenu(QMainWindow):
         # self.ui.chart1.setVisible(True)
         self.ui.chart2.setVisible(True)
         self.ui.labelStat.setVisible(True)
-        labelString = "Pourcentage de personnes sans masque : (%d)\nPourcentage de personnes avec masque : (%d)" %(sum_Nmasque,sum_masque)
+        labelString = "Pourcentage de personnes\nsans masque : (%d)\nPourcentage de personnes\navec masque : (%d)" %(sum_Nmasque,sum_masque)
         self.ui.labelStat.setText(labelString)
         self.ui.labelStat.setFont(QtGui.QFont('Arial', 25))
         self.ui.labelStat.setStyleSheet("QLabel { background-color : white; color : black; }")
