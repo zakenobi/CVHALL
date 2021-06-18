@@ -462,7 +462,7 @@ class MainMenu(QMainWindow):
         self.ui.stop_button.setVisible(False)
         self.ui.stop_button.setEnabled(False)
         self.ui.description.setVisible(False)
-        self.ui.fond.setVisible(False)
+        self.ui.fond.move(1280,720)
         # self.ui.chart1.setVisible(True)
         self.ui.chart2.setVisible(True)
         self.ui.labelStat.setVisible(True)
@@ -506,7 +506,7 @@ class MainMenu(QMainWindow):
         # self.ui.chart1.setVisible(False)
         self.ui.chart2.setVisible(False) 
         self.ui.labelStat.setVisible(False) 
-        self.ui.fond.setVisible(False)
+        # self.ui.fond.setVisible(False)
         # self.ui.fond.setVisible(False)     
         self.ui.fond.move(1280,720)
 
@@ -521,7 +521,7 @@ class MainMenu(QMainWindow):
         #self.ui.mask_count_label.setVisible(False)
         #self.ui.no_mask_count_label.setVisible(False)
         self.ui.status_type_label.setVisible(False)
-        self.ui.fond.setVisible(False)   
+        # self.ui.fond.setVisible(False)   
     
     def camCancel(self):
         #mainMenu.change_cam(1)
