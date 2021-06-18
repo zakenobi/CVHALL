@@ -395,7 +395,8 @@ class MainMenu(QMainWindow):
         # self.ui.chart1.setVisible(False)
         self.ui.chart2.setVisible(False)
         self.ui.labelStat.setVisible(False)
-        self.ui.fond.setVisible(True)  
+        self.ui.fond.setVisible(True) 
+        self.fond.setPixmap(QtGui.QPixmap("resources/fmde_logo.png")) 
 
     def square(self):
         global temp
@@ -529,7 +530,7 @@ class MainMenu(QMainWindow):
         #self.ui.mask_count_label.setVisible(False)
         #self.ui.no_mask_count_label.setVisible(False)
         #self.ui.status_type_label.setVisible(False)
-        self.ui.fond.setVisible(True) 
+        self.fond.setPixmap(QtGui.QPixmap("resources/fmde_logo.png")) 
 
     def timer(self):
         mainMenu.cam()
