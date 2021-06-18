@@ -38,6 +38,7 @@ i2c = busio.I2C(board.SCL, board.SDA, frequency=1000000)
 mlx = adafruit_mlx90640.MLX90640(i2c)
 mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_4_HZ
 max_temp=37.6
+temp=False
 
 nomask_total=0
 mask_total=0
@@ -78,6 +79,7 @@ def create_detection_net(config_path, weights_path):
 
 # Tres important pour obtenir la detection de masque
 def get_processed_image(img, net, confThreshold, nmsThreshold):
+    global temp
     global current_time
     global max_temp
     mask_count = 0
