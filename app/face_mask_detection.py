@@ -152,6 +152,7 @@ class Camera(QTimer):
         #self.camera_status_item.setTextAlignment(Qt.AlignCenter)
         self.cam = cv2.VideoCapture(self.camID)
         self.timeout.connect(self.camera_run)
+    
 
     def start_camera(self):
         self.cam = cv2.VideoCapture(self.camID)
@@ -286,6 +287,7 @@ class MainMenu(QMainWindow):
         self.ui.pushButton3.clicked.connect(self.camCancel)
         self.ui.start_button.clicked.connect(self.cam)
         self.ui.stop_button.clicked.connect(self.camCancel)
+        self.ui.fond.setVisible(True)
 
         # self.ui.SArrowLeft.clicked.connect(self.leftArrow)
         # self.ui.SArrowRight.clicked.connect(self.rightArrow)
