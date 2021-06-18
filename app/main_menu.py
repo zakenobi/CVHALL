@@ -629,13 +629,13 @@ class Ui_MainMenu(object):
         #self.arrow.setVisible(False) # par defaut la fleche est desactivee
         #self.arrow.setEnabled(False)
 
-        self.chart1 = QtWidgets.QLabel(self.centralwidget)
-        self.chart1.setGeometry(QtCore.QRect(300, 100, 1000, 800))
-        #self.chart1.setPixmap(QtGui.QPixmap("resources/Pie.png"))
-        self.chart1.adjustSize()
-        self.chart1.setScaledContents(True)
-        self.chart1.setVisible(False)
-        self.chart1.setEnabled(True)
+        # self.chart1 = QtWidgets.QLabel(self.centralwidget)
+        # self.chart1.setGeometry(QtCore.QRect(300, 100, 1000, 800))
+        # #self.chart1.setPixmap(QtGui.QPixmap("resources/Pie.png"))
+        # self.chart1.adjustSize()
+        # self.chart1.setScaledContents(True)
+        # self.chart1.setVisible(False)
+        # self.chart1.setEnabled(True)
 
         self.chart2 = QtWidgets.QLabel(self.centralwidget)
         self.chart2.setGeometry(QtCore.QRect(50, 150, 800, 800))
@@ -645,7 +645,7 @@ class Ui_MainMenu(object):
         self.chart2.setEnabled(True)
 
         self.labelStat = QtWidgets.QLabel(self.centralwidget)
-        self.labelStat.setGeometry(QtCore.QRect(870, 300, 1000, 800))
+        self.labelStat.setGeometry(QtCore.QRect(800, 300, 900, 400))
         self.labelStat.adjustSize()
         self.labelStat.setVisible(False)
         self.labelStat.setEnabled(True)
