@@ -615,7 +615,8 @@ class Ui_MainMenu(object):
         self.description = QtWidgets.QLabel(self.centralwidget)
         self.description.setGeometry(QtCore.QRect(50, 150, 100, 70)) # texte de description
         str = open('resources/Description.txt', 'r').read()
-        self.description.setText(str)
+        #self.description.setText(str)
+        self.fond.setPixmap(QtGui.QPixmap("resources/Description.png"))
         self.description.setFont(QtGui.QFont('Arial', 38))
         self.description.setStyleSheet("QLabel { background-color : white; color : black; }")
         self.description.adjustSize()
@@ -654,7 +655,7 @@ class Ui_MainMenu(object):
         self.fond.setGeometry(QtCore.QRect(300, 100, 900, 400))
         self.fond.setPixmap(QtGui.QPixmap("resources/fmde_logo.png"))
         self.fond.adjustSize()
-        self.fond.setVisible(False)
+        self.fond.setVisible(True)
         self.fond.setEnabled(True)
 
 
@@ -749,11 +750,3 @@ class Ui_MainMenu(object):
 "}\n"
 "\n"
 "")
-
-stylesheet = """
-    MainWindow {
-        background-image: url("resources/fmde_logo.png"); 
-        background-repeat: no-repeat; 
-        background-position: center;
-    }
-"""

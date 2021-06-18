@@ -394,7 +394,6 @@ class MainMenu(QMainWindow):
         self.ui.chart2.setVisible(False)
         self.ui.labelStat.setVisible(False)
         self.ui.fond.setVisible(True)  
-        self.ui.fond.setEnabled(True)   
 
     def square(self):
         global temp
@@ -418,6 +417,8 @@ class MainMenu(QMainWindow):
         denom = sum_masque+sum_Nmasque
         sum_masque = 100* (sum_masque/denom)
         sum_Nmasque = 100* (sum_Nmasque/denom)
+        round(sum_masque,2)
+        round(sum_Nmasque,2)
 
         # labels = [sum_masque,sum_Nmasque]
 
@@ -456,12 +457,11 @@ class MainMenu(QMainWindow):
         self.ui.stop_button.setVisible(False)
         self.ui.stop_button.setEnabled(False)
         self.ui.description.setVisible(False)
-        self.ui.fond.setVisible(False)  
-        self.ui.fond.setEnabled(False)   
+        self.ui.fond.setVisible(False)
         # self.ui.chart1.setVisible(True)
         self.ui.chart2.setVisible(True)
         self.ui.labelStat.setVisible(True)
-        labelString = "Pourcentage de personnes\nsans masque : %f\nPourcentage de personnes\navec masque : %f" %(sum_Nmasque,sum_masque)
+        labelString = "Pourcentage de personnes\nsans masque : %f\nPourcentage de personnes\navec masque : %f" %(sum_masque,sum_Nmasque)
         self.ui.labelStat.setText(labelString)
         self.ui.labelStat.setFont(QtGui.QFont('Arial', 25))
         self.ui.labelStat.setStyleSheet("QLabel { background-color : white; color : black; }")
@@ -501,8 +501,7 @@ class MainMenu(QMainWindow):
         # self.ui.chart1.setVisible(False)
         self.ui.chart2.setVisible(False) 
         self.ui.labelStat.setVisible(False) 
-        self.ui.fond.setVisible(False) 
-        self.ui.fond.setEnabled(False)        
+        self.ui.fond.setVisible(False)         
 
     def revealArrow(self):
         self.ui.arrow.setVisible(True)
@@ -515,8 +514,7 @@ class MainMenu(QMainWindow):
         #self.ui.mask_count_label.setVisible(False)
         #self.ui.no_mask_count_label.setVisible(False)
         self.ui.status_type_label.setVisible(False)
-        self.ui.fond.setVisible(False) 
-        self.ui.fond.setEnabled(False)     
+        self.ui.fond.setVisible(False)   
     
     def camCancel(self):
         #mainMenu.change_cam(1)
@@ -528,7 +526,6 @@ class MainMenu(QMainWindow):
         #self.ui.no_mask_count_label.setVisible(False)
         #self.ui.status_type_label.setVisible(False)
         self.ui.fond.setVisible(True) 
-        self.ui.fond.setEnabled(True)   
 
     def timer(self):
         mainMenu.cam()
