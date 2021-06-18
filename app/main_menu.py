@@ -616,7 +616,7 @@ class Ui_MainMenu(object):
         self.description.setGeometry(QtCore.QRect(50, 150, 100, 70)) # texte de description
         str = open('resources/Description.txt', 'r').read()
         #self.description.setText(str)
-        self.fond.setPixmap(QtGui.QPixmap("resources/Description.png"))
+        self.description.setPixmap(QtGui.QPixmap("resources/Description.png"))
         self.description.setFont(QtGui.QFont('Arial', 38))
         self.description.setStyleSheet("QLabel { background-color : white; color : black; }")
         self.description.adjustSize()
