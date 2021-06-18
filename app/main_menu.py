@@ -656,8 +656,7 @@ class Ui_MainMenu(object):
         self.fond.adjustSize()
         self.fond.setVisible(True)
         self.fond.setEnabled(True)
-        self.fond.setStyleSheet("border: transparent;\n"
-"background-image: url(:resources/fmde_logo.png);"
+        self.fond.setStyleSheet("background-image : url(resources/fmde_logo.png);"
 )
 
         self.retranslateUi(MainMenu)
