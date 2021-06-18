@@ -55,14 +55,6 @@ def get_temp():
     x=0
     frame = [0] * 768
     mlx.getFrame(frame)
-    # frame.sort()
-    # max_temp=frame[0]
-    # if max_temp>41:
-    #     max_temp=frame[1]
-    # while frame[-x]>41 :
-    #     max_temp=frame[-x] 
-    #     x+=1   
-
     max_temp=float("{0:.2f}".format(max(frame)))
     return max_temp
 
@@ -149,7 +141,6 @@ class Camera(QTimer):
         self.camera_name_item = QTableWidgetItem(self.camName)
         self.camera_name_item.setTextAlignment(Qt.AlignCenter)
         self.camera_status_item = QTableWidgetItem(self.status)
-        #self.camera_status_item.setTextAlignment(Qt.AlignCenter)
         self.cam = cv2.VideoCapture(self.camID)
         self.timeout.connect(self.camera_run)
     
@@ -187,12 +178,6 @@ class Camera(QTimer):
                 ret, image = self.cam.read() #lecture de la camera
                 self.last_image = image.copy()
                 image, status, mask_count, nomask_count = get_processed_image(image, mainMenu.net, self.confThreshold, self.nmsThreshold) #recuperation de l'image avec la detection
-                
-
-                #self.nomask_total+=nomask_count
-                #print(nomask_total)
-                #print(datetime.now().strftime("%S"))
-                #print(nomask_count)
                 self.status = status
                 if status == "Pas de danger": #changement de l'etat du text en fonction de l'etat de danger
                     self.camera_name_item.setForeground(QColor(21, 200, 8))
@@ -245,19 +230,6 @@ class Camera(QTimer):
                 self.status = "Safe"
             elif self.viewable is True:
                 self.view_disconnected_cam()
-        #automatically take a photo when the status of the camera switches to "Warning" or "Danger"
-
-        # if self.prev_status == "Pas de danger" or self.prev_status == "pas de connexion":
-        #     if self.status == "Attention" or self.status == "Danger":
-        #         self.take_photo()
-        #         self.send_email()
-        # elif self.prev_status == "Attention" and self.status == "Danger":
-        #     self.take_photo()
-        #     self.send_email()
-        # elif self.prev_status == "Danger" and self.status == "Attention":
-        #     self.take_photo()
-        #     self.send_email()
-        # self.prev_status = self.status
 
     def send_email(self):
         mail = Mailer(email='cvhall.epf@gmail.com', password='PMFGE3A.23')
@@ -274,10 +246,6 @@ class MainMenu(QMainWindow):
         self.camera_list = []
         self.current_camera = None
         self.ui.camera_select.activated.connect(self.change_cam)
-        #self.ui.pushButton1.clicked.connect(self.take_photo)
-        
-        #self.ui.pushButton1.clicked.connect(self.hide)
-        #self.ui.pushButton1.clicked.connect(self.reveal)
         self.ui.arrow.clicked.connect(self.arrow)
         self.ui.pushButton1.clicked.connect(self.square)
         self.ui.pushButton2.clicked.connect(self.revealArrow)
@@ -288,30 +256,18 @@ class MainMenu(QMainWindow):
         self.ui.pushButton3.clicked.connect(self.revealArrow)
         self.ui.start_button.clicked.connect(self.cam)
         self.ui.stop_button.clicked.connect(self.camCancel)
-    
-        # self.ui.fond.setVisible(True)
-
-        # self.ui.SArrowLeft.clicked.connect(self.leftArrow)
-        # self.ui.SArrowRight.clicked.connect(self.rightArrow)
-
         self.camera_dict = {}
         self.get_camera_list_2(cam_list_filename)
 
     def get_camera_list(self):
         self.camera_list = []
         self.ui.camera_select.clear()
-        #self.ui.camera_table.clearContents()
-        #self.ui.camera_table.setRowCount(0)
         self.ui.image_label.setStyleSheet("color: rgb(0, 0, 0);")
         self.ui.image_label.setText("")
         for camera in mainMenu.camera_dict:
             self.camera_list.append(Camera(camera, mainMenu.camera_dict[camera]))
         for camera in self.camera_list:
             self.ui.camera_select.addItem(camera.camName)
-            #self.ui.camera_table.insertRow(self.ui.camera_table.rowCount())
-            #current_row = self.ui.camera_table.rowCount() - 1
-            #self.ui.camera_table.setItem(current_row, 0, camera.camera_name_item)
-            #self.ui.camera_table.setItem(current_row, 1, camera.camera_status_item)
 
     def start_cameras(self):
         for camera in self.camera_list:
@@ -361,20 +317,6 @@ class MainMenu(QMainWindow):
     def reveal(self):
         self.ui.description.setVisible(False)
         self.ui.description.setEnabled(False)
-
-    # def hide(self):
-    #     self.ui.pushButton1.setVisible(False)
-    #     self.ui.pushButton1.setEnabled(False)
-
-    #     self.ui.pushButton2.setVisible(False)
-    #     self.ui.pushButton2.setEnabled(False)
-
-    #     self.ui.pushButton3.setVisible(False)
-    #     self.ui.pushButton3.setEnabled(False)
-
-    #     self.ui.arrow.setVisible(True)
-    #     self.ui.arrow.setEnabled(True)
-    #     self.ui.fond.setVisible(False)  
     
     def arrow(self):
         self.ui.pushButton1.setVisible(True)
@@ -386,15 +328,10 @@ class MainMenu(QMainWindow):
         self.ui.description.setVisible(False)
         self.ui.arrow.setVisible(False)
         self.ui.arrow.setEnabled(False)
-        # self.ui.SArrowLeft.setVisible(False)
-        # self.ui.SArrowLeft.setEnabled(False)
-        # self.ui.SArrowRight.setVisible(False)
-        # self.ui.SArrowRight.setEnabled(False)
         self.ui.start_button.setVisible(True)
         self.ui.start_button.setEnabled(True)
         self.ui.stop_button.setVisible(True)
         self.ui.stop_button.setEnabled(True)
-        # self.ui.chart1.setVisible(False)
         self.ui.chart2.setVisible(False)
         self.ui.labelStat.setVisible(False)
         self.ui.fond.move(300,100)
@@ -410,11 +347,8 @@ class MainMenu(QMainWindow):
     def revealStats(self):
         path = ("resources/data.csv")
         df = pd.read_csv(path,sep=';',index_col=1)
-        #dp = df[['Somme_avec_masques','Somme_non_masques']].iloc[[0]]
 
         # Pie
-
-        #labels = [dp.iloc[0][0],dp.iloc[0][1]]
 
         sum_masque = df['nb_masques_bien_portes'].sum()
         sum_Nmasque = df['nb_masques_non_portes'].sum()
@@ -423,15 +357,6 @@ class MainMenu(QMainWindow):
         sum_Nmasque = 100* (sum_Nmasque/denom)
         sum_masque=float("{0:.2f}".format(sum_masque))
         sum_Nmasque=float("{0:.2f}".format(sum_Nmasque))
-        
-
-        # labels = [sum_masque,sum_Nmasque]
-
-        # slices = [sum_masque,sum_Nmasque]
-
-        # plt.pie(slices, labels=labels)
-        
-        # plt.savefig("app/resources/Pie")
 
         # Histogramme 
 
@@ -447,48 +372,21 @@ class MainMenu(QMainWindow):
             dc = DataFrame(columns=['Date','Heures','nb_masques_bien_portes','nb_masques_non_portes','Somme_avec_masques','Somme_non_masques'])
             dc.to_csv(r"resources/data.csv",  index = False, sep=';', encoding='utf-8')
     
-        # self.ui.chart1.setPixmap(QtGui.QPixmap("Pie.png"))
-        # self.ui.chart1.adjustSize()
-        # self.ui.chart1.setScaledContents(True)
         self.ui.chart2.setPixmap(QtGui.QPixmap("Histogram.png"))
         self.ui.chart2.adjustSize()
         self.ui.chart2.setScaledContents(True)
-        # self.ui.SArrowLeft.setVisible(False)
-        # self.ui.SArrowLeft.setEnabled(False)
-        # self.ui.SArrowRight.setVisible(True)
-        # self.ui.SArrowRight.setEnabled(True)
         self.ui.start_button.setVisible(False)
         self.ui.start_button.setEnabled(False)
         self.ui.stop_button.setVisible(False)
         self.ui.stop_button.setEnabled(False)
         self.ui.description.setVisible(False)
         self.ui.fond.move(1280,720)
-        # self.ui.chart1.setVisible(True)
         self.ui.chart2.setVisible(True)
         self.ui.labelStat.setVisible(True)
         labelString = f"Pourcentage de personnes\nsans masque : {sum_Nmasque}\nPourcentage de personnes\navec masque : {sum_masque}"
         self.ui.labelStat.setText(labelString)
         self.ui.labelStat.setFont(QtGui.QFont('Arial', 25))
         self.ui.labelStat.setStyleSheet("QLabel { background-color : white; color : black; }")
-        # os.remove("Pie.png")
-        # os.remove("Histogram.png")
-        #df.drop(["nb_masques_bien_portes","nb_masques_non_portes"], axis = 1)
-
-    # def leftArrow(self):
-    #     self.ui.chart1.setVisible(True)
-    #     self.ui.chart2.setVisible(False)
-    #     self.ui.SArrowRight.setVisible(True)
-    #     self.ui.SArrowRight.setEnabled(True)
-    #     self.ui.SArrowLeft.setVisible(False)
-    #     self.ui.SArrowLeft.setEnabled(False)
-
-    # def rightArrow(self):
-    #     self.ui.chart1.setVisible(False)
-    #     self.ui.chart2.setVisible(True)
-    #     self.ui.SArrowLeft.setVisible(True)
-    #     self.ui.SArrowLeft.setEnabled(True)
-    #     self.ui.SArrowRight.setVisible(False)
-    #     self.ui.SArrowRight.setEnabled(False)
 
     
     def revealDesc(self):
@@ -499,15 +397,8 @@ class MainMenu(QMainWindow):
         self.ui.start_button.setEnabled(False)
         self.ui.stop_button.setVisible(False)
         self.ui.stop_button.setEnabled(False)
-        # self.ui.SArrowLeft.setVisible(False)
-        # self.ui.SArrowLeft.setEnabled(False)
-        # self.ui.SArrowRight.setVisible(False)
-        # self.ui.SArrowRight.setEnabled(False)
-        # self.ui.chart1.setVisible(False)
         self.ui.chart2.setVisible(False) 
-        self.ui.labelStat.setVisible(False) 
-        # self.ui.fond.setVisible(False)
-        # self.ui.fond.setVisible(False)     
+        self.ui.labelStat.setVisible(False)   
         self.ui.fond.move(1279,719)
 
     def revealArrow(self):
@@ -519,21 +410,12 @@ class MainMenu(QMainWindow):
         mainMenu.start_cameras()
         mainMenu.change_cam(0)
         self.ui.image_label.setVisible(True)
-        #self.ui.mask_count_label.setVisible(False)
-        #self.ui.no_mask_count_label.setVisible(False)
         self.ui.status_type_label.setVisible(False)
-        # self.ui.fond.setVisible(False) 
         self.ui.fond.move(1279,719)
     
     def camCancel(self):
-        #mainMenu.change_cam(1)
         mainMenu.stop_cameras()
         self.ui.image_label.setVisible(False)  
-        #os.execv(sys.executable, ['python3'] + sys.argv)
-        #mainMenu.close_app()
-        #self.ui.mask_count_label.setVisible(False)
-        #self.ui.no_mask_count_label.setVisible(False)
-        #self.ui.status_type_label.setVisible(False)
         self.ui.fond.move(300,100)
 
     def timer(self):
@@ -553,6 +435,5 @@ if __name__ == '__main__':
     mainMenu = MainMenu()
     mainMenu.get_camera_list()
     mainMenu.showFullScreen()
-    #mainMenu.start_cameras()
 
     sys.exit(app.exec_())

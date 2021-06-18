@@ -213,7 +213,6 @@ class Ui_MainMenu(object):
 "background-color: transparent;\n"
 "color: #228B22;\n"
 "font: 32pt \"Gill Sans MT\";")
-        #self.camera_select_label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.camera_select_label.move(10,170)
         
         self.camera_select_label.setObjectName("camera_select_label")
@@ -403,8 +402,6 @@ class Ui_MainMenu(object):
         self.epf.setGeometry(QtCore.QRect(0, 0, 195, 90)) 
         self.epf.setPixmap(QtGui.QPixmap("resources/Logo_EPF.png"))
         self.epf.setScaledContents(True)
-        #self.epf.setIcon(QtGui.QIcon("resources/epf_logo.png"))
-        #self.epf.setIconSize(QtCore.QSize(100,100))
         self.epf.setObjectName("epf")
      
         self.pushButton1 = QtWidgets.QPushButton(self.centralwidget) 
@@ -429,29 +426,10 @@ class Ui_MainMenu(object):
         self.arrow.setEnabled(False)
         self.arrow.setIconSize(QtCore.QSize(30,30))
 
-        # self.SArrowLeft = QtWidgets.QPushButton(self.centralwidget)
-        # self.SArrowLeft.setGeometry(QtCore.QRect(50, 600, 120, 60))
-        # self.SArrowLeft.setText("")
-        # icon2 = QtGui.QIcon()
-        # icon2.addPixmap(QtGui.QPixmap("resources/SArrowLeft.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        # self.SArrowLeft.setVisible(False)
-        # self.SArrowLeft.setEnabled(False)
-        # self.SArrowLeft.setIconSize(QtCore.QSize(30,30))
-
-        # self.SArrowRight = QtWidgets.QPushButton(self.centralwidget)
-        # self.SArrowRight.setGeometry(QtCore.QRect(170, 600, 120, 60))
-        # self.SArrowRight.setText("")
-        # icon3 = QtGui.QIcon()
-        # icon3.addPixmap(QtGui.QPixmap("resources/SArrowRight.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        # self.SArrowRight.setVisible(False)
-        # self.SArrowRight.setEnabled(False)
-        # self.SArrowRight.setIconSize(QtCore.QSize(30,30))
-
         self.description = QtWidgets.QLabel(self.centralwidget)
         self.description.setGeometry(QtCore.QRect(50, 150, 900, 650)) # texte de description
         str = open('resources/Description.txt', 'r').read()
         self.description.setText(str)
-        # self.description.setPixmap(QtGui.QPixmap("resources/Description.png"))
         self.description.setFont(QtGui.QFont('Arial', 38))
         self.description.setStyleSheet("QLabel { background-color : white; color : black; }")
         self.description.adjustSize()
@@ -459,30 +437,16 @@ class Ui_MainMenu(object):
         self.description.setEnabled(True)
 
         self.arrow.setIcon(icon)
-        # self.SArrowLeft.setIcon(icon2)
-        # self.SArrowRight.setIcon(icon3)
         self.arrow.setObjectName("pushButton")
-        #self.arrow.setVisible(False) # par defaut la fleche est desactivee
-        #self.arrow.setEnabled(False)
-
-        # self.chart1 = QtWidgets.QLabel(self.centralwidget)
-        # self.chart1.setGeometry(QtCore.QRect(300, 100, 1000, 800))
-        # #self.chart1.setPixmap(QtGui.QPixmap("resources/Pie.png"))
-        # self.chart1.adjustSize()
-        # self.chart1.setScaledContents(True)
-        # self.chart1.setVisible(False)
-        # self.chart1.setEnabled(True)
 
         self.chart2 = QtWidgets.QLabel(self.centralwidget)
         self.chart2.setGeometry(QtCore.QRect(50, 150, 800, 800))
-        #self.chart2.setPixmap(QtGui.QPixmap("resources/Histogram.png"))
         self.chart2.adjustSize()
         self.chart2.setVisible(False)
         self.chart2.setEnabled(True)
 
         self.labelStat = QtWidgets.QLabel(self.centralwidget)
         self.labelStat.setGeometry(QtCore.QRect(650, 150, 900, 400))
-        #self.labelStat.adjustSize()
         self.labelStat.setVisible(False)
         self.labelStat.setEnabled(True)
 
@@ -513,20 +477,10 @@ class Ui_MainMenu(object):
         _translate = QtCore.QCoreApplication.translate
         MainMenu.setWindowTitle(_translate("MainMenu", "Face Mask Detector"))
         self.image_label.setText(_translate("MainMenu", "Select a Camera"))
-        #self.start_button.setText(_translate("MainMenu", "START"))
-        #self.stop_button.setText(_translate("MainMenu", "STOP"))
-        #self.epf.setText(_translate("MainMenu", "Test"))
-        #self.camera_list_label.setText(_translate("MainMenu", "Camera Control Panel"))
-        #item = self.camera_table.horizontalHeaderItem(0)
-        #item.setText(_translate("MainMenu", "Camera"))
-        #item = self.camera_table.horizontalHeaderItem(1)
-        #item.setText(_translate("MainMenu", "Status"))
         self.camera_select_label.setText(_translate("MainMenu", "Liste caméras:    "))
         self.camera_select.setProperty("placeholderText", _translate("MainMenu", "Select Camera"))
         self.camera_select.setVisible(False)
         self.camera_select_label.setVisible(False)
-
-        #self.epf.setText(_translate("MainMenu","AAAAAA"))
         self.pushButton1.setText(_translate("MainMenu", "Afficher \ntempérature"))
         self.pushButton2.setText(_translate("MainMenu", "Statistiques"))
         self.pushButton3.setText(_translate("MainMenu", "Description du \nprojet"))
