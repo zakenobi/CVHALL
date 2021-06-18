@@ -346,9 +346,7 @@ class MainMenu(QMainWindow):
     def revealStats(self):
         path = ("resources/data.csv")
         df = pd.read_csv(path,sep=';',index_col=1)
-
-        # Pie
-
+        
         sum_masque = df['nb_masques_bien_portes'].sum()
         sum_Nmasque = df['nb_masques_non_portes'].sum()
         denom = sum_masque+sum_Nmasque
