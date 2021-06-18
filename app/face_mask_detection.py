@@ -11,7 +11,6 @@ import matplotlib.pyplot as plt
 import matplotlib.pyplot as plt2
 from pathlib import Path
 from matplotlib.pyplot import pie, axis, show, figure
-#from matplotlib_venn import venn2
 from pandas.core.frame import DataFrame
 
 from mailer import Mailer
