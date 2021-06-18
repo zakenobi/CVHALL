@@ -53,15 +53,15 @@ def get_temp():
     x=0
     frame = [0] * 768
     mlx.getFrame(frame)
-    frame.sort()
-    max_temp=frame[0]
-    if max_temp>41:
-        max_temp=frame[1]
+    # frame.sort()
+    # max_temp=frame[0]
+    # if max_temp>41:
+    #     max_temp=frame[1]
     # while frame[-x]>41 :
     #     max_temp=frame[-x] 
     #     x+=1   
 
-    #max_temp=float("{0:.2f}".format(max(frame)))
+    max_temp=float("{0:.2f}".format(max(frame)))
     return max_temp
 
 
