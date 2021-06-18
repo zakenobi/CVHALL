@@ -397,7 +397,7 @@ class MainMenu(QMainWindow):
         # self.ui.chart1.setVisible(False)
         self.ui.chart2.setVisible(False)
         self.ui.labelStat.setVisible(False)
-        self.ui.fond.setVisible(True)
+        self.ui.fond.move(300,100)
 
     def square(self):
         global temp
@@ -532,7 +532,7 @@ class MainMenu(QMainWindow):
         #self.ui.mask_count_label.setVisible(False)
         #self.ui.no_mask_count_label.setVisible(False)
         #self.ui.status_type_label.setVisible(False)
-        self.ui.fond.setVisible(True)
+        self.ui.fond.move(300,100)
 
     def timer(self):
         mainMenu.cam()
