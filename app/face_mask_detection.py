@@ -504,7 +504,8 @@ class MainMenu(QMainWindow):
         # self.ui.chart1.setVisible(False)
         self.ui.chart2.setVisible(False) 
         self.ui.labelStat.setVisible(False) 
-        self.ui.fond.setVisible(False)         
+        self.ui.fond.setHidden(True)
+        # self.ui.fond.setVisible(False)         
 
     def revealArrow(self):
         self.ui.arrow.setVisible(True)
