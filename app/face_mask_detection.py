@@ -370,6 +370,7 @@ class MainMenu(QMainWindow):
 
         self.ui.arrow.setVisible(True)
         self.ui.arrow.setEnabled(True)
+        self.ui.fond.setVisible(False)  
     
     def arrow(self):
         self.ui.pushButton1.setVisible(True)
@@ -392,6 +393,7 @@ class MainMenu(QMainWindow):
         # self.ui.chart1.setVisible(False)
         self.ui.chart2.setVisible(False)
         self.ui.labelStat.setVisible(False)
+        self.ui.fond.setVisible(True)  
 
     def square(self):
         global temp
@@ -400,7 +402,6 @@ class MainMenu(QMainWindow):
         else:
              temp = True
             
-
 
     def revealStats(self):
         path = ("resources/data.csv")
@@ -453,6 +454,7 @@ class MainMenu(QMainWindow):
         self.ui.stop_button.setVisible(False)
         self.ui.stop_button.setEnabled(False)
         self.ui.description.setVisible(False)
+        self.ui.fond.setVisible(False)  
         # self.ui.chart1.setVisible(True)
         self.ui.chart2.setVisible(True)
         self.ui.labelStat.setVisible(True)
@@ -495,7 +497,8 @@ class MainMenu(QMainWindow):
         # self.ui.SArrowRight.setEnabled(False)
         # self.ui.chart1.setVisible(False)
         self.ui.chart2.setVisible(False) 
-        self.ui.labelStat.setVisible(False)         
+        self.ui.labelStat.setVisible(False) 
+        self.ui.fond.setVisible(False)          
 
     def revealArrow(self):
         self.ui.arrow.setVisible(True)
@@ -508,11 +511,13 @@ class MainMenu(QMainWindow):
         #self.ui.mask_count_label.setVisible(False)
         #self.ui.no_mask_count_label.setVisible(False)
         self.ui.status_type_label.setVisible(False)
+        self.ui.fond.setVisible(False)  
     
     def camCancel(self):
         #mainMenu.change_cam(1)
         mainMenu.stop_cameras()
         self.ui.image_label.setVisible(False)
+        self.ui.fond.setVisible(False)   
         #os.execv(sys.executable, ['python3'] + sys.argv)
         #mainMenu.close_app()
         #self.ui.mask_count_label.setVisible(False)
