@@ -490,7 +490,7 @@ class MainMenu(QMainWindow):
 
     
     def revealDesc(self):
-        self.ui.description.setVisible(True)
+        # self.ui.description.setVisible(True)
         self.ui.arrow.setVisible(True)
         self.ui.arrow.setEnabled(True)
         self.ui.start_button.setVisible(False)
@@ -505,7 +505,16 @@ class MainMenu(QMainWindow):
         self.ui.chart2.setVisible(False) 
         self.ui.labelStat.setVisible(False) 
         self.ui.fond.hide()
-        # self.ui.fond.setVisible(False)     
+        # self.ui.fond.setVisible(False)
+        #str = open('resources/Description.txt', 'r').read()
+        self.ui.description.setText(str)
+        #self.description.setPixmap(QtGui.QPixmap("resources/Description.png"))
+        self.ui.description.setFont(QtGui.QFont('Arial', 38))
+        self.ui.description.setStyleSheet("QLabel { background-color : white; color : black; }")
+        self.ui.description.adjustSize()
+        self.ui.description.setVisible(False)
+        self.ui.description.setEnabled(True)
+     
 
     def revealArrow(self):
         self.ui.arrow.setVisible(True)
