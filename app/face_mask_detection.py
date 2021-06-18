@@ -508,7 +508,7 @@ class MainMenu(QMainWindow):
         self.ui.labelStat.setVisible(False) 
         # self.ui.fond.setVisible(False)
         # self.ui.fond.setVisible(False)     
-        self.ui.fond.move(1280,720)
+        self.ui.fond.move(1279,719)
 
     def revealArrow(self):
         self.ui.arrow.setVisible(True)
