@@ -287,7 +287,7 @@ class MainMenu(QMainWindow):
         self.ui.pushButton3.clicked.connect(self.camCancel)
         self.ui.start_button.clicked.connect(self.cam)
         self.ui.stop_button.clicked.connect(self.camCancel)
-        self.ui.fond.setVisible(True)
+        # self.ui.fond.setVisible(True)
 
         # self.ui.SArrowLeft.clicked.connect(self.leftArrow)
         # self.ui.SArrowRight.clicked.connect(self.rightArrow)
@@ -360,19 +360,19 @@ class MainMenu(QMainWindow):
         self.ui.description.setVisible(False)
         self.ui.description.setEnabled(False)
 
-    def hide(self):
-        self.ui.pushButton1.setVisible(False)
-        self.ui.pushButton1.setEnabled(False)
+    # def hide(self):
+    #     self.ui.pushButton1.setVisible(False)
+    #     self.ui.pushButton1.setEnabled(False)
 
-        self.ui.pushButton2.setVisible(False)
-        self.ui.pushButton2.setEnabled(False)
+    #     self.ui.pushButton2.setVisible(False)
+    #     self.ui.pushButton2.setEnabled(False)
 
-        self.ui.pushButton3.setVisible(False)
-        self.ui.pushButton3.setEnabled(False)
+    #     self.ui.pushButton3.setVisible(False)
+    #     self.ui.pushButton3.setEnabled(False)
 
-        self.ui.arrow.setVisible(True)
-        self.ui.arrow.setEnabled(True)
-        self.ui.fond.setVisible(False)  
+    #     self.ui.arrow.setVisible(True)
+    #     self.ui.arrow.setEnabled(True)
+    #     self.ui.fond.setVisible(False)  
     
     def arrow(self):
         self.ui.pushButton1.setVisible(True)
@@ -395,7 +395,7 @@ class MainMenu(QMainWindow):
         # self.ui.chart1.setVisible(False)
         self.ui.chart2.setVisible(False)
         self.ui.labelStat.setVisible(False)
-        self.ui.fond.show()
+        self.ui.fond.setVisible(True)
 
     def square(self):
         global temp
@@ -460,7 +460,7 @@ class MainMenu(QMainWindow):
         self.ui.stop_button.setVisible(False)
         self.ui.stop_button.setEnabled(False)
         self.ui.description.setVisible(False)
-        self.ui.fond.hide()
+        self.ui.fond.setVisible(False)
         # self.ui.chart1.setVisible(True)
         self.ui.chart2.setVisible(True)
         self.ui.labelStat.setVisible(True)
@@ -490,7 +490,7 @@ class MainMenu(QMainWindow):
 
     
     def revealDesc(self):
-        # self.ui.description.setVisible(True)
+        self.ui.description.setVisible(True)
         self.ui.arrow.setVisible(True)
         self.ui.arrow.setEnabled(True)
         self.ui.start_button.setVisible(False)
@@ -504,17 +504,8 @@ class MainMenu(QMainWindow):
         # self.ui.chart1.setVisible(False)
         self.ui.chart2.setVisible(False) 
         self.ui.labelStat.setVisible(False) 
-        self.ui.fond.hide()
-        # self.ui.fond.setVisible(False)
-        #str = open('resources/Description.txt', 'r').read()
-        self.ui.description.setText(str)
-        #self.description.setPixmap(QtGui.QPixmap("resources/Description.png"))
-        self.ui.description.setFont(QtGui.QFont('Arial', 38))
-        self.ui.description.setStyleSheet("QLabel { background-color : white; color : black; }")
-        self.ui.description.adjustSize()
-        self.ui.description.setVisible(False)
-        self.ui.description.setEnabled(True)
-     
+        self.ui.fond.setVisible(False)
+        # self.ui.fond.setVisible(False)     
 
     def revealArrow(self):
         self.ui.arrow.setVisible(True)
@@ -538,7 +529,7 @@ class MainMenu(QMainWindow):
         #self.ui.mask_count_label.setVisible(False)
         #self.ui.no_mask_count_label.setVisible(False)
         #self.ui.status_type_label.setVisible(False)
-        self.ui.fond.show()
+        self.ui.fond.setVisible(True)
 
     def timer(self):
         mainMenu.cam()
