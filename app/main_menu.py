@@ -645,13 +645,13 @@ class Ui_MainMenu(object):
         self.chart2.setEnabled(True)
 
         self.labelStat = QtWidgets.QLabel(self.centralwidget)
-        self.labelStat.setGeometry(QtCore.QRect(580, 150, 900, 400))
+        self.labelStat.setGeometry(QtCore.QRect(650, 150, 900, 400))
         #self.labelStat.adjustSize()
         self.labelStat.setVisible(False)
         self.labelStat.setEnabled(True)
 
         self.fond = QtWidgets.QLabel(self.centralwidget)
-        self.fond.setGeometry(QtCore.QRect(300, 150, 900, 400))
+        self.fond.setGeometry(QtCore.QRect(300, 100, 900, 400))
         self.fond.setPixmap(QtGui.QPixmap("resources/fmde_logo.png"))
         self.fond.adjustSize()
         self.fond.setVisible(True)
