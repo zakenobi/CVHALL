@@ -647,7 +647,7 @@ class Ui_MainMenu(object):
         self.labelStat = QtWidgets.QLabel(self.centralwidget)
         self.labelStat.setGeometry(QtCore.QRect(800, 300, 900, 400))
         self.labelStat.adjustSize()
-        self.labelStat.setVisible(False)
+        self.labelStat.setVisible(True)
         self.labelStat.setEnabled(True)
 
         self.retranslateUi(MainMenu)
