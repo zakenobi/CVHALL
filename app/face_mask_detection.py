@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 import matplotlib.pyplot as plt2
 from pathlib import Path
 from matplotlib.pyplot import pie, axis, show, figure
+#from matplotlib_venn import venn2
 from pandas.core.frame import DataFrame
 
 from mailer import Mailer
@@ -122,7 +123,7 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
     if int(datetime.utcnow().timestamp())-current_time>=60:
         if nomask_total!=0 | mask_total!=0:
             with open('resources/data.csv','a') as fd:
-                fd.write(f'\n{datetime.now().strftime("%d/%m/%Y")};{datetime.now().strftime("%H:%M")};{mask_total};{nomask_total};')
+                fd.write(f'\n{datetime.now().strftime("%d/%m/%Y")};{datetime.now().strftime("%H")};{mask_total};{nomask_total};')
             nomask_total=0
             mask_total=0
         current_time=int(datetime.utcnow().timestamp())
@@ -159,7 +160,7 @@ class Camera(QTimer):
         today = datetime.now().strftime("%d.%m.%Y")
         photo_dir_today = Path(os.path.join(photo_path, today, self.status))
         photo_dir_today.mkdir(parents=True, exist_ok=True)
-        image_name = self.camName + "_" + datetime.now().strftime("%d.%m.%Y_%H.%M.%S") + ".jpg"
+        image_name = self.camName + "_" + datetime.now().strftime("%d.%m.%Y_%H") + ".jpg"
         cv2.imwrite(os.path.join(photo_dir_today, image_name), self.last_image)
 
     def view_disconnected_cam(self):
@@ -218,7 +219,7 @@ class Camera(QTimer):
         
             except:
                 with open(connect_log_path, "a") as connect_log:
-                    connect_log.write(datetime.now().strftime("%d/%m/%Y - %H:%M:%S ->\t") + self.camName + " (ID: " + str(self.camID) + ") disconnected from the system.\n\n")
+                    connect_log.write(datetime.now().strftime("%d/%m/%Y - %H ->\t") + self.camName + " (ID: " + str(self.camID) + ") disconnected from the system.\n\n")
                 self.status = "Not Connected"
                 self.camera_name_item.setForeground(QColor(210, 105, 30))
                 self.camera_status_item.setForeground(QColor(210, 105, 30))
@@ -231,7 +232,7 @@ class Camera(QTimer):
             self.cam = cv2.VideoCapture(self.camID)
             if self.cam.isOpened() and self.cam.get(cv2.CAP_PROP_FPS) != 0:
                 with open(connect_log_path, "a") as connect_log:
-                    connect_log.write(datetime.now().strftime("%d/%m/%Y - %H:%M:%S ->\t") + self.camName + " (ID: " + str(self.camID) + ") connected to the system.\n\n")
+                    connect_log.write(datetime.now().strftime("%d/%m/%Y - %H ->\t") + self.camName + " (ID: " + str(self.camID) + ") connected to the system.\n\n")
 
                 self.cam.set(cv2.CAP_PROP_FPS, 30)
                 self.cam.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
@@ -321,7 +322,7 @@ class MainMenu(QMainWindow):
 
     def take_photo(self):
         if self.current_camera is not None and self.current_camera.status != "pas de connexion":
-            image_name = self.current_camera.camName + "_" + datetime.now().strftime("%d.%m.%Y_%H.%M.%S") + ".jpg"
+            image_name = self.current_camera.camName + "_" + datetime.now().strftime("%d.%m.%Y_%H") + ".jpg"
             cv2.imwrite(os.path.join(photo_path, image_name), self.current_camera.last_image)
             QTimer.singleShot(0, lambda: self.ui.photo_taken_notification.setText("Photo prise!"))
         else:
@@ -389,10 +390,11 @@ class MainMenu(QMainWindow):
     def revealStats(self):
         path = ("resources/data.csv")
         df = pd.read_csv(path,sep=';',index_col=1)
-        dp = df[['Somme_avec_masques','Somme_non_masques']].iloc[[0]]
+        #dp = df[['Somme_avec_masques','Somme_non_masques']].iloc[[0]]
 
         # Pie
-        labels = [dp.iloc[0][0],dp.iloc[0][1]]
+
+        #labels = [dp.iloc[0][0],dp.iloc[0][1]]
 
         sum_masque = df['nb_masques_bien_portes'].sum()
         sum_Nmasque = df['nb_masques_non_portes'].sum()
@@ -401,10 +403,9 @@ class MainMenu(QMainWindow):
 
         slices = [sum_masque,sum_Nmasque]
 
-        plt.pie(slices, labels = labels)
-        plt.title('Proportion de sujets portant leur masque ou non')
-        plt.legend(['Masque porté','Masque non porté'],loc = "lower left", facecolor = "lightgray")
-        plt.savefig("Pie.png")
+        # plt.pie(slices, labels=labels)
+        
+        # plt.savefig("app/resources/Pie")
 
         # Histogramme 
 
@@ -440,7 +441,7 @@ class MainMenu(QMainWindow):
 
         os.remove("Pie.png")
         os.remove("Histogram.png")
-        df.drop(["nb_masques_bien_portes","nb_masques_non_portes"], axis = 1)
+        #df.drop(["nb_masques_bien_portes","nb_masques_non_portes"], axis = 1)
 
     def leftArrow(self):
         self.ui.chart1.setVisible(True)
