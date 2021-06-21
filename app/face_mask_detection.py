@@ -437,6 +437,7 @@ class MainMenu(QMainWindow):
         self.ui.image_label.setVisible(True)
         self.ui.status_type_label.setVisible(True)
         self.ui.fond.move(1279,719)
+        self.ui.pushButton1.setEnabled(True)
     
     def camCancel(self):
         mainMenu.stop_cameras()
@@ -444,6 +445,7 @@ class MainMenu(QMainWindow):
         self.ui.status_type_label.setVisible(False)  
         self.ui.fond.move(300,100)
         self.ui.status_type_label.setVisible(False)
+        self.ui.pushButton1.setEnabled(False)
 
     def timer(self):
         mainMenu.cam()
