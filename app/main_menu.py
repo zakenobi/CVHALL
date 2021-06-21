@@ -426,8 +426,18 @@ class Ui_MainMenu(object):
         self.description.setVisible(False)
         self.description.setEnabled(True)
 
+        self.QRCodeTxt = QtWidgets.QLabel(self.centralwidget)
+        self.QRCodeTxt.setGeometry(QtCore.QRect(650, 150, 400, 650)) # texte de description
+        strQR = open('resources/QRCode.txt', 'r').read()
+        self.QRCodeTxt.setText(strQR)
+        self.QRCodeTxt.setFont(QtGui.QFont('Arial', 38))
+        self.QRCodeTxt.setStyleSheet("QLabel { background-color : white; color : black; }")
+        self.QRCodeTxt.adjustSize()
+        self.QRCodeTxt.setVisible(False)
+        self.QRCodeTxt.setEnabled(True)
+
         self.QRCode = QtWidgets.QLabel(self.centralwidget)
-        self.QRCode.setGeometry(QtCore.QRect(100, 150, 400, 400))
+        self.QRCode.setGeometry(QtCore.QRect(100, 150, 500, 500))
         self.QRCode.setPixmap(QtGui.QPixmap("resources/QRCode.PNG"))
         self.QRCode.setScaledContents(True)
         self.QRCode.setVisible(False)
