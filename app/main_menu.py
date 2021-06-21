@@ -436,6 +436,30 @@ class Ui_MainMenu(object):
         self.description.setVisible(False)
         self.description.setEnabled(True)
 
+        self.QRCode = QtWidgets.QLabel(self.centralwidget)
+        self.QRCode.setGeometry(QtCore.QRect(50, 150, 800, 800))
+        self.QRCode.setPixmap(QtGui.QPixmap("resources/QRCode.png"))
+        self.QRCode.adjustSize()
+        self.QRCode.setVisible(False)
+
+        self.DownArrow = QtWidgets.QPushButton(self.centralwidget)
+        self.DownArrow.setGeometry(QtCore.QRect(50, 600, 120, 60))
+        self.DownArrow.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("resources/DownArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.DownArrow.setVisible(False)
+        self.DownArrow.setEnabled(False)
+        self.DownArrow.setIconSize(QtCore.QSize(30,30))
+
+        self.UpArrow = QtWidgets.QPushButton(self.centralwidget)
+        self.UpArrow.setGeometry(QtCore.QRect(50, 600, 120, 60))
+        self.UpArrow.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("resources/UpArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.UpArrow.setVisible(False)
+        self.UpArrow.setEnabled(False)
+        self.UpArrow.setIconSize(QtCore.QSize(30,30))
+
         self.arrow.setIcon(icon)
         self.arrow.setObjectName("pushButton")
 
@@ -454,6 +478,8 @@ class Ui_MainMenu(object):
         self.fond.setGeometry(QtCore.QRect(300, 100, 900, 400))
         self.fond.setPixmap(QtGui.QPixmap("resources/fmde_logo.png"))
         self.fond.adjustSize()
+
+        
 
         self.retranslateUi(MainMenu)
         QtCore.QMetaObject.connectSlotsByName(MainMenu)

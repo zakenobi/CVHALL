@@ -252,6 +252,8 @@ class MainMenu(QMainWindow):
         self.ui.pushButton3.clicked.connect(self.revealDesc)
         self.ui.pushButton3.clicked.connect(self.camCancel)
         self.ui.pushButton3.clicked.connect(self.revealArrow)
+        self.ui.DownArrow.clicked.connect(self.revealQRCode)
+        self.ui.UpArrow.clicked.connect(self.revealDesc)
         self.ui.start_button.clicked.connect(self.cam)
         self.ui.stop_button.clicked.connect(self.camCancel)
         self.camera_dict = {}
@@ -332,6 +334,7 @@ class MainMenu(QMainWindow):
         self.ui.stop_button.setEnabled(True)
         self.ui.chart2.setVisible(False)
         self.ui.labelStat.setVisible(False)
+        self.ui.QRCode.setVisible(False)
         self.ui.fond.move(300,100)
 
     def square(self):
@@ -396,11 +399,24 @@ class MainMenu(QMainWindow):
         self.ui.chart2.setVisible(False) 
         self.ui.labelStat.setVisible(False)   
         self.ui.fond.move(1279,719)
+        self.ui.DownArrow.setVisible(True)
+        self.ui.DownArrow.setEnabled(True)
+        self.ui.UpArrow.setVisible(False)
+        self.ui.UpArrow.setEnabled(False)
+    
+    def revealQRCode(self):
+        self.ui.description.setVisible(False)
+        self.ui.QRCode.setVisible(True)
+        self.ui.UpArrow.setVisible(True)
+        self.ui.UpArrow.setEnabled(True)
+        self.ui.DownArrow.setVisible(False)
+        self.ui.DownArrow.setEnabled(False)
 
     def revealArrow(self):
         self.ui.arrow.setVisible(True)
         self.ui.arrow.setEnabled(True)
         self.ui.fond.move(1279,719)
+
 
     def cam(self):
         mainMenu.start_cameras()
