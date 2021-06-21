@@ -335,6 +335,7 @@ class MainMenu(QMainWindow):
         self.ui.chart2.setVisible(False)
         self.ui.labelStat.setVisible(False)
         self.ui.QRCode.setVisible(False)
+        self.ui.QRCodeTxt.setVisible(False)
         self.ui.fond.move(300,100)
 
     def square(self):
@@ -391,6 +392,7 @@ class MainMenu(QMainWindow):
         self.ui.labelStat.setFont(QtGui.QFont('Arial', 25))
         self.ui.labelStat.setStyleSheet("QLabel { background-color : white; color : black; }")
         self.ui.QRCode.setVisible(False)
+        self.ui.QRCodeTxt.setVisible(False)
     
     def revealDesc(self):
         self.ui.description.setVisible(True)
@@ -408,6 +410,7 @@ class MainMenu(QMainWindow):
         self.ui.UpArrow.setVisible(False)
         self.ui.UpArrow.setEnabled(False)
         self.ui.QRCode.setVisible(False)
+        self.ui.QRCodeTxt.setVisible(False)
     
     def revealQRCode(self):
         self.ui.description.setVisible(False)
@@ -416,6 +419,7 @@ class MainMenu(QMainWindow):
         self.ui.UpArrow.setEnabled(True)
         self.ui.DownArrow.setVisible(False)
         self.ui.DownArrow.setEnabled(False)
+        self.ui.QRCodeTxt.setVisible(True)
 
     def revealArrow(self):
         self.ui.arrow.setVisible(True)
