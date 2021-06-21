@@ -319,8 +319,6 @@ class MainMenu(QMainWindow):
         self.ui.description.setEnabled(False)
     
     def arrow(self):
-        self.ui.pushButton1.setVisible(True)
-        self.ui.pushButton1.setEnabled(True)
         self.ui.pushButton2.setVisible(True)
         self.ui.pushButton2.setEnabled(True)
         self.ui.pushButton3.setVisible(True)
