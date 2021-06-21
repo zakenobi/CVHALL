@@ -7,3 +7,4 @@ app/__pycache__/main_menu.cpython-38.pyc
 app/__pycache__/start_menu.cpython-38.pyc
 app/resources/connect_history.log
 exemple_programe/__pycache__/email.cpython-38.pyc
+.vscode/settings.json
