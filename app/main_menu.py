@@ -427,7 +427,7 @@ class Ui_MainMenu(object):
         self.description.setEnabled(True)
 
         self.QRCode = QtWidgets.QLabel(self.centralwidget)
-        self.QRCode.setGeometry(QtCore.QRect(50, 150, 800, 800))
+        self.QRCode.setGeometry(QtCore.QRect(50, 150, 700, 600))
         self.QRCode.setPixmap(QtGui.QPixmap("resources/QRCode.PNG"))
         self.QRCode.adjustSize()
         self.QRCode.setVisible(False)
@@ -444,7 +444,7 @@ class Ui_MainMenu(object):
         self.arrow.setObjectName("pushButton")
 
         self.DownArrow = QtWidgets.QPushButton(self.centralwidget)
-        self.DownArrow.setGeometry(QtCore.QRect(810, 600, 120, 60))
+        self.DownArrow.setGeometry(QtCore.QRect(930, 600, 120, 60))
         self.DownArrow.setText("")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap("resources/DownArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -454,7 +454,7 @@ class Ui_MainMenu(object):
         self.DownArrow.setIconSize(QtCore.QSize(30,30))
 
         self.UpArrow = QtWidgets.QPushButton(self.centralwidget)
-        self.UpArrow.setGeometry(QtCore.QRect(810, 600, 120, 60))
+        self.UpArrow.setGeometry(QtCore.QRect(930, 600, 120, 60))
         self.UpArrow.setText("")
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap("resources/UpArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
