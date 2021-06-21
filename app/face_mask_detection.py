@@ -390,7 +390,7 @@ class MainMenu(QMainWindow):
         self.ui.labelStat.setText(labelString)
         self.ui.labelStat.setFont(QtGui.QFont('Arial', 25))
         self.ui.labelStat.setStyleSheet("QLabel { background-color : white; color : black; }")
-
+        self.ui.QRCode.setVisible(False)
     
     def revealDesc(self):
         self.ui.description.setVisible(True)
@@ -407,6 +407,7 @@ class MainMenu(QMainWindow):
         self.ui.DownArrow.setEnabled(True)
         self.ui.UpArrow.setVisible(False)
         self.ui.UpArrow.setEnabled(False)
+        self.ui.QRCode.setVisible(False)
     
     def revealQRCode(self):
         self.ui.description.setVisible(False)
