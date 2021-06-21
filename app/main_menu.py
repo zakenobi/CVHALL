@@ -427,7 +427,7 @@ class Ui_MainMenu(object):
         self.description.setEnabled(True)
 
         self.QRCode = QtWidgets.QLabel(self.centralwidget)
-        self.QRCode.setGeometry(QtCore.QRect(50, 150, 700, 600))
+        self.QRCode.setGeometry(QtCore.QRect(50, 150, 400, 400))
         self.QRCode.setPixmap(QtGui.QPixmap("resources/QRCode.PNG"))
         self.QRCode.adjustSize()
         self.QRCode.setVisible(False)
