@@ -431,7 +431,7 @@ class MainMenu(QMainWindow):
         mainMenu.start_cameras()
         mainMenu.change_cam(0)
         self.ui.image_label.setVisible(True)
-        self.ui.status_type_label.setVisible(False)
+        self.ui.status_type_label.setVisible(True)
         self.ui.fond.move(1279,719)
     
     def camCancel(self):
