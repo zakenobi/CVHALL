@@ -407,7 +407,7 @@ class Ui_MainMenu(object):
         self.pushButton1 = QtWidgets.QPushButton(self.centralwidget) 
         self.pushButton1.setGeometry(QtCore.QRect(380, 10, 200, 70))
         self.pushButton1.setObjectName("pushButton1")
-        self.pushButton1.setEnabled(False)
+        self.pushButton1.setVisible(False)
 
         self.pushButton2 = QtWidgets.QPushButton(self.centralwidget) 
         self.pushButton2.setGeometry(QtCore.QRect(680, 10, 200, 70))
