@@ -415,16 +415,6 @@ class Ui_MainMenu(object):
         self.pushButton3 = QtWidgets.QPushButton(self.centralwidget) 
         self.pushButton3.setGeometry(QtCore.QRect(980, 10, 200, 70))
         self.pushButton3.setObjectName("pushButton3")
-    
-
-        self.arrow = QtWidgets.QPushButton(self.centralwidget)
-        self.arrow.setGeometry(QtCore.QRect(1050, 600, 120, 60))
-        self.arrow.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("resources/LeftArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.arrow.setVisible(False)
-        self.arrow.setEnabled(False)
-        self.arrow.setIconSize(QtCore.QSize(30,30))
 
         self.description = QtWidgets.QLabel(self.centralwidget)
         self.description.setGeometry(QtCore.QRect(50, 150, 900, 650)) # texte de description
@@ -442,26 +432,37 @@ class Ui_MainMenu(object):
         self.QRCode.adjustSize()
         self.QRCode.setVisible(False)
 
+        
+        self.arrow = QtWidgets.QPushButton(self.centralwidget)
+        self.arrow.setGeometry(QtCore.QRect(1050, 600, 120, 60))
+        self.arrow.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("resources/LeftArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.arrow.setVisible(False)
+        self.arrow.setEnabled(False)
+        self.arrow.setIconSize(QtCore.QSize(30,30))
+        self.arrow.setIcon(icon)
+        self.arrow.setObjectName("pushButton")
+
         self.DownArrow = QtWidgets.QPushButton(self.centralwidget)
         self.DownArrow.setGeometry(QtCore.QRect(50, 600, 120, 60))
         self.DownArrow.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("resources/DownArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("resources/DownArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.DownArrow.setVisible(False)
         self.DownArrow.setEnabled(False)
+        self.DownArrow.setIcon(icon2)
         self.DownArrow.setIconSize(QtCore.QSize(30,30))
 
         self.UpArrow = QtWidgets.QPushButton(self.centralwidget)
         self.UpArrow.setGeometry(QtCore.QRect(50, 600, 120, 60))
         self.UpArrow.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("resources/UpArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("resources/UpArrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.UpArrow.setVisible(False)
         self.UpArrow.setEnabled(False)
+        self.UpArrow.setIcon(icon3)
         self.UpArrow.setIconSize(QtCore.QSize(30,30))
-
-        self.arrow.setIcon(icon)
-        self.arrow.setObjectName("pushButton")
 
         self.chart2 = QtWidgets.QLabel(self.centralwidget)
         self.chart2.setGeometry(QtCore.QRect(50, 150, 800, 800))
@@ -478,8 +479,6 @@ class Ui_MainMenu(object):
         self.fond.setGeometry(QtCore.QRect(300, 100, 900, 400))
         self.fond.setPixmap(QtGui.QPixmap("resources/fmde_logo.png"))
         self.fond.adjustSize()
-
-        
 
         self.retranslateUi(MainMenu)
         QtCore.QMetaObject.connectSlotsByName(MainMenu)
