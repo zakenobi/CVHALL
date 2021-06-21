@@ -231,7 +231,7 @@ class Camera(QTimer):
 
     def send_email(self):
         mail = Mailer(email='cvhall.epf@gmail.com', password='PMFGE3A.23')
-        mail.send(receiver='zac.gagnou@gmail.com', subject='ALERT', message='Individu dangereux demasquer !')
+        mail.send(receiver='zac.gagnou@gmail.com', subject='ALERT', message='Individus dangereux demasqués !')
 
 
 class MainMenu(QMainWindow):
@@ -345,7 +345,7 @@ class MainMenu(QMainWindow):
     def revealStats(self):
         path = ("resources/data.csv")
         df = pd.read_csv(path,sep=';',index_col=1)
-        
+
         sum_masque = df['nb_masques_bien_portes'].sum()
         sum_Nmasque = df['nb_masques_non_portes'].sum()
         denom = sum_masque+sum_Nmasque
