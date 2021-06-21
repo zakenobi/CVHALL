@@ -252,6 +252,8 @@ class MainMenu(QMainWindow):
         self.ui.pushButton3.clicked.connect(self.revealDesc)
         self.ui.pushButton3.clicked.connect(self.camCancel)
         self.ui.pushButton3.clicked.connect(self.revealArrow)
+        self.ui.DownArrow.clicked.connect(self.revealQRCode)
+        self.ui.UpArrow.clicked.connect(self.revealDesc)
         self.ui.start_button.clicked.connect(self.cam)
         self.ui.stop_button.clicked.connect(self.camCancel)
         self.camera_dict = {}
@@ -332,6 +334,8 @@ class MainMenu(QMainWindow):
         self.ui.stop_button.setEnabled(True)
         self.ui.chart2.setVisible(False)
         self.ui.labelStat.setVisible(False)
+        self.ui.QRCode.setVisible(False)
+        self.ui.QRCodeTxt.setVisible(False)
         self.ui.fond.move(300,100)
 
     def square(self):
@@ -376,6 +380,10 @@ class MainMenu(QMainWindow):
         self.ui.stop_button.setVisible(False)
         self.ui.stop_button.setEnabled(False)
         self.ui.description.setVisible(False)
+        self.ui.UpArrow.setVisible(False)
+        self.ui.UpArrow.setEnabled(False)
+        self.ui.DownArrow.setVisible(False)
+        self.ui.DownArrow.setEnabled(False)
         self.ui.fond.move(1280,720)
         self.ui.chart2.setVisible(True)
         self.ui.labelStat.setVisible(True)
@@ -383,7 +391,8 @@ class MainMenu(QMainWindow):
         self.ui.labelStat.setText(labelString)
         self.ui.labelStat.setFont(QtGui.QFont('Arial', 25))
         self.ui.labelStat.setStyleSheet("QLabel { background-color : white; color : black; }")
-
+        self.ui.QRCode.setVisible(False)
+        self.ui.QRCodeTxt.setVisible(False)
     
     def revealDesc(self):
         self.ui.description.setVisible(True)
@@ -396,11 +405,27 @@ class MainMenu(QMainWindow):
         self.ui.chart2.setVisible(False) 
         self.ui.labelStat.setVisible(False)   
         self.ui.fond.move(1279,719)
+        self.ui.DownArrow.setVisible(True)
+        self.ui.DownArrow.setEnabled(True)
+        self.ui.UpArrow.setVisible(False)
+        self.ui.UpArrow.setEnabled(False)
+        self.ui.QRCode.setVisible(False)
+        self.ui.QRCodeTxt.setVisible(False)
+    
+    def revealQRCode(self):
+        self.ui.description.setVisible(False)
+        self.ui.QRCode.setVisible(True)
+        self.ui.UpArrow.setVisible(True)
+        self.ui.UpArrow.setEnabled(True)
+        self.ui.DownArrow.setVisible(False)
+        self.ui.DownArrow.setEnabled(False)
+        self.ui.QRCodeTxt.setVisible(True)
 
     def revealArrow(self):
         self.ui.arrow.setVisible(True)
         self.ui.arrow.setEnabled(True)
         self.ui.fond.move(1279,719)
+
 
     def cam(self):
         mainMenu.start_cameras()
