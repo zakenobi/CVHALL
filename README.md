@@ -25,7 +25,7 @@ To install the application please run the `install_dependencies_jetson_nano.sh` 
 
 `foo@bar:~$ sudo ./install_dependencies_jetson_nano.sh`
 
- The following libraries are also required : 
+ The following libraries will be installed : 
 
 * PyQt5 
 * OpenCV
