@@ -442,6 +442,7 @@ class MainMenu(QMainWindow):
         mainMenu.stop_cameras()
         self.ui.image_label.setVisible(False)  
         self.ui.fond.move(300,100)
+        self.ui.status_type_label.setVisible(False)
 
     def timer(self):
         mainMenu.cam()
