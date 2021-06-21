@@ -2,9 +2,9 @@ import os
 import sys
 import cv2
 
-import board
-import busio
-import adafruit_mlx90640
+# import board
+# import busio
+# import adafruit_mlx90640
 
 import pandas as pd
 import matplotlib.pyplot as plt2
@@ -32,9 +32,9 @@ connect_log_path = "resources/connect_history.log"
 
 current_time=int(datetime.utcnow().timestamp())
 
-i2c = busio.I2C(board.SCL, board.SDA, frequency=1000000)
-mlx = adafruit_mlx90640.MLX90640(i2c)
-mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_4_HZ
+# i2c = busio.I2C(board.SCL, board.SDA, frequency=1000000)
+# mlx = adafruit_mlx90640.MLX90640(i2c)
+# mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_4_HZ
 max_temp=37.6
 temp=False
 
@@ -52,8 +52,8 @@ connect_log_filename.touch(exist_ok=True)
 def get_temp():
     x=0
     frame = [0] * 768
-    mlx.getFrame(frame)
-    max_temp=float("{0:.2f}".format(max(frame)))
+    # mlx.getFrame(frame)
+    # max_temp=float("{0:.2f}".format(max(frame)))
     return max_temp
 
 
@@ -440,7 +440,8 @@ class MainMenu(QMainWindow):
     
     def camCancel(self):
         mainMenu.stop_cameras()
-        self.ui.image_label.setVisible(False)  
+        self.ui.image_label.setVisible(False)
+        self.ui.status_type_label.setVisible(False)  
         self.ui.fond.move(300,100)
         self.ui.status_type_label.setVisible(False)
 

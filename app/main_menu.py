@@ -158,7 +158,7 @@ class Ui_MainMenu(object):
         self.no_mask_count_label.setObjectName("no_mask_count_label")
         self.status_label = QtWidgets.QLabel(self.centralwidget)
         self.status_label.setEnabled(True)
-        self.status_label.setGeometry(QtCore.QRect(810, 70, 141, 51))
+        self.status_label.setGeometry(QtCore.QRect(810, 80, 141, 51))
         self.status_label.setScaledContents(True)
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
@@ -173,12 +173,12 @@ class Ui_MainMenu(object):
 "color: rgb(255, 255, 255);\n"
 "font: 63 24pt \"URW Gothic L\";")
         self.status_label.setText("")
-        self.status_label.setAlignment(QtCore.Qt.AlignCenter)
+        #self.status_label.setAlignment(QtCore.Qt.AlignCenter)
         self.status_label.setIndent(10)
         self.status_label.setObjectName("status_label")
         self.status_type_label = QtWidgets.QLabel(self.centralwidget)
         self.status_type_label.setEnabled(True)
-        self.status_type_label.setGeometry(QtCore.QRect(960, 70, 271, 51))
+        self.status_type_label.setGeometry(QtCore.QRect(850, 70, 271, 51))
         font = QtGui.QFont()
         font.setFamily("URW Gothic L")
         font.setPointSize(24)
@@ -492,7 +492,7 @@ class Ui_MainMenu(object):
         self.retranslateUi(MainMenu)
         QtCore.QMetaObject.connectSlotsByName(MainMenu)
 
-        self.status_label.move(930,80)
+        #self.status_label.move(930,80)
         self.status_label.setStyleSheet("border: transparent;\n"
 "background-color: transparent;\n"
 "color: rgb(255,255,255);\n"
@@ -518,7 +518,7 @@ class Ui_MainMenu(object):
         self.pushButton1.setText(_translate("MainMenu", "Afficher \ntempérature"))
         self.pushButton2.setText(_translate("MainMenu", "Statistiques"))
         self.pushButton3.setText(_translate("MainMenu", "Description du \nprojet"))
-        self.status_label.move(1050,60)
+        #self.status_label.move(1050,60)
 
         self.pushButton1.setStyleSheet("QPushButton{\n"
 "font: 63 20pt \"URW Gothic L\";\n"
