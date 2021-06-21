@@ -427,7 +427,7 @@ class Ui_MainMenu(object):
         self.description.setEnabled(True)
 
         self.QRCodeTxt = QtWidgets.QLabel(self.centralwidget)
-        self.QRCodeTxt.setGeometry(QtCore.QRect(650, 150, 400, 650)) # texte de description
+        self.QRCodeTxt.setGeometry(QtCore.QRect(650, 300, 400, 650)) # texte de description
         strQR = open('resources/QRCode.txt', 'r').read()
         self.QRCodeTxt.setText(strQR)
         self.QRCodeTxt.setFont(QtGui.QFont('Arial', 38))
