@@ -97,9 +97,9 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
     if temp == True :
         if i%50==0:
             max_temp=get_temp()
-        img = cv2.rectangle(img,(480, 270),(1440,810),(255,0,0),2)
+        img = cv2.rectangle(img,(480/2, 270/2),(1440/2,810/2),(255,0,0),2)
         text = f'Temp : {max_temp}'
-        cv2.putText(img, text, (480, 260), cv2.FONT_ITALIC, 0.6,(255, 0, 0),1)
+        cv2.putText(img, text, (480/2, 260/2), cv2.FONT_ITALIC, 0.6,(255, 0, 0),1)
         
     ratio = nomask_count / (mask_count + nomask_count + 0.000001)
     
