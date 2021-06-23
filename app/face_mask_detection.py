@@ -2,9 +2,9 @@ import os
 import sys
 import cv2
 
-# import board
-# import busio
-# import adafruit_mlx90640
+import board
+import busio
+import adafruit_mlx90640
 
 import pandas as pd
 import matplotlib.pyplot as plt2
@@ -32,9 +32,9 @@ connect_log_path = "resources/connect_history.log"
 
 current_time=int(datetime.utcnow().timestamp())
 
-# i2c = busio.I2C(board.SCL, board.SDA, frequency=1000000)
-# mlx = adafruit_mlx90640.MLX90640(i2c)
-# mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_4_HZ
+i2c = busio.I2C(board.SCL, board.SDA, frequency=1000000)
+mlx = adafruit_mlx90640.MLX90640(i2c)
+mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_4_HZ
 max_temp=37.6
 temp=False
 
@@ -52,8 +52,8 @@ connect_log_filename.touch(exist_ok=True)
 def get_temp():
     x=0
     frame = [0] * 768
-    # mlx.getFrame(frame)
-    # max_temp=float("{0:.2f}".format(max(frame)))
+    mlx.getFrame(frame)
+    max_temp=float("{0:.2f}".format(max(frame)))
     return max_temp
 
 
@@ -97,9 +97,9 @@ def get_processed_image(img, net, confThreshold, nmsThreshold):
     if temp == True :
         if i%50==0:
             max_temp=get_temp()
-        img = cv2.rectangle(img,(200, 70),(450,350),(255,0,0),2)
+        img = cv2.rectangle(img,(340, 135),(820,505),(255,0,0),2)
         text = f'Temp : {max_temp}'
-        cv2.putText(img, text, (200, 68), cv2.FONT_ITALIC, 0.6,(255, 0, 0),1)
+        cv2.putText(img, text, (340, 130), cv2.FONT_ITALIC, 0.6,(255, 0, 0),1)
         
     ratio = nomask_count / (mask_count + nomask_count + 0.000001)
     
