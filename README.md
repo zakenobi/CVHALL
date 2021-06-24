@@ -21,9 +21,11 @@ Here are the different functionalities supported by the application :
 
 To install the application please run the `install_dependencies_jetson_nano.sh` file, with these commands : 
 
-`foo@bar:~$ sudo chmod +x install_dependencies_jetson_nano.sh`
+```console
+foo@bar:~$ sudo chmod +x install_dependencies_jetson_nano.sh`
 
-`foo@bar:~$ sudo ./install_dependencies_jetson_nano.sh`
+foo@bar:~$ sudo ./install_dependencies_jetson_nano.sh`
+```
 
  The following libraries will be installed : 
 
@@ -41,7 +43,10 @@ To install the application please run the `install_dependencies_jetson_nano.sh` 
 
 ## User manual
 
-To run the application, open the terminal and enter `python3 face_mask_detection.py` 
+To run the application, open the terminal and enter 
+```console
+python3 face_mask_detection.py
+```
 
 The interface is fairly easy to use, each button has a functionality : 
 * The green camera button runs the camera and starts the mask detection
